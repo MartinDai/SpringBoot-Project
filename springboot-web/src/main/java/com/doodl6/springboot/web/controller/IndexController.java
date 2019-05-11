@@ -22,7 +22,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -102,18 +102,19 @@ public class IndexController extends BaseController {
      * 上传接口
      */
     @RequestMapping("upload")
-    public BaseResponse<String> upload(@RequestParam CommonsMultipartFile template) throws IOException, InvalidFormatException {
+    public BaseResponse<String> upload(@RequestParam MultipartFile template) throws IOException, InvalidFormatException {
         String originalFileName = template.getOriginalFilename();
         if (!originalFileName.endsWith(".xls")) {
             throw new IllegalArgumentException("请把文件另存为xls或Excel97-2004格式再上传(不能直接修改文件扩展名)");
         }
 
         String tempFileName = System.currentTimeMillis() + ".xls";
-        File tempFile = new File(WebConstants.ROOT_PATH + "/tmp/", tempFileName);
-        if (!tempFile.exists()) {
-            tempFile.mkdirs();
+        File tempFolder = new File(WebConstants.ROOT_PATH + "/tmp");
+        if (!tempFolder.exists()) {
+            tempFolder.mkdirs();
         }
 
+        File tempFile = new File(tempFolder, tempFileName);
         //保存临时文件
         template.transferTo(tempFile);
         Workbook workbook = WorkbookFactory.create(tempFile);
