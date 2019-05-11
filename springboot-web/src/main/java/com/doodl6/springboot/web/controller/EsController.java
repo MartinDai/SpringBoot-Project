@@ -84,7 +84,7 @@ public class EsController extends BaseController {
      */
     @RequestMapping("/queryData")
     public BaseResponse<List<Article>> queryData(String title) {
-        Preconditions.checkArgument(StringUtils.isNotBlank(title), "关键字不能为空");
+        Preconditions.checkArgument(StringUtils.isNotBlank(title), "标题不能为空");
 
         Iterable<Article> iterable = articleRepository.findByTitle(title);
 
