@@ -19,7 +19,7 @@
 
         <dependency>
             <groupId>com.doodl6</groupId>
-            <artifactId>springmvc-client</artifactId>
+            <artifactId>springboot-client</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

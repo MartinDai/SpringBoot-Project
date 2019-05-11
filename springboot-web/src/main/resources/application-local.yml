@@ -17,5 +17,5 @@ dubbo:
   registry:
     address: zookeeper://127.0.0.1:2181
   reference:
-      firstDubbo:
-        version: 1.0-local
+    firstDubbo:
+      version: 1.0-local
