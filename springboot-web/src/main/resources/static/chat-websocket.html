@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>在线聊天室</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container" style="margin-top: 20px;">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">在线聊天室（基于WebSocket）</h4>
+        </div>
+
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="form-inline">
+                    <input id="user-name" type="text" class="form-control" placeholder="请输入用户名"/>
+                    <button id="connect-server" type="button" class="btn btn-primary">进入聊天室</button>
+                    <button id="disconnect-server" type="button" class="btn btn-danger" style="display:none">离开聊天室
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div id="chat-screen" style="height:400px;border:1px solid green;overflow:auto;padding: 5px;"></div>
+            </div>
+
+            <div class="form-group">
+                <input id="message-text" type="text" class="form-control" placeholder="请输入聊天内容">
+            </div>
+
+            <div class="form-group">
+                <input id="send-message" type="button" class="btn btn-success" value="发送消息(Enter)">
+                <input id="clean-screen" type="button" class="btn btn-info" value="清屏">
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script>
+    var webSocket;
+    var userName;
+
+    var $userNameInput = $('#user-name');
+    var $btnConnectServer = $('#connect-server');
+    var $btnDisconnectServer = $('#disconnect-server');
+    var $chatScreen = $('#chat-screen');
+    var $messageText = $('#message-text');
+    var $sendMessage = $('#send-message');
+    var $cleanScreen = $('#clean-screen');
+
+    $btnConnectServer.click(function () {
+        userName = $userNameInput.val();
+        if (!userName) {
+            alert('请先输入用户名');
+            return;
+        }
+
+        if (!window.WebSocket) {
+            window.WebSocket = window.MozWebSocket;
+        }
+
+        if (window.WebSocket) {
+            webSocket = new WebSocket("ws://127.0.0.1:2018/chatWebSocket/" + userName);
+
+            webSocket.onmessage = function (event) {
+                appendScreenContent(event.data);
+            };
+
+            webSocket.onopen = function (event) {
+                appendScreenContent("服务器连接成功！");
+                showDisconnectBtn();
+            };
+
+            webSocket.onclose = function (event) {
+                appendScreenContent("服务器断开连接！");
+                showConnectBtn();
+            };
+
+            webSocket.onerror = function (event) {
+                alert("服务器连接失败,请检查服务器是否正常运行!");
+                console.log(event);
+                showConnectBtn();
+            };
+        } else {
+            alert("当前浏览器不支持WebSocket，请更换浏览器再试");
+        }
+    });
+
+    $btnDisconnectServer.click(function () {
+        webSocket.close();
+        showConnectBtn();
+    });
+
+    $messageText.keyup(function (event) {
+        if (event.keyCode === 13) {
+            var message = $messageText.val();
+            if (message) {
+                sendMessage(message);
+                $messageText.val("");
+            }
+        }
+    });
+
+    $sendMessage.click(function () {
+        var message = $messageText.val();
+        if (message) {
+            sendMessage(message);
+            $messageText.val("");
+        } else {
+            alert("请输入聊天内容！");
+        }
+    });
+
+    $cleanScreen.click(function () {
+        $chatScreen.html("");
+    });
+
+    function showConnectBtn() {
+        $userNameInput.removeAttr("readonly");
+        $btnConnectServer.show();
+        $btnDisconnectServer.hide();
+    }
+
+    function showDisconnectBtn() {
+        $userNameInput.attr("readonly", "readonly");
+        $btnConnectServer.hide();
+        $btnDisconnectServer.show();
+    }
+
+    function appendScreenContent(message) {
+        $chatScreen.append($("<p>").text(message));
+    }
+
+    function sendMessage(message) {
+        if (!window.WebSocket) {
+            return;
+        }
+
+        if (webSocket && webSocket.readyState === WebSocket.OPEN) {
+            webSocket.send(message);
+        } else {
+            alert("请先进入聊天室！");
+        }
+    }
+</script>
+</html>

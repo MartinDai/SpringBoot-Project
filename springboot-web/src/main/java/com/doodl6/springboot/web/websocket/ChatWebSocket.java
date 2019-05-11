@@ -4,7 +4,7 @@ import com.doodl6.springboot.web.service.mq.RocketMQService;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.socket.server.standard.SpringConfigurator;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import javax.websocket.*;
@@ -17,7 +17,8 @@ import java.util.Map;
  * 聊天室webSocket
  * Created by daixiaoming on 2019/1/3.
  */
-@ServerEndpoint(value = "/chatWebSocket/{userName}", configurator = SpringConfigurator.class)
+@ServerEndpoint(value = "/chatWebSocket/{userName}")
+@Component
 public class ChatWebSocket {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -52,7 +53,7 @@ public class ChatWebSocket {
 
         logger.info("收到用户发送的消息 | {} | {} ", userName, message);
 
-        rocketMQService.sendNewChatRecord(userName, message, System.currentTimeMillis());
+//        rocketMQService.sendNewChatRecord(userName, message, System.currentTimeMillis());
 
         //发送消息到所有客户端
         for (Map.Entry<Session, String> userSessionEntry : userSessionMap.entrySet()) {

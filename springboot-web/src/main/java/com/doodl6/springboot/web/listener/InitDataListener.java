@@ -6,12 +6,14 @@ import com.doodl6.springboot.web.server.ChatServer;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 import java.io.File;
 
 /**
  * 初始化数据监听
  * Created by daixiaoming on 2018/5/5.
  */
+@WebListener
 public class InitDataListener implements ServletContextListener {
 
     @Override
