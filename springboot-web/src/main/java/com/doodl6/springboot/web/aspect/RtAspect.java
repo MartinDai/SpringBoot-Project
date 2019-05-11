@@ -20,7 +20,7 @@ public class RtAspect {
     /**
      * 对controller包下所有public方法添加切入点
      */
-    @Pointcut("execution(public * com.doodl6.springmvc.web.controller.*.*(..))")
+    @Pointcut("execution(public * com.doodl6.springboot.web.controller.*.*(..))")
     public void api() {
     }
 
