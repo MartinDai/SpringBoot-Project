@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
+
+    <include resource="logback-common.xml"/>
+
+    <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date %-5level [%file:%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="RtAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/rt/rt.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/rt/rt.%d{yyyy-MM-dd-HH}.log</fileNamePattern>
+            <maxHistory>48</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <logger name="rtLogger" level="INFO" additivity="false">
+        <appender-ref ref="RtAppender"/>
+    </logger>
+
+    <logger name="com.google.code" level="INFO"/>
+    <logger name="net.rubyeye.xmemcached" level="INFO"/>
+    <logger name="org.apache.zookeeper" level="INFO"/>
+
+    <root level="DEBUG">
+        <appender-ref ref="ConsoleAppender"/>
+    </root>
+
+</configuration>

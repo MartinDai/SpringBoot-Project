@@ -1,0 +1,21 @@
+server:
+  port: 2019
+sharding:
+  jdbc:
+    datasource:
+      ds-0:
+        url: jdbc:mysql://localhost:3306/springmvc-1
+        username: root
+        password: martin-local
+      ds-1:
+        url: jdbc:mysql://localhost:3306/springmvc-2
+        username: root
+        password: martin-local
+dubbo:
+  application:
+    name: springboot-dubbo-service-local
+  registry:
+    address: zookeeper://127.0.0.1:2181
+  service:
+    firstDubbo:
+      version: 1.0-local
