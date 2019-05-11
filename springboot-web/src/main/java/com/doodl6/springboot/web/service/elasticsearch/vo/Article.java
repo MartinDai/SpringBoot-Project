@@ -1,9 +1,14 @@
 package com.doodl6.springboot.web.service.elasticsearch.vo;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+
 import java.util.Date;
 
+@Document(indexName = "blog", type = "article")
 public class Article {
 
+    @Id
     private Long id;
 
     private String title;

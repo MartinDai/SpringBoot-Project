@@ -1,4 +1,8 @@
 spring:
+  data:
+    elasticsearch:
+      cluster-name: martin-elasticsearch
+      cluster-nodes: 127.0.0.1:9300
   profiles:
     active: local
 sharding:
