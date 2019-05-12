@@ -1,12 +1,15 @@
 spring:
-  data:
-    elasticsearch:
-      cluster-name: martin-elasticsearch
-      cluster-nodes: 127.0.0.1:9300
   application:
     name: springboot-web
   profiles:
     active: local
+  redis:
+    lettuce:
+      pool:
+        max-idle: 10000
+        min-idle: 1000
+        max-wait: 5000
+        max-active: 2
 sharding:
   jdbc:
     datasource:

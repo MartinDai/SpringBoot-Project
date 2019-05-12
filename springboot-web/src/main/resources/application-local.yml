@@ -1,5 +1,10 @@
 server:
   port: 2018
+spring:
+  data:
+    elasticsearch:
+      cluster-name: martin-elasticsearch
+      cluster-nodes: 127.0.0.1:9300
 sharding:
   jdbc:
     datasource:
@@ -23,3 +28,6 @@ rocketmq:
   name-server: 127.0.0.1:9876
 memcached:
   address: 127.0.0.1:11211
+redis:
+  host: 127.0.0.1
+  port: 6379
