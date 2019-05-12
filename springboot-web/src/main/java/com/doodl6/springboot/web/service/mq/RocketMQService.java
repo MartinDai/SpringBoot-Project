@@ -1,13 +1,13 @@
 package com.doodl6.springboot.web.service.mq;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import com.doodl6.springboot.web.service.mq.domain.NewChatRecord;
+import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
-import org.apache.rocketmq.common.message.Message;
-import org.apache.rocketmq.remoting.common.RemotingHelper;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,27 +17,24 @@ public class RocketMQService {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-//    @Resource
-    private DefaultMQProducer producer;
+    @Resource
+    private RocketMQTemplate rocketMQTemplate;
 
-//    @Resource(name = "topic")
+    @Value("${rocketmq.producer.topic}")
     private String topic;
 
-//    @Resource(name = "tags")
-    private String tags;
+    public void sendNewChatRecord(NewChatRecord newChatRecord) {
+        rocketMQTemplate.asyncSend(topic, newChatRecord, new SendCallback() {
+            @Override
+            public void onSuccess(SendResult sendResult) {
+                logger.info("发送新聊天记录MQ消息成功 | {}", JSON.toJSONString(sendResult));
+            }
 
-    public void sendNewChatRecord(String userName, String content, long timestamp) {
-        JSONObject messageJSON = new JSONObject();
-        messageJSON.put("userName", userName);
-        messageJSON.put("content", content);
-        messageJSON.put("timestamp", timestamp);
-        try {
-            Message msg = new Message(topic, tags, messageJSON.toJSONString().getBytes(RemotingHelper.DEFAULT_CHARSET));
-            SendResult sendResult = producer.send(msg);
-            logger.info("发送新聊天记录消息完成 | {}", JSON.toJSONString(sendResult));
-        } catch (Exception e) {
-            logger.error("发送新聊天记录消息异常", e);
-        }
+            @Override
+            public void onException(Throwable e) {
+                logger.error("发送新聊天记录消息异常", e);
+            }
+        });
     }
 
 }

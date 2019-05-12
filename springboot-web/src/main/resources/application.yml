@@ -3,6 +3,8 @@ spring:
     elasticsearch:
       cluster-name: martin-elasticsearch
       cluster-nodes: 127.0.0.1:9300
+  application:
+    name: springboot-web
   profiles:
     active: local
 sharding:
@@ -39,3 +41,11 @@ dubbo:
   protocol:
     name: dubbo
     port: 20880
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: Spring-Boot
+    topic: NewChatRecord
+  consumer:
+    group: Spring-Boot
+    topic: NewChatRecord
