@@ -15,10 +15,9 @@ import org.springframework.context.annotation.PropertySource;
 import java.io.IOException;
 
 @Configuration
-@PropertySource("classpath:memcached.properties")
 public class MemcachedConfig {
 
-    @Value("${address}")
+    @Value("${memcached.address}")
     private String address;
 
     @Bean

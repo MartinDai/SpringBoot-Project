@@ -19,3 +19,7 @@ dubbo:
   reference:
     firstDubbo:
       version: 1.0-local
+rocketmq:
+  name-server: 127.0.0.1:9876
+memcached:
+  address: 127.0.0.1:11211
