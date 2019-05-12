@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: springboot-dubbo-service
   profiles:
     active: local
 sharding:
