@@ -20,11 +20,11 @@ public class RocketMQService {
     @Resource
     private RocketMQTemplate rocketMQTemplate;
 
-    @Value("${rocketmq.producer.topic}")
-    private String topic;
+    @Value("${rocketmq.producer.destination}")
+    private String destination;
 
     public void sendNewChatRecord(NewChatRecord newChatRecord) {
-        rocketMQTemplate.asyncSend(topic, newChatRecord, new SendCallback() {
+        rocketMQTemplate.asyncSend(destination, newChatRecord, new SendCallback() {
             @Override
             public void onSuccess(SendResult sendResult) {
                 logger.info("发送新聊天记录MQ消息成功 | {}", JSON.toJSONString(sendResult));

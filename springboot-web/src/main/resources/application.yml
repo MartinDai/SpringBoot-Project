@@ -47,7 +47,7 @@ dubbo:
 rocketmq:
   producer:
     group: Spring-Boot
-    topic: NewChatRecord
+    destination: ChatRecord:newChatRecord
   consumer:
     group: Spring-Boot
-    topic: NewChatRecord
+    topic: ChatRecord

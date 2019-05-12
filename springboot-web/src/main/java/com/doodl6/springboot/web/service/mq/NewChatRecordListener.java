@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * 聊天记录消息监听
  */
 @Component
-@RocketMQMessageListener(consumerGroup = "${rocketmq.consumer.group}", topic = "${rocketmq.consumer.topic}")
+@RocketMQMessageListener(consumerGroup = "${rocketmq.consumer.group}", topic = "${rocketmq.consumer.topic}", selectorExpression = "newChatRecord")
 public class NewChatRecordListener implements RocketMQListener<NewChatRecord> {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
