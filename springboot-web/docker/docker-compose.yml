@@ -1,0 +1,101 @@
+version: '3.7'
+services:
+  mysql:
+    container_name: mysql
+    build:
+      context: ./mysql
+      dockerfile: mysql-dockerfile
+    environment:
+          - "MYSQL_ROOT_PASSWORD=martin-local"
+          - "MYSQL_ROOT_HOST=%"
+    ports:
+      - 6603:3306
+    networks:
+      - net-springboot
+    command: [
+      'mysqld',
+      '--innodb-buffer-pool-size=20M',
+      '--character-set-server=utf8',
+      '--collation-server=utf8_general_ci',
+      '--default-time-zone=+8:00',
+      '--lower-case-table-names=1'
+    ]
+  zoo1:
+    image: zookeeper:3.4
+    networks:
+      - net-springboot
+    restart: always
+    hostname: zoo1
+    ports:
+      - 2181:2181
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=0.0.0.0:2888:3888 server.2=zoo2:2888:3888
+  zoo2:
+    image: zookeeper:3.4
+    networks:
+      - net-springboot
+    restart: always
+    hostname: zoo2
+    ports:
+      - 2182:2181
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=0.0.0.0:2888:3888
+  elasticsearch-master:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
+    container_name: elasticsearch-master
+    environment:
+      - cluster.name=springboot-elasticsearch
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.zen.ping.unicast.hosts=["192.168.59.46:9300","192.168.59.46:19300"]
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - /Users/martin/Documents/elastaticsearch/master-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - net-springboot
+  elasticsearch-slave:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
+    container_name: elasticsearch-slave
+    environment:
+      - cluster.name=springboot-elasticsearch
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.zen.ping.unicast.hosts=["192.168.59.46:9300","192.168.59.46:19300"]
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - /Users/martin/Documents/elastaticsearch/slave-data:/usr/share/elasticsearch/data
+    ports:
+      - 19300:9300
+    networks:
+      - net-springboot
+  springboot-web:
+    container_name: springboot-web
+    build:
+      context: .
+      dockerfile: springboot-web-dockerfile
+    ports:
+      - 2018:2018
+    networks:
+      - net-springboot
+    volumes:
+      - /Users/martin/Documents/projects/SpringBoot-Project/springboot-web:/develop/projects/springboot-web
+    depends_on:
+      - mysql
+      - zoo1
+      - zoo2
+      - elasticsearch-master
+      - elasticsearch-slave
+networks:
+  net-springboot:
+    driver: bridge

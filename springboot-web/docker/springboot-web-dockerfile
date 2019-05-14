@@ -1,0 +1,11 @@
+FROM java:8-jre
+
+MAINTAINER martindai xiaomingys@gmail.com
+
+VOLUME /develop/projects/springboot-web
+
+RUN mkdir -p /develop/projects/springboot-web
+
+WORKDIR /develop/projects/springboot-web
+
+CMD ["java", "-Xmx200m", "-Djava.security.egd=file:/dev/./urandom","-jar","/develop/projects/springboot-web/target/springboot-web-1.0-SNAPSHOT.jar"]
