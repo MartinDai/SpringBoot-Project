@@ -8,7 +8,6 @@ spring:
       pool:
         max-idle: 10000
         min-idle: 1000
-        max-wait: 5000
         max-active: 2
 sharding:
   jdbc:
