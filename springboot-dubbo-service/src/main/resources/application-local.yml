@@ -4,11 +4,11 @@ sharding:
   jdbc:
     datasource:
       ds-0:
-        url: jdbc:mysql://localhost:3306/spring_project_1
+        url: jdbc:mysql://127.0.0.1:3306/spring_project_1
         username: root
         password: martin-local
       ds-1:
-        url: jdbc:mysql://localhost:3306/spring_project_2
+        url: jdbc:mysql://127.0.0.1:3306/spring_project_2
         username: root
         password: martin-local
 dubbo:
