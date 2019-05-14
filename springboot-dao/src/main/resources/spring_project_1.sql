@@ -1,21 +1,8 @@
-/*
- Navicat Premium Data Transfer
-
- Source Server         : local
- Source Server Type    : MySQL
- Source Server Version : 50720
- Source Host           : 127.0.0.1
- Source Database       : springmvc-1
-
- Target Server Type    : MySQL
- Target Server Version : 50720
- File Encoding         : utf-8
-
- Date: 06/03/2018 10:42:59 AM
-*/
-
-SET NAMES utf8;
-SET FOREIGN_KEY_CHECKS = 0;
+-- ----------------------------
+--  create and use database `spring_project_1`
+-- ----------------------------
+create database spring_project_1;
+use spring_project_1;
 
 -- ----------------------------
 --  Table structure for `user`
@@ -55,5 +42,3 @@ CREATE TABLE `user_login_log_1` (
   PRIMARY KEY (`id`),
   KEY `IDX_USER_ID_LOGIN_TIME` (`user_id`,`login_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-SET FOREIGN_KEY_CHECKS = 1;
