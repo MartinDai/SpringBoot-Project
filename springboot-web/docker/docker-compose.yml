@@ -46,10 +46,11 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
     container_name: elasticsearch-master
     environment:
+      - node.name=master
+      - cluster.routing.allocation.disk.threshold_enabled=false
       - cluster.name=springboot-elasticsearch
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - discovery.zen.ping.unicast.hosts=["192.168.59.46:9300","192.168.59.46:19300"]
     ulimits:
       memlock:
         soft: -1
@@ -65,18 +66,34 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
     container_name: elasticsearch-slave
     environment:
+      - node.name=slave
+      - cluster.routing.allocation.disk.threshold_enabled=false
       - cluster.name=springboot-elasticsearch
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - discovery.zen.ping.unicast.hosts=["192.168.59.46:9300","192.168.59.46:19300"]
+      - "discovery.zen.ping.unicast.hosts=elasticsearch-master"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
       - /Users/martin/Documents/elastaticsearch/slave-data:/usr/share/elasticsearch/data
+    networks:
+      - net-springboot
+    depends_on:
+      - elasticsearch-master
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.2.4
+    container_name: kibana
+    environment:
+      - SERVER_NAME=kibana-server
+      - ELASTICSEARCH_URL=http://elasticsearch-master:9200
     ports:
-      - 19300:9300
+      - 5601:5601
+    depends_on:
+      - elasticsearch-master
+    external_links:
+      - elasticsearch-master
     networks:
       - net-springboot
   springboot-web:
