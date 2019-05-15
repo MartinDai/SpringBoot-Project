@@ -2,7 +2,6 @@
 *.class
 
 # Log files
-*.log
 logs/
 
 # IntelliJ IDEA files
@@ -10,3 +9,5 @@ logs/
 *.iml
 
 # Temp file
+/springboot-web/docker/elastaticsearch/master-data/nodes/
+/springboot-web/docker/elastaticsearch/slave-data/nodes/
