@@ -4,30 +4,30 @@ spring:
   data:
     elasticsearch:
       cluster-name: springboot-elasticsearch
-      cluster-nodes: 192.168.59.46:9300
+      cluster-nodes: 127.0.0.1:9300
 sharding:
   jdbc:
     datasource:
       ds-0:
-        url: jdbc:mysql://192.168.59.46:6603/spring_project_1
+        url: jdbc:mysql://127.0.0.1:3306/spring_project_1
         username: root
         password: martin-local
       ds-1:
-        url: jdbc:mysql://192.168.59.46:6603/spring_project_2
+        url: jdbc:mysql://127.0.0.1:3306/spring_project_2
         username: root
         password: martin-local
 dubbo:
   application:
     name: springboot-web-local
   registry:
-    address: zookeeper://192.168.59.46:2181
+    address: zookeeper://127.0.0.1:2181
   reference:
     firstDubbo:
       version: 1.0-local
 rocketmq:
-  name-server: 192.168.59.46:9876
+  name-server: 127.0.0.1:9876
 memcached:
-  address: 192.168.59.46:11211
+  address: 127.0.0.1:11211
 redis:
-  host: 192.168.59.46
+  host: 127.0.0.1
   port: 6379
