@@ -1,0 +1,1 @@
+# 本目录用于保存elasticsearch-slave的数据
