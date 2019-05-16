@@ -11,3 +11,4 @@ logs/
 # Temp file
 /springboot-web/docker/elastaticsearch/master-data/nodes/
 /springboot-web/docker/elastaticsearch/slave-data/nodes/
+/springboot-web/docker/rocketmq/broker/store/
