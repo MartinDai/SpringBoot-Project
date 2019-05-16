@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  redis:
+    image: redis:5.0
+    container_name: redis
+    command: redis-server /etc/redis/redis.conf
+    restart: always
+    volumes:
+          - ./redis/:/etc/redis/
+    ports:
+      - 6379:6379
+    networks:
+      - net-cache
+  memcached:
+    image: memcached:1.5
+    container_name: memcached
+    restart: always
+    ports:
+      - 11211:11211
+    networks:
+      - net-cache
+networks:
+  net-cache:
+    driver: bridge

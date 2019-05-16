@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  namesrv:
+    image: rocketmqinc/rocketmq:4.2.0
+    container_name: rmqnamesrv
+    command: sh mqnamesrv
+    ports:
+      - 9876:9876
+    volumes:
+      - ./rocketmq/namesrv/:/home/rocketmq/
+      - ./rocketmq/namesrv/:/home/rocketmq/
+    networks:
+      - net-rocketmq
+  broker:
+    image: rocketmqinc/rocketmq:4.2.0
+    container_name: rmqbroker
+    restart: always
+    command: sh mqbroker -n namesrv:9876 -c ../conf/broker.conf
+    ports:
+      - 10909:10909
+      - 10911:10911
+    volumes:
+      - ./rocketmq/broker/:/home/rocketmq/
+      - ./rocketmq/broker/:/home/rocketmq/
+      - ./rocketmq/broker/conf/broker.conf:/opt/rocketmq-4.2.0/conf/broker.conf
+    networks:
+      - net-rocketmq
+    depends_on:
+      - namesrv
+networks:
+  net-rocketmq:
+    driver: bridge
