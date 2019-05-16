@@ -113,6 +113,14 @@ services:
       - 6379:6379
     networks:
       - net-springboot
+  memcached:
+    image: memcached:1.5
+    container_name: memcached
+    restart: always
+    ports:
+      - 11211:11211
+    networks:
+      - net-springboot
 networks:
   net-springboot:
     driver: bridge
