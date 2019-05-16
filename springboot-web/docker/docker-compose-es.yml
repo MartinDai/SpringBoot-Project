@@ -9,13 +9,13 @@ services:
       - cluster.routing.allocation.disk.threshold_enabled=false
       - cluster.name=springboot-elasticsearch
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - ./elastaticsearch/master-data:/usr/share/elasticsearch/data
+      - ./elastaticsearch/master-data/:/usr/share/elasticsearch/data/
     ports:
       - 9200:9200
       - 9300:9300
@@ -30,14 +30,14 @@ services:
       - cluster.routing.allocation.disk.threshold_enabled=false
       - cluster.name=springboot-elasticsearch
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
       - "discovery.zen.ping.unicast.hosts=elasticsearch-master"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - ./elastaticsearch/slave-data:/usr/share/elasticsearch/data
+      - ./elastaticsearch/slave-data/:/usr/share/elasticsearch/data/
     networks:
       - net-es
     depends_on:
