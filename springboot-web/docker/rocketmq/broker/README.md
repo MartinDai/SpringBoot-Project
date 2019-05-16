@@ -1,0 +1,1 @@
+# 本目录用于保存rocketmq-broker的数据

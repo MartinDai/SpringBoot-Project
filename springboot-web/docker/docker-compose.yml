@@ -51,6 +51,7 @@ services:
   elasticsearch-master:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
     container_name: elasticsearch-master
+    restart: always
     environment:
       - node.name=master
       - cluster.routing.allocation.disk.threshold_enabled=false
@@ -71,6 +72,7 @@ services:
   elasticsearch-slave:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
     container_name: elasticsearch-slave
+    restart: always
     environment:
       - node.name=slave
       - cluster.routing.allocation.disk.threshold_enabled=false
@@ -88,9 +90,12 @@ services:
       - net-springboot
     depends_on:
       - elasticsearch-master
+    external_links:
+      - elasticsearch-master
   kibana:
     image: docker.elastic.co/kibana/kibana:6.2.4
     container_name: kibana
+    restart: always
     environment:
       - SERVER_NAME=kibana-server
       - ELASTICSEARCH_URL=http://elasticsearch-master:9200
@@ -105,7 +110,7 @@ services:
   redis:
     image: redis:5.0
     container_name: redis
-    command: redis-server /etc/redis/redis.confDirectJDKLog
+    command: redis-server /etc/redis/redis.conf
     restart: always
     volumes:
           - ./redis/:/etc/redis/
@@ -121,6 +126,33 @@ services:
       - 11211:11211
     networks:
       - net-springboot
+  namesrv:
+    image: rocketmqinc/rocketmq:4.2.0
+    container_name: rmqnamesrv
+    command: sh mqnamesrv
+    ports:
+      - 9876:9876
+    volumes:
+      - ./rocketmq/namesrv/:/home/rocketmq/
+      - ./rocketmq/namesrv/:/home/rocketmq/
+    networks:
+      - net-springboot
+  broker:
+    image: rocketmqinc/rocketmq:4.2.0
+    container_name: rmqbroker
+    restart: always
+    command: sh mqbroker -n namesrv:9876 -c ../conf/broker.conf
+    ports:
+      - 10909:10909
+      - 10911:10911
+    volumes:
+      - ./rocketmq/broker/:/home/rocketmq/
+      - ./rocketmq/broker/:/home/rocketmq/
+      - ./rocketmq/broker/conf/broker.conf:/opt/rocketmq-4.2.0/conf/broker.conf
+    networks:
+      - net-springboot
+    depends_on:
+      - namesrv
 networks:
   net-springboot:
     driver: bridge
