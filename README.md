@@ -22,6 +22,7 @@
 - 在线聊天室DEMO（包括基于Netty、WebSocket和长轮训三种实现方案）
 - ElasticSearch调用实现
 - AOP实现记录API耗时日志
+- 基于Zookeeper实现的分布式锁
 
 ## 工具包
 

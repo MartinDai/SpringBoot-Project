@@ -31,3 +31,5 @@ memcached:
 redis:
   host: 127.0.0.1
   port: 6379
+zookeeper:
+  address: 127.0.0.1:2181

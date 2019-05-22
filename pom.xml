@@ -189,6 +189,13 @@
                 <version>${commons-pool2.version}</version>
             </dependency>
 
+            <!-- zookeeper -->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zk.version}</version>
+            </dependency>
+
             <!-- zookeeper client-->
             <dependency>
                 <groupId>org.apache.curator</groupId>
@@ -202,11 +209,10 @@
                 </exclusions>
             </dependency>
 
-            <!-- zookeeper -->
             <dependency>
-                <groupId>org.apache.zookeeper</groupId>
-                <artifactId>zookeeper</artifactId>
-                <version>${zk.version}</version>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
             </dependency>
 
             <!-- 数据库连接池 -->
