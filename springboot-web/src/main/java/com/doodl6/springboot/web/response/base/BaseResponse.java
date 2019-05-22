@@ -26,6 +26,10 @@ public class BaseResponse<T> {
     public BaseResponse() {
     }
 
+    public static <T> BaseResponse<T> success(T t) {
+        return new BaseResponse<>(t);
+    }
+
     public BaseResponse(T data) {
         this.data = data;
     }
