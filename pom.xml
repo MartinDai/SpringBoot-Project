@@ -52,7 +52,7 @@
         <servlet.version>3.1.0</servlet.version>
         <sharding-jdbc.version>3.1.0</sharding-jdbc.version>
         <xmemcached.version>2.4.3</xmemcached.version>
-        <zk.version>3.4.12</zk.version>
+        <zk.version>3.4.14</zk.version>
     </properties>
 
     <dependencyManagement>
