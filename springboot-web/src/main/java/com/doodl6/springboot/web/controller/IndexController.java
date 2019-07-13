@@ -6,6 +6,7 @@ import com.doodl6.springboot.client.request.GetDubboInfoRequest;
 import com.doodl6.springboot.client.response.GetDubboInfoResponse;
 import com.doodl6.springboot.common.check.CheckUtil;
 import com.doodl6.springboot.common.excel.*;
+import com.doodl6.springboot.web.aspect.TraceIdHolder;
 import com.doodl6.springboot.web.constant.WebConstants;
 import com.doodl6.springboot.web.request.CheckParameterRequest;
 import com.doodl6.springboot.web.response.CheckParameterResult;
@@ -136,6 +137,7 @@ public class IndexController extends BaseController {
         MapResponse mapResponse = new MapResponse();
 
         GetDubboInfoRequest getDubboInfoRequest = new GetDubboInfoRequest();
+        getDubboInfoRequest.setTraceId(TraceIdHolder.getTraceId());
         getDubboInfoRequest.setId(id);
         GetDubboInfoResponse getDubboInfoResponse = firstDubboService.getDubboInfo(getDubboInfoRequest);
         if (getDubboInfoResponse.isSuccess()) {

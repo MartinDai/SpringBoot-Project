@@ -23,6 +23,7 @@
 - ElasticSearch调用实现
 - AOP实现记录API耗时日志
 - 基于Zookeeper实现的分布式锁
+- 分布式ID（基于Leaf的Segment模式）
 
 ## 工具包
 

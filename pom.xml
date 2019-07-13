@@ -47,6 +47,7 @@
         <jackson.version>2.9.9</jackson.version>
         <junit.version>4.12</junit.version>
         <memcached.version>3.0.2</memcached.version>
+        <perf4j.version>0.9.16</perf4j.version>
         <poi.version>3.17</poi.version>
         <rocketmq.version>2.0.2</rocketmq.version>
         <servlet.version>3.1.0</servlet.version>
@@ -250,6 +251,12 @@
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectj.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.perf4j</groupId>
+                <artifactId>perf4j</artifactId>
+                <version>${perf4j.version}</version>
             </dependency>
 
         </dependencies>
