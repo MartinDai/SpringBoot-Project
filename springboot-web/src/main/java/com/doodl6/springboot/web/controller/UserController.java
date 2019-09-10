@@ -76,8 +76,8 @@ public class UserController extends BaseController {
     public BaseResponse<Void> deleteUser(Long userId) {
         Preconditions.checkArgument(userId != null, "用户ID不能为空");
 
-//        User user = userMapper.getById(userId);
-//        Preconditions.checkArgument(user != null, "用户不存在");
+        User user = userMapper.getById(userId);
+        Preconditions.checkArgument(user != null, "用户不存在");
 
         rocketMQService.sendClearUserMsg(userId);
 
