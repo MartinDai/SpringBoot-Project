@@ -9,4 +9,7 @@ import java.util.List;
 public interface UserLoginLogMapper extends BaseMapper<UserLoginLog> {
 
     List<UserLoginLog> queryLastLoginLog(long userId);
+
+    void deleteAllByUserId(long userId);
+
 }

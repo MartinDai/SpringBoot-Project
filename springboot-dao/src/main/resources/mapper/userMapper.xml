@@ -28,4 +28,8 @@
 	    SELECT * FROM user WHERE id = #{id}
 	</select>
 
+	<delete id="deleteById" parameterType="long">
+		DELETE FROM user WHERE id = #{id}
+	</delete>
+
 </mapper>

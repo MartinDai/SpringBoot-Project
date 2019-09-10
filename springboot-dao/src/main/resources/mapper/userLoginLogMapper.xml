@@ -27,4 +27,8 @@
 		SELECT * FROM user_login_log WHERE user_id = ${value} ORDER BY login_time DESC
 	</select>
 
+	<delete id="deleteAllByUserId" parameterType="long">
+		DELETE FROM user_login_log WHERE user_id = ${value}
+	</delete>
+
 </mapper>

@@ -45,8 +45,16 @@ dubbo:
     port: 20880
 rocketmq:
   producer:
-    group: Spring-Boot
-    destination: ChatRecord:newChatRecord
+    txGroup: clearUserGroup
+    group: chatRecordGroup
+    clearUser:
+      destination: clearUserData:*
+    chatRecord:
+      destination: ChatRecord:newChatRecord
   consumer:
-    group: Spring-Boot
-    topic: ChatRecord
+    clearUser:
+      group: clearUserGroup
+      topic: clearUserData
+    chatRecord:
+      group: chatRecordGroup
+      topic: ChatRecord

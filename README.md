@@ -11,7 +11,7 @@
 - Fastjson
 - Dubbo(RPC微服务)
 - Sharding-Sphere(分库分表)
-- RocketMQ(分布式消息)
+- RocketMQ(消息队列)
 
 ## 功能
 
@@ -24,6 +24,7 @@
 - AOP实现记录API耗时日志
 - 基于Zookeeper实现的分布式锁
 - 分布式ID（基于Leaf的Segment模式）
+- 分布式事务（使用RocketMQ实现最终一致性）
 
 ## 工具包
 
