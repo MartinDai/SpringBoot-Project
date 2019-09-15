@@ -1,12 +1,7 @@
 server:
   port: 2018
 spring:
-  data:
-    elasticsearch:
-      cluster-name: springboot-elasticsearch
-      cluster-nodes: 127.0.0.1:9300
-sharding:
-  jdbc:
+  shardingsphere:
     datasource:
       ds-0:
         url: jdbc:mysql://127.0.0.1:3306/spring_project_1
@@ -16,6 +11,10 @@ sharding:
         url: jdbc:mysql://127.0.0.1:3306/spring_project_2
         username: root
         password: martin-local
+  data:
+    elasticsearch:
+      cluster-name: springboot-elasticsearch
+      cluster-nodes: 127.0.0.1:9300
 dubbo:
   application:
     name: springboot-web-local

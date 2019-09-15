@@ -51,7 +51,7 @@
         <poi.version>3.17</poi.version>
         <rocketmq.version>2.0.3</rocketmq.version>
         <servlet.version>3.1.0</servlet.version>
-        <sharding-jdbc.version>3.1.0</sharding-jdbc.version>
+        <sharding-sphere.version>4.0.0-RC2</sharding-sphere.version>
         <xmemcached.version>2.4.3</xmemcached.version>
         <zk.version>3.4.14</zk.version>
     </properties>
@@ -66,9 +66,9 @@
             </dependency>
 
             <dependency>
-                <groupId>io.shardingsphere</groupId>
+                <groupId>org.apache.shardingsphere</groupId>
                 <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
-                <version>${sharding-jdbc.version}</version>
+                <version>${sharding-sphere.version}</version>
             </dependency>
 
             <dependency>
