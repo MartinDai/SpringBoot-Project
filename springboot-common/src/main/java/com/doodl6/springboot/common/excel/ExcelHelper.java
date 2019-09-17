@@ -1,12 +1,16 @@
 package com.doodl6.springboot.common.excel;
 
-import com.doodl6.springboot.common.util.DateUtil;
+import com.doodl6.springboot.common.util.DateTimeUtil;
 import com.doodl6.springboot.common.util.MathUtil;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by daixiaoming on 2018/9/25.
@@ -62,7 +66,7 @@ public class ExcelHelper {
                 throw new RuntimeException(e);
             }
             if (o == null) {
-                map.put(name, Lists.<String>newArrayList());
+                map.put(name, Lists.newArrayList());
             } else {
                 if (o instanceof List) {
                     List<String> ll = (List<String>) o;
@@ -74,9 +78,9 @@ public class ExcelHelper {
                         }
                     }
                     map.put(name, ll);
-                } else if (o instanceof Date) {
+                } else if (o instanceof LocalDateTime) {
                     List<String> values = new ArrayList<>();
-                    values.add(DateUtil.getDateTime((Date) o));
+                    values.add(DateTimeUtil.getDateTime((LocalDateTime) o));
                     map.put(name, values);
                 } else {
                     map.put(name, Lists.newArrayList(o.toString()));
