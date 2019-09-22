@@ -40,6 +40,7 @@
         <curator.version>4.0.1</curator.version>
         <druid.version>1.1.10</druid.version>
         <dubbo.version>2.6.4</dubbo.version>
+        <easyexcel.version>2.0.1</easyexcel.version>
         <es.version>6.5.2</es.version>
         <fastjson.version>1.2.60</fastjson.version>
         <guava.version>27.1-jre</guava.version>
@@ -155,6 +156,12 @@
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi-scratchpad</artifactId>
                 <version>${poi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
             </dependency>
 
             <!-- alibaba开源的JSON库 -->
