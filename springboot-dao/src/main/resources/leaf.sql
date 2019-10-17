@@ -1,4 +1,5 @@
 CREATE DATABASE leaf;
+USE leaf;
 CREATE TABLE `leaf_alloc` (
   `biz_tag` varchar(128)  NOT NULL DEFAULT '',
   `max_id` bigint(20) NOT NULL DEFAULT '1',
