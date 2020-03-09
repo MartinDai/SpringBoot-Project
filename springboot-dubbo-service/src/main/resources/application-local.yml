@@ -1,7 +1,7 @@
 server:
   port: 2019
-sharding:
-  jdbc:
+spring:
+  shardingsphere:
     datasource:
       ds-0:
         url: jdbc:mysql://127.0.0.1:3306/spring_project_1
