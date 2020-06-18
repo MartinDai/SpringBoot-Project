@@ -81,7 +81,7 @@ public class ChatController extends BaseController {
      * 发送聊天信息
      */
     @RequestMapping("/sendMessage")
-    public BaseResponse sendMessage(Integer userId, String content) {
+    public BaseResponse<Void> sendMessage(Integer userId, String content) {
         Preconditions.checkArgument(userId != null, "用户ID不能为空");
         Preconditions.checkArgument(StringUtils.isNotBlank(content), "消息内容不能为空");
         Preconditions.checkArgument(USER_MAP.containsKey(userId), "用户不存在");
@@ -98,22 +98,22 @@ public class ChatController extends BaseController {
             MESSAGE_QUEUE_MAP.get(id).add(messageVo);
         }
 
-        return new BaseResponse();
+        return BaseResponse.success();
     }
 
-    class PullDataThread implements Runnable {
+    static class PullDataThread implements Runnable {
 
         /**
          * 用户ID
          */
-        private int userId;
+        private final int userId;
 
-        private DeferredResult<BaseResponse<List<MessageVo>>> deferredResult;
+        private final DeferredResult<BaseResponse<List<MessageVo>>> deferredResult;
 
         /**
          * 超时时间(单位：毫秒)
          */
-        private int timeout;
+        private final int timeout;
 
         PullDataThread(int userId, DeferredResult<BaseResponse<List<MessageVo>>> deferredResult, int timeout) {
             this.userId = userId;

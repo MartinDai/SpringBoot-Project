@@ -31,8 +31,7 @@ public class CacheController extends BaseController {
     @Resource
     private RedisService redisService;
 
-    private BloomFilterHelper<Model> modelBloomFilterHelper = new BloomFilterHelper<>((Funnel<Model>) (from, into) -> into.putString(from.getKey(), Charsets.UTF_8)
-            .putString(from.getValue(), Charsets.UTF_8), 100, 0.01);
+    private final BloomFilterHelper<Model> modelBloomFilterHelper = new BloomFilterHelper<>((Funnel<Model>) (from, into) -> into.putString(from.getKey(), Charsets.UTF_8).putString(from.getValue(), Charsets.UTF_8), 100, 0.01);
 
     /**
      * 设置缓存数据到memcached
