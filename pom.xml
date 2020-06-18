@@ -43,7 +43,7 @@
         <easyexcel.version>2.0.1</easyexcel.version>
         <es.version>6.5.2</es.version>
         <fastjson.version>1.2.60</fastjson.version>
-        <guava.version>27.1-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <httpclient.version>4.5.5</httpclient.version>
         <jackson.version>2.10.0</jackson.version>
         <junit.version>4.12</junit.version>
