@@ -11,8 +11,18 @@ import com.doodl6.springboot.web.response.CheckParameterResult;
 import com.doodl6.springboot.web.response.base.BaseResponse;
 import com.doodl6.springboot.web.response.base.MapResponse;
 import com.doodl6.springboot.web.response.base.ResponseCode;
+import com.google.common.collect.Maps;
+import io.netty.util.internal.PlatformDependent;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import sun.misc.JavaNioAccess;
+import sun.misc.SharedSecrets;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * 首页控制类
@@ -74,6 +84,31 @@ public class IndexController extends BaseController {
         response.setData(result);
 
         return response;
+    }
+
+    /**
+     * 获取堆外内存使用情况
+     */
+    @RequestMapping(value = "/getDirectMemoryUsage")
+    public BaseResponse<Map<String, Long>> getDirectMemoryUsage() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        Map<String, Long> directMemoryUsageMap = Maps.newHashMap();
+
+        Method getJavaNioAccessMethod = SharedSecrets.class.getDeclaredMethod("getJavaNioAccess");
+        JavaNioAccess javaNioAccess = (JavaNioAccess) getJavaNioAccessMethod.invoke(SharedSecrets.class);
+        directMemoryUsageMap.put("directMemoryUsage", javaNioAccess.getDirectBufferPool().getMemoryUsed());
+
+        Field[] fields = PlatformDependent.class.getDeclaredFields();
+        for (Field field : fields) {
+            if (field.getName().equals("DIRECT_MEMORY_LIMIT")) {
+                field.setAccessible(true);
+                directMemoryUsageMap.put("maxDirectMemorySize", field.getLong(PlatformDependent.class));
+            } else if (field.getName().equals("DIRECT_MEMORY_COUNTER")) {
+                field.setAccessible(true);
+                directMemoryUsageMap.put("nettyDirectMemoryUsage", ((AtomicLong) field.get(PlatformDependent.class)).longValue());
+            }
+        }
+
+        return BaseResponse.success(directMemoryUsageMap);
     }
 
     /**
