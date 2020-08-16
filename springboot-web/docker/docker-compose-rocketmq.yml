@@ -8,7 +8,6 @@ services:
       - 9876:9876
     volumes:
       - ./rocketmq/namesrv/:/home/rocketmq/
-      - ./rocketmq/namesrv/:/home/rocketmq/
     networks:
       - net-rocketmq
   broker:
@@ -20,7 +19,6 @@ services:
       - 10909:10909
       - 10911:10911
     volumes:
-      - ./rocketmq/broker/:/home/rocketmq/
       - ./rocketmq/broker/:/home/rocketmq/
       - ./rocketmq/broker/conf/broker.conf:/opt/rocketmq-4.2.0/conf/broker.conf
     networks:
