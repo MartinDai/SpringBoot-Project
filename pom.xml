@@ -48,6 +48,7 @@
         <jackson.version>2.10.0</jackson.version>
         <junit.version>4.12</junit.version>
         <memcached.version>3.0.2</memcached.version>
+        <nacos.version>0.2.7</nacos.version>
         <perf4j.version>0.9.16</perf4j.version>
         <poi.version>3.17</poi.version>
         <rocketmq.version>2.0.3</rocketmq.version>
@@ -87,6 +88,12 @@
                 <groupId>org.apache.rocketmq</groupId>
                 <artifactId>rocketmq-spring-boot-starter</artifactId>
                 <version>${rocketmq.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>nacos-config-spring-boot-starter</artifactId>
+                <version>${nacos.version}</version>
             </dependency>
 
             <!-- servlet -->

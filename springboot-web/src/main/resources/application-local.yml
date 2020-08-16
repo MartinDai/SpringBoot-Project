@@ -32,3 +32,6 @@ redis:
   port: 6379
 zookeeper:
   address: 127.0.0.1:2181
+nacos:
+  config:
+    server-addr: 127.0.0.1:8848

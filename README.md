@@ -25,6 +25,7 @@
 - 基于Zookeeper实现的分布式锁
 - 分布式ID（基于Leaf的Segment模式）
 - 分布式事务（使用RocketMQ实现最终一致性）
+- 基于Nacos的动态配置
 
 ## 工具类
 
