@@ -1,9 +1,11 @@
 package com.doodl6.springboot.web.controller;
 
-import com.alibaba.nacos.api.config.annotation.NacosValue;
+import com.doodl6.springboot.web.service.config.NacosConfigService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * 配置控制类
@@ -12,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/config")
 public class ConfigController extends BaseController {
 
-    @NacosValue(value = "${maxPageSize:20}", autoRefreshed = true)
-    private int maxPageSize;
+    @Resource
+    private NacosConfigService nacosConfigService;
 
     @GetMapping(value = "/getMaxPageSize")
     public int getMaxPageSize() {
-        return maxPageSize;
+        return nacosConfigService.getMaxPageSize();
     }
 }
