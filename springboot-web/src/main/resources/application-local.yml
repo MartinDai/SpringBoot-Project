@@ -1,5 +1,5 @@
 server:
-  port: 2018
+  port: 2019
 spring:
   shardingsphere:
     datasource:
