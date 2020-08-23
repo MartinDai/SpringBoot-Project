@@ -1,12 +1,13 @@
 package com.doodl6.springboot.common.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * 数字工具类
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class NumberUtil {
-
-    private NumberUtil() {
-    }
 
     /**
      * 限制数值不超过范围

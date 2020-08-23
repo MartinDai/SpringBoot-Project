@@ -1,6 +1,8 @@
 package com.doodl6.springboot.common.util;
 
 import com.google.common.collect.Lists;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -11,10 +13,8 @@ import java.util.List;
 /**
  * IP工具类
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class IpUtil {
-
-    private IpUtil() {
-    }
 
     /**
      * 获取本地所有IP4的地址

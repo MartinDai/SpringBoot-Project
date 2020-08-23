@@ -1,9 +1,18 @@
 package com.doodl6.springboot.web.response.base;
 
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
 /**
  * 基础响应结果类
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@NoArgsConstructor
 public class BaseResponse<T> {
 
     /**
@@ -19,13 +28,6 @@ public class BaseResponse<T> {
      */
     private T data;
 
-    public String getMessage() {
-        return message;
-    }
-
-    public BaseResponse() {
-    }
-
     public static BaseResponse<Void> success() {
         return new BaseResponse<>();
     }
@@ -36,29 +38,6 @@ public class BaseResponse<T> {
 
     public BaseResponse(T data) {
         this.data = data;
-    }
-
-    public BaseResponse setMessage(String message) {
-        this.message = message;
-        return this;
-    }
-
-    public int getResult() {
-        return result;
-    }
-
-    public BaseResponse setResult(int result) {
-        this.result = result;
-        return this;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public BaseResponse setData(T data) {
-        this.data = data;
-        return this;
     }
 
     /**

@@ -1,10 +1,15 @@
 package com.doodl6.springboot.common.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 /**
  * excel行模型
  */
+@Getter
+@Setter
 public class RowModel {
 
     /**
@@ -16,19 +21,4 @@ public class RowModel {
      */
     private List<List<String>> multiCellList;
 
-    public List<String> getCellList() {
-        return cellList;
-    }
-
-    public void setCellList(List<String> cellList) {
-        this.cellList = cellList;
-    }
-
-    public List<List<String>> getMultiCellList() {
-        return multiCellList;
-    }
-
-    public void setMultiCellList(List<List<String>> multiCellList) {
-        this.multiCellList = multiCellList;
-    }
 }

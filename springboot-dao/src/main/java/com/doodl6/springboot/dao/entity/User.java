@@ -1,5 +1,7 @@
 package com.doodl6.springboot.dao.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.ibatis.type.Alias;
 
 import java.util.Date;
@@ -7,6 +9,8 @@ import java.util.Date;
 /**
  * 用户实体类
  */
+@Getter
+@Setter
 @Alias("User")
 public class User {
 
@@ -18,35 +22,4 @@ public class User {
 
     private Date modified;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getModified() {
-        return modified;
-    }
-
-    public void setModified(Date modified) {
-        this.modified = modified;
-    }
 }

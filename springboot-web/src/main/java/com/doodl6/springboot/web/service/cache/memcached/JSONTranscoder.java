@@ -13,6 +13,7 @@ public class JSONTranscoder extends PrimitiveTypeTranscoder<Object> {
 
     private static final int JSON_FLAG = 0;
 
+    @Override
     public Object decode(CachedData d) {
         if (d.getFlag() == 0) {
             String rv = null;
@@ -29,6 +30,7 @@ public class JSONTranscoder extends PrimitiveTypeTranscoder<Object> {
         }
     }
 
+    @Override
     public CachedData encode(Object o) {
         byte[] b;
 

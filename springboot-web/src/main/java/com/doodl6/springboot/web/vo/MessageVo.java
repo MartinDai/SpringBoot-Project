@@ -1,10 +1,15 @@
 package com.doodl6.springboot.web.vo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
 /**
  * Created by daixiaoming on 2018-12-10.
  */
+@Getter
+@Setter
 public class MessageVo {
 
     private int userId;
@@ -15,35 +20,4 @@ public class MessageVo {
 
     private Date sendTime;
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Date getSendTime() {
-        return sendTime;
-    }
-
-    public void setSendTime(Date sendTime) {
-        this.sendTime = sendTime;
-    }
 }

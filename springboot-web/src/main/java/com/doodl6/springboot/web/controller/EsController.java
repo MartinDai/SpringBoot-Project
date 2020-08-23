@@ -40,7 +40,7 @@ public class EsController extends BaseController {
         article.setContent(content);
         article.setPublishTime(new Date());
 
-        articleRepository.index(article);
+        articleRepository.save(article);
 
         return new BaseResponse<>();
     }

@@ -1,8 +1,12 @@
 package com.doodl6.springboot.web.response.base;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * 响应代码
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ResponseCode {
 
     /**

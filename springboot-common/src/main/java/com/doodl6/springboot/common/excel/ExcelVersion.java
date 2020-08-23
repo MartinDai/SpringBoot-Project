@@ -7,7 +7,7 @@ public enum ExcelVersion {
     XLS(".xls"),
     XLSX(".xlsx");
 
-    private String suffix;
+    private final String suffix;
 
     ExcelVersion(String suffix) {
         this.suffix = suffix;

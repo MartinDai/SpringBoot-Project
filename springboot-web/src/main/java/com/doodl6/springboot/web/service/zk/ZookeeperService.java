@@ -1,12 +1,11 @@
 package com.doodl6.springboot.web.service.zk;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.framework.recipes.locks.InterProcessReadWriteLock;
 import org.apache.curator.retry.RetryNTimes;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -16,10 +15,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by daixiaoming on 2019/5/22.
  */
+@Slf4j
 @Service
 public class ZookeeperService implements InitializingBean {
-
-    private Logger logger = LoggerFactory.getLogger(getClass());
 
     private static final String ZK_LOCK_PATH = "/zkLock";
 
@@ -48,7 +46,7 @@ public class ZookeeperService implements InitializingBean {
         try {
             xLock.release();
         } catch (Exception e) {
-            logger.error("释放独占锁异常", e);
+            log.error("释放独占锁异常", e);
         }
     }
 
@@ -56,7 +54,7 @@ public class ZookeeperService implements InitializingBean {
         try {
             readWriteLock.writeLock().release();
         } catch (Exception e) {
-            logger.error("释放写锁异常", e);
+            log.error("释放写锁异常", e);
         }
     }
 
@@ -64,7 +62,7 @@ public class ZookeeperService implements InitializingBean {
         try {
             readWriteLock.readLock().release();
         } catch (Exception e) {
-            logger.error("释放读锁异常", e);
+            log.error("释放读锁异常", e);
         }
     }
 

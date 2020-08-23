@@ -1,6 +1,8 @@
 package com.doodl6.springboot.common.util;
 
 import com.google.common.collect.Lists;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.List;
@@ -8,10 +10,8 @@ import java.util.List;
 /**
  * 列表工具类
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ListUtil {
-
-    private ListUtil() {
-    }
 
     /**
      * 分割List
@@ -27,7 +27,7 @@ public final class ListUtil {
             if (listSize <= pageSize) {
                 splitList.add(list.subList(0, listSize));
             } else {
-                int fromIndex = 0 - pageSize;
+                int fromIndex = -pageSize;
                 int toIndex = 0;
                 do {
                     fromIndex += pageSize;

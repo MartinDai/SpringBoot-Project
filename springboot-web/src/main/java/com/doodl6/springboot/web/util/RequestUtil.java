@@ -1,6 +1,8 @@
 package com.doodl6.springboot.web.util;
 
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,10 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 请求工具类
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class RequestUtil {
-
-    private RequestUtil() {
-    }
 
     /**
      * 获取请求来源的ip地址

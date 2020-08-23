@@ -3,8 +3,7 @@ package com.doodl6.springboot.web.websocket;
 import com.doodl6.springboot.web.service.mq.RocketMQService;
 import com.doodl6.springboot.web.service.mq.domain.NewChatRecord;
 import com.google.common.collect.Maps;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -18,16 +17,15 @@ import java.util.Map;
  * 聊天室webSocket
  * Created by daixiaoming on 2019/1/3.
  */
-@ServerEndpoint(value = "/chatWebSocket/{userName}", configurator = WebSocketConfig.class)
+@Slf4j
 @Component
+@ServerEndpoint(value = "/chatWebSocket/{userName}", configurator = WebSocketConfig.class)
 public class ChatWebSocket {
-
-    private Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
      * 用户会话Map,使用session作为key，是为了兼容用户重名问题，正常线上的话，可以使用userId这种唯一键作为key，value为session
      */
-    private static Map<Session, String> userSessionMap = Maps.newHashMap();
+    private static final Map<Session, String> userSessionMap = Maps.newHashMap();
 
     @Resource
     private RocketMQService rocketMQService;
@@ -40,7 +38,7 @@ public class ChatWebSocket {
     @OnOpen
     public void onOpen(Session session, @PathParam("userName") String userName) {
         userSessionMap.put(session, userName);
-        logger.info("有新用户加入！当前在线人数为{} ", userSessionMap.size());
+        log.info("有新用户加入！当前在线人数为{} ", userSessionMap.size());
     }
 
     /**
@@ -52,7 +50,7 @@ public class ChatWebSocket {
     public void onMessage(String message, Session session) {
         String userName = userSessionMap.get(session);
 
-        logger.info("收到用户发送的消息 | {} | {} ", userName, message);
+        log.info("收到用户发送的消息 | {} | {} ", userName, message);
 
         NewChatRecord newChatRecord = new NewChatRecord();
         newChatRecord.setUserName(userName);
@@ -72,7 +70,7 @@ public class ChatWebSocket {
     @OnClose
     public void onClose(Session session) {
         userSessionMap.remove(session);
-        logger.info("有用户离开！当前在线人数为 | {}", userSessionMap.size());
+        log.info("有用户离开！当前在线人数为 | {}", userSessionMap.size());
     }
 
     /**
@@ -80,7 +78,7 @@ public class ChatWebSocket {
      */
     @OnError
     public void onError(Session session, Throwable throwable) {
-        logger.error("socket异常", throwable);
+        log.error("socket异常", throwable);
     }
 
     /**
@@ -93,7 +91,7 @@ public class ChatWebSocket {
                     session.getBasicRemote().sendText(message);
                     break;
                 } catch (IOException e) {
-                    logger.error("发送消息异常", e);
+                    log.error("发送消息异常", e);
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException ignored) {

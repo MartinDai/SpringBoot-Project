@@ -1,10 +1,11 @@
 package com.doodl6.springboot.web.util;
 
 import com.alibaba.fastjson.JSON;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,12 +17,9 @@ import java.net.URLEncoder;
 /**
  * 响应工具类
  */
+@Slf4j
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ResponseUtil {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(ResponseUtil.class);
-
-    private ResponseUtil() {
-    }
 
     /**
      * 输出客户端JSON内容
@@ -57,7 +55,7 @@ public final class ResponseUtil {
             response.setHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(fileName, "UTF-8"));
             workbook.write(os);
         } catch (IOException e) {
-            LOGGER.error("输出excel异常", e);
+            log.error("输出excel异常", e);
         }
     }
 
@@ -77,7 +75,7 @@ public final class ResponseUtil {
             writer.write(content);
             writer.flush();
         } catch (IOException e) {
-            LOGGER.error("输出客户端内容出现异常", e);
+            log.error("输出客户端内容出现异常", e);
         }
     }
 }

@@ -1,5 +1,9 @@
 package com.doodl6.springboot.web.service.leaf;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Constants {
 
     public static final String LEAF_SEGMENT_ENABLE = "leaf.segment.enable";

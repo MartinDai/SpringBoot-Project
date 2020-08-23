@@ -3,13 +3,12 @@ package com.doodl6.springboot.web.aspect;
 import com.doodl6.springboot.web.service.leaf.common.Result;
 import com.doodl6.springboot.web.service.leaf.common.Status;
 import com.doodl6.springboot.web.service.leaf.segment.SegmentService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -17,11 +16,10 @@ import javax.annotation.Resource;
 /**
  * 接口RT切面类
  */
+@Slf4j(topic = "rtLogger")
 @Aspect
 @Component
 public class RtAspect {
-
-    private Logger logger = LoggerFactory.getLogger("rtLogger");
 
     private static final String TRACE_ID_KEY = "traceId";
 
@@ -46,7 +44,7 @@ public class RtAspect {
             TraceIdHolder.setTraceId(getTraceId());
             obj = pjp.proceed();
         } finally {
-            logger.info("{} | {} | {}ms", pjp.getSignature().getDeclaringType().getSimpleName(), pjp.getSignature().getName(), System.currentTimeMillis() - start);
+            log.info("{} | {} | {}ms", pjp.getSignature().getDeclaringType().getSimpleName(), pjp.getSignature().getName(), System.currentTimeMillis() - start);
             TraceIdHolder.removeTraceId();
         }
 

@@ -1,8 +1,12 @@
 package com.doodl6.springboot.common.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * Created by daixiaoming on 2018/9/25.
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MathUtil {
 
     /**
@@ -15,20 +19,19 @@ public class MathUtil {
         int length = array.length;
         int max = 0;
         //先找出这n个数的那个最大的数
-        for (int i = 0; i < length; i++) {
-            int i1 = array[i];
-            if (i1 > max) {
-                max = i1;
+        for (int num : array) {
+            if (num > max) {
+                max = num;
             }
         }
         while (true) {
             //设置标记
             boolean flag = true;
-            for (int j = 0; j < length; j++) {
-                if (max % array[j] != 0) {
+            for (int num : array) {
+                if (max % num != 0) {
                     //只要有一个数不能整除max则令标记为false
                     flag = false;
-
+                    break;
                 }
             }
             //如果标记为true说明该max可以整除这n个数

@@ -2,6 +2,7 @@ package com.doodl6.springboot.web.controller;
 
 import com.doodl6.springboot.web.response.base.BaseResponse;
 import com.doodl6.springboot.web.service.zk.ZookeeperService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,6 +11,7 @@ import javax.annotation.Resource;
 /**
  * 操作zookeeper的相关操作
  */
+@Slf4j
 @RestController
 @RequestMapping("/zk")
 public class ZkController extends BaseController {
@@ -34,7 +36,7 @@ public class ZkController extends BaseController {
                 result = "拿锁失败，请稍后重试";
             }
         } catch (Exception e) {
-            LOGGER.error("执行zk独占锁业务异常", e);
+            log.error("执行zk独占锁业务异常", e);
             result = "执行异常";
         } finally {
             zookeeperService.releaseXLock();
@@ -60,7 +62,7 @@ public class ZkController extends BaseController {
                 result = "拿锁失败，请稍后重试";
             }
         } catch (Exception e) {
-            LOGGER.error("执行zk写锁业务异常", e);
+            log.error("执行zk写锁业务异常", e);
             result = "执行异常";
         } finally {
             zookeeperService.releaseWriteLock();
@@ -86,7 +88,7 @@ public class ZkController extends BaseController {
                 result = "拿锁失败，请稍后重试";
             }
         } catch (Exception e) {
-            LOGGER.error("执行zk读锁业务异常", e);
+            log.error("执行zk读锁业务异常", e);
             result = "执行异常";
         } finally {
             zookeeperService.releaseReadLock();

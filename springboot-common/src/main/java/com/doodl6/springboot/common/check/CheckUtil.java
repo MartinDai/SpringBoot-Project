@@ -4,9 +4,10 @@ import com.doodl6.springboot.common.check.annotation.FieldNotEmpty;
 import com.doodl6.springboot.common.check.annotation.FieldNotNull;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -15,9 +16,9 @@ import java.util.List;
 /**
  * 校验工具类
  */
+@Slf4j
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CheckUtil {
-
-    private static Logger logger = LoggerFactory.getLogger(CheckUtil.class);
 
     /**
      * 校验对象
@@ -57,7 +58,7 @@ public class CheckUtil {
         try {
             value = field.get(object);
         } catch (IllegalAccessException e) {
-            logger.error("获取字段值异常", e);
+            log.error("获取字段值异常", e);
         }
 
         return value;

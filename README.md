@@ -2,7 +2,7 @@
 
 一个整合了一些常用功能的SpringBoot项目。
 
-## 框架
+## 涉及框架
 
 - SpringBoot
 - MyBatis
@@ -12,8 +12,9 @@
 - Dubbo(RPC微服务)
 - Sharding-Sphere(分库分表)
 - RocketMQ(消息队列)
+- Lombok
 
-## 功能
+## 支持的功能
 
 - 文件上传下载
 - Excel导入导出
@@ -27,10 +28,4 @@
 - 分布式事务（使用RocketMQ实现最终一致性）
 - 基于Nacos的动态配置
 - 基于Hystrix实现的服务熔断和降级
-
-## 工具类
-
-- 邮件工具类
-- Http工具类
-- 日期时间工具类
-- 内存监控相关
+- 获取内存监控数据

@@ -6,11 +6,11 @@ import com.google.common.hash.Hashing;
 
 public class BloomFilterHelper<T> {
 
-    private int numHashFunctions;
+    private final int numHashFunctions;
 
-    private int bitSize;
+    private final int bitSize;
 
-    private Funnel<T> funnel;
+    private final Funnel<T> funnel;
 
     public BloomFilterHelper(Funnel<T> funnel, int expectedInsertions, double fpp) {
         Preconditions.checkArgument(funnel != null, "funnel不能为空");

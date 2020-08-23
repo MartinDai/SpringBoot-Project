@@ -1,6 +1,8 @@
 package com.doodl6.springboot.common.util;
 
 import com.alibaba.fastjson.JSON;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
@@ -11,10 +13,8 @@ import java.util.List;
 /**
  * 文件工具类
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class FileUtil {
-
-    private FileUtil() {
-    }
 
     /**
      * 删除单个文件
@@ -52,11 +52,13 @@ public final class FileUtil {
         }
 
         File[] files = directoryFile.listFiles();
-        for (File file : files) {
-            if (file.isFile()) {
-                file.delete();
-            } else {
-                deleteDirectory(file.getAbsolutePath());
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    file.delete();
+                } else {
+                    deleteDirectory(file.getAbsolutePath());
+                }
             }
         }
 

@@ -2,7 +2,11 @@ package com.doodl6.springboot.web.dto;
 
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class ExcelData {
 
     @ExcelProperty("姓名")
@@ -11,19 +15,4 @@ public class ExcelData {
     @ExcelProperty("年龄")
     private int age;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }

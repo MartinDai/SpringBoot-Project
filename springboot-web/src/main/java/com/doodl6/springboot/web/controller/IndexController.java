@@ -13,6 +13,7 @@ import com.doodl6.springboot.web.response.base.MapResponse;
 import com.doodl6.springboot.web.response.base.ResponseCode;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 首页控制类
  */
+@Slf4j
 @RestController
 @RequestMapping("/index")
 public class IndexController extends BaseController {
@@ -99,17 +101,17 @@ public class IndexController extends BaseController {
     public BaseResponse<Void> testLog() {
         BaseResponse<Void> response = new BaseResponse<>();
 
-        LOGGER.trace("test trace log");
-        LOGGER.debug("test debug log");
-        LOGGER.info("test info log");
-        LOGGER.warn("test warn log");
-        LOGGER.error("test error log");
+        log.trace("test trace log");
+        log.debug("test debug log");
+        log.info("test info log");
+        log.warn("test warn log");
+        log.error("test error log");
 
         return response;
     }
 
     public MapResponse getDubboInfoFallback(Long id, Throwable e) {
-        LOGGER.error("getDubboInfo方法出现异常", e);
+        log.error("getDubboInfo方法出现异常", e);
         MapResponse mapResponse = new MapResponse();
         mapResponse.setResult(ResponseCode.BIZ_ERROR);
         mapResponse.setMessage("当前服务不可用");

@@ -1,6 +1,8 @@
 package com.doodl6.springboot.common.util;
 
 import com.google.common.collect.Lists;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -20,6 +22,7 @@ import java.util.Map;
 /**
  * 基于 httpclient 4.3.1版本的 http工具类
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class HttpUtil {
 
     private static final CloseableHttpClient httpClient;

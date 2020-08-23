@@ -2,6 +2,8 @@ package com.doodl6.springboot.common.util;
 
 
 import com.doodl6.springboot.common.tuple.Tuple2;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
@@ -14,10 +16,8 @@ import java.util.List;
 /**
  * 邮件工具类
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class EmailUtil {
-
-    private EmailUtil() {
-    }
 
     /**
      * 发送文本邮件

@@ -1,6 +1,8 @@
 package com.doodl6.springboot.common.util;
 
 import com.google.common.collect.Lists;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -12,12 +14,10 @@ import java.util.regex.Pattern;
 /**
  * 字符串工具类
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class StringUtil {
 
-    private static Pattern BLANK_PATTERN = Pattern.compile("[\\s\\p{Zs}]");
-
-    private StringUtil() {
-    }
+    private static final Pattern BLANK_PATTERN = Pattern.compile("[\\s\\p{Zs}]");
 
     /**
      * 去除空白字符串

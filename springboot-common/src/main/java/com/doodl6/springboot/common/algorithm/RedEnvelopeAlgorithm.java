@@ -1,8 +1,7 @@
 package com.doodl6.springboot.common.algorithm;
 
 import com.google.common.collect.Lists;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -11,9 +10,8 @@ import java.util.concurrent.ThreadLocalRandom;
  * 网上找的红包算法,略有调整
  * https://blog.csdn.net/paincupid/article/details/82054647
  */
+@Slf4j
 public class RedEnvelopeAlgorithm {
-
-    private static Logger logger = LoggerFactory.getLogger(RedEnvelopeAlgorithm.class);
 
     /**
      * 返回一次抽奖在指定中奖概率下是否中奖
@@ -39,7 +37,7 @@ public class RedEnvelopeAlgorithm {
      * @param boundMin 边界
      */
     private static int getRandomValWithSpecifySubRate(int boundMin, int boundMax, int subMin, int subMax, double subRate) {
-        logger.info("概率偏向获取随机数 | {} | {} | {} | {} | {}", boundMin, boundMax, subMin, subMax, subRate);
+        log.info("概率偏向获取随机数 | {} | {} | {} | {} | {}", boundMin, boundMax, subMin, subMax, subRate);
         if (canReward(subRate)) {
             return getRandomVal(subMin, subMax);
         }
@@ -59,8 +57,8 @@ public class RedEnvelopeAlgorithm {
      */
     private static int randomBonusWithSpecifyBound(int totalBonus, int totalNum, int sentBonus,
                                                    int sentNum, int rdMin, int rdMax, double bigRate) {
-        logger.info("获取下一个红包金额 | {} | {} | {} | {} | {} | {} | {}", totalBonus, totalNum, sentBonus, sentNum, rdMin, rdMax, bigRate);
-        Integer avg = totalBonus / totalNum;  // 平均值
+        log.info("获取下一个红包金额 | {} | {} | {} | {} | {} | {} | {}", totalBonus, totalNum, sentBonus, sentNum, rdMin, rdMax, bigRate);
+        int avg = totalBonus / totalNum;  // 平均值
         Integer leftLen = avg - rdMin;
         Integer rightLen = rdMax - avg;
         int boundMin, boundMax;
@@ -103,8 +101,8 @@ public class RedEnvelopeAlgorithm {
         } else {
             subMin = (int) Math.round((exp + boundMax) / 2.0);
         }
-        Integer expBound = (boundMin + boundMax) / 2;
-        Integer expSub = (subMin + subMax) / 2;
+        int expBound = (boundMin + boundMax) / 2;
+        int expSub = (subMin + subMax) / 2;
         double subRate = (exp - expBound) / (double) (expSub - expBound);
 
         return getRandomValWithSpecifySubRate(boundMin, boundMax, subMin, subMax, subRate);

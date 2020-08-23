@@ -1,11 +1,15 @@
 package com.doodl6.springboot.common.util;
 
 import com.alibaba.fastjson.JSON;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * 日志工具类
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class LogUtil {
+
     /**
      * 构建日志字符串
      */

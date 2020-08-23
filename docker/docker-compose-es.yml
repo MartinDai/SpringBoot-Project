@@ -1,13 +1,14 @@
 version: '3.7'
 services:
   elasticsearch-master:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     container_name: elasticsearch-master
     restart: always
     environment:
       - node.name=master
-      - cluster.routing.allocation.disk.threshold_enabled=false
       - cluster.name=springboot-elasticsearch
+      - discovery.seed_hosts=elasticsearch-slave
+      - cluster.initial_master_nodes=master,slave
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
     ulimits:
@@ -15,29 +16,29 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - ./elastaticsearch/master-data/:/usr/share/elasticsearch/data/
+      - ./elastaticsearch/master-data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
       - 9300:9300
     networks:
       - net-es
   elasticsearch-slave:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     container_name: elasticsearch-slave
     restart: always
     environment:
       - node.name=slave
-      - cluster.routing.allocation.disk.threshold_enabled=false
       - cluster.name=springboot-elasticsearch
+      - discovery.seed_hosts=elasticsearch-master
+      - cluster.initial_master_nodes=master,slave
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
-      - "discovery.zen.ping.unicast.hosts=elasticsearch-master"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - ./elastaticsearch/slave-data/:/usr/share/elasticsearch/data/
+      - ./elastaticsearch/slave-data:/usr/share/elasticsearch/data
     networks:
       - net-es
     depends_on:
@@ -45,12 +46,12 @@ services:
     external_links:
       - elasticsearch-master
   kibana:
-    image: docker.elastic.co/kibana/kibana:6.2.4
+    image: docker.elastic.co/kibana/kibana:7.9.0
     container_name: kibana
     restart: always
     environment:
       - SERVER_NAME=kibana-server
-      - ELASTICSEARCH_URL=http://elasticsearch-master:9200
+      - ELASTICSEARCH_HOSTS=http://elasticsearch-master:9200
     ports:
       - 5601:5601
     networks:

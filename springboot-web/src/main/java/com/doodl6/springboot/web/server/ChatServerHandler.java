@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class ChatServerHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
-    private static Map<ChannelHandlerContext, String> userChannelMap = Maps.newHashMap();
+    private static final Map<ChannelHandlerContext, String> userChannelMap = Maps.newHashMap();
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) {

@@ -32,6 +32,5 @@ public class ChatServer {
         } finally {
             group.shutdownGracefully().syncUninterruptibly();
         }
-
     }
 }

@@ -1,5 +1,8 @@
 package com.doodl6.springboot.common.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -7,13 +10,8 @@ import java.time.temporal.ChronoUnit;
 /**
  * 日期时间工具类
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DateTimeUtil {
-
-    /**
-     * 工具类不需要构造函数
-     */
-    private DateTimeUtil() {
-    }
 
     //----------常用日期时间格式化对象----------
 
@@ -83,7 +81,7 @@ public class DateTimeUtil {
      * 将传入的日期转换成 yyyy-MM形式
      */
     public static String getYearMonth(LocalDate date) {
-        return YearMonth.of(date.getYear(),date.getMonth()).toString();
+        return YearMonth.of(date.getYear(), date.getMonth()).toString();
     }
 
     /**

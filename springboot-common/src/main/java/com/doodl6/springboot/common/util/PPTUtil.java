@@ -2,14 +2,15 @@ package com.doodl6.springboot.common.util;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hslf.usermodel.HSLFSlide;
 import org.apache.poi.hslf.usermodel.HSLFSlideShow;
 import org.apache.poi.sl.usermodel.Sheet;
 import org.apache.poi.xslf.usermodel.XMLSlideShow;
 import org.apache.poi.xslf.usermodel.XSLFSlide;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -24,9 +25,9 @@ import java.util.List;
 /**
  * Created by daixiaoming on 2018/8/29.
  */
+@Slf4j
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PPTUtil {
-
-    private static Logger logger = LoggerFactory.getLogger(PPTUtil.class);
 
     public static List<String> convertPPTToImages(String pptFilePath, String imageFolderPath) throws IOException {
         File imageFolderFile = new File(imageFolderPath);
@@ -48,7 +49,7 @@ public class PPTUtil {
             throw new IllegalArgumentException("不合法的文件格式");
         }
 
-        logger.info("PPT转图片完成");
+        log.info("PPT转图片完成");
 
         return imagePathList;
     }
@@ -68,7 +69,7 @@ public class PPTUtil {
         int index = 0;
         for (HSLFSlide slide : slideList) {
 
-            logger.info("正在转换PPT第" + (++index) + "页");
+            log.info("正在转换PPT第" + (++index) + "页");
 
             File imageFile = new File(imageFolderPath + "/" + (index) + ".png");
 
@@ -95,7 +96,7 @@ public class PPTUtil {
         int index = 0;
         for (XSLFSlide slide : slideList) {
 
-            logger.info("正在转换PPT第" + (++index) + "页");
+            log.info("正在转换PPT第" + (++index) + "页");
 
             File imageFile = new File(imageFolderPath + "/" + (index) + ".png");
 
@@ -133,7 +134,7 @@ public class PPTUtil {
         try (FileOutputStream out = new FileOutputStream(imageFile)) {
             ImageIO.write(img, "png", out);
         } catch (IOException e) {
-            logger.error("保存PPT图片异常", e);
+            log.error("保存PPT图片异常", e);
             e.printStackTrace();
         }
     }

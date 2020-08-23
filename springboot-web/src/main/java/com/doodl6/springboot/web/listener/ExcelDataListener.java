@@ -6,18 +6,16 @@ import com.alibaba.fastjson.JSON;
 import com.doodl6.springboot.common.excel.ExcelProcessResult;
 import com.doodl6.springboot.web.dto.ExcelData;
 import com.google.common.collect.Lists;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
+@Slf4j
 public class ExcelDataListener extends AnalysisEventListener<ExcelData> {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final ExcelProcessResult result;
 
-    private ExcelProcessResult result;
-
-    private List<ExcelData> dataList = Lists.newLinkedList();
+    private final List<ExcelData> dataList = Lists.newLinkedList();
 
     public ExcelDataListener(ExcelProcessResult result) {
         this.result = result;
@@ -29,7 +27,7 @@ public class ExcelDataListener extends AnalysisEventListener<ExcelData> {
     @Override
     public void invoke(ExcelData excelData, AnalysisContext analysisContext) {
         dataList.add(excelData);
-        logger.info("读取到excel上传数据 | {} | {}", analysisContext.readRowHolder().getRowIndex(), JSON.toJSONString(excelData));
+        log.info("读取到excel上传数据 | {} | {}", analysisContext.readRowHolder().getRowIndex(), JSON.toJSONString(excelData));
         //这里可以处理批量入库
     }
 
@@ -38,7 +36,6 @@ public class ExcelDataListener extends AnalysisEventListener<ExcelData> {
      */
     @Override
     public void doAfterAllAnalysed(AnalysisContext analysisContext) {
-
         //这里可以处理统一入库
         result.setRows(dataList.size());
         result.processDone();

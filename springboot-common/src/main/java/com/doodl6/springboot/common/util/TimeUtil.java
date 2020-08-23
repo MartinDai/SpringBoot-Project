@@ -1,12 +1,13 @@
 package com.doodl6.springboot.common.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * 时间工具类
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class TimeUtil {
-
-    private TimeUtil() {
-    }
 
     /**
      * 根据给定的开始时间，返回截止到现在的时间间隔（单位：毫秒）

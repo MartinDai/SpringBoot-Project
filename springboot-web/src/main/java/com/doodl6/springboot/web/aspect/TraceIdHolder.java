@@ -2,7 +2,7 @@ package com.doodl6.springboot.web.aspect;
 
 public class TraceIdHolder {
 
-    private static ThreadLocal<String> TRACE_ID = new ThreadLocal<>();
+    private static final ThreadLocal<String> TRACE_ID = new ThreadLocal<>();
 
     public static void setTraceId(String traceId) {
         TRACE_ID.set(traceId);
