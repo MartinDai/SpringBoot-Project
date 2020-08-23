@@ -21,6 +21,8 @@ public class FirstDubboServiceImpl implements FirstDubboService {
         LOGGER.info("收到Dubbo请求 | {}", JSON.toJSONString(request));
         GetDubboInfoResponse response = new GetDubboInfoResponse();
         try {
+            //模拟服务响应慢
+//            Thread.sleep(100);
             Preconditions.checkArgument(request != null, "参数为空");
             Long id = request.getId();
             Preconditions.checkArgument(id != null, "id为空");

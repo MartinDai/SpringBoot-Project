@@ -11,6 +11,10 @@ import com.doodl6.springboot.web.response.CheckParameterResult;
 import com.doodl6.springboot.web.response.base.BaseResponse;
 import com.doodl6.springboot.web.response.base.MapResponse;
 import com.doodl6.springboot.web.response.base.ResponseCode;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +31,7 @@ public class IndexController extends BaseController {
     /**
      * 普通接口
      */
-    @RequestMapping("/hello")
+    @GetMapping("/hello")
     public MapResponse hello(String name) {
         MapResponse mapResponse = new MapResponse();
 
@@ -39,7 +43,19 @@ public class IndexController extends BaseController {
     /**
      * 获取dubbo信息
      */
-    @RequestMapping("/getDubboInfo")
+    @GetMapping("/getDubboInfo")
+    @HystrixCommand(
+            fallbackMethod = "getDubboInfoFallback",
+            threadPoolKey = "index",
+            threadPoolProperties = {
+                    @HystrixProperty(name = "coreSize", value = "1"),
+                    @HystrixProperty(name = "maxQueueSize", value = "10")
+            },
+            commandProperties = {
+                    //超时时间
+                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "100")
+            }
+    )
     public MapResponse getDubboInfo(Long id) {
         MapResponse mapResponse = new MapResponse();
 
@@ -61,7 +77,7 @@ public class IndexController extends BaseController {
     /**
      * 参数校验
      */
-    @RequestMapping("/parameterCheck")
+    @PostMapping("/parameterCheck")
     public BaseResponse<CheckParameterResult> parameterCheck(CheckParameterRequest request) {
 
         CheckUtil.check(request);
@@ -79,7 +95,7 @@ public class IndexController extends BaseController {
     /**
      * 测试打印日志
      */
-    @RequestMapping("/testLog")
+    @GetMapping("/testLog")
     public BaseResponse<Void> testLog() {
         BaseResponse<Void> response = new BaseResponse<>();
 
@@ -90,6 +106,14 @@ public class IndexController extends BaseController {
         LOGGER.error("test error log");
 
         return response;
+    }
+
+    public MapResponse getDubboInfoFallback(Long id, Throwable e) {
+        LOGGER.error("getDubboInfo方法出现异常", e);
+        MapResponse mapResponse = new MapResponse();
+        mapResponse.setResult(ResponseCode.BIZ_ERROR);
+        mapResponse.setMessage("当前服务不可用");
+        return mapResponse;
     }
 
 }

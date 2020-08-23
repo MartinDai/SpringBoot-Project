@@ -6,12 +6,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 
 @SpringBootApplication(scanBasePackages = "com.doodl6")
 @NacosPropertySource(dataId = "doodl6", groupId = "SpringBoot", autoRefreshed = true)
 @MapperScan("com.doodl6.springboot.dao.api")
 @ServletComponentScan
 @EnableCaching
+@EnableHystrix
 public class WebApplication {
 
     public static void main(String[] args) {

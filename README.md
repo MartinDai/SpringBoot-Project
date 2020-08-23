@@ -26,6 +26,7 @@
 - 分布式ID（基于Leaf的Segment模式）
 - 分布式事务（使用RocketMQ实现最终一致性）
 - 基于Nacos的动态配置
+- 基于Hystrix实现的服务熔断和降级
 
 ## 工具类
 

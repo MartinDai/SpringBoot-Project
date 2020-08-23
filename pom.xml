@@ -44,6 +44,7 @@
         <es.version>6.5.2</es.version>
         <fastjson.version>1.2.60</fastjson.version>
         <guava.version>29.0-jre</guava.version>
+        <hystrix.version>2.2.4.RELEASE</hystrix.version>
         <httpclient.version>4.5.5</httpclient.version>
         <jackson.version>2.10.0</jackson.version>
         <junit.version>4.12</junit.version>
@@ -94,6 +95,12 @@
                 <groupId>com.alibaba.boot</groupId>
                 <artifactId>nacos-config-spring-boot-starter</artifactId>
                 <version>${nacos.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+                <version>${hystrix.version}</version>
             </dependency>
 
             <!-- servlet -->
@@ -278,6 +285,7 @@
                 <artifactId>spring-context-support</artifactId>
                 <version>1.0.5</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
