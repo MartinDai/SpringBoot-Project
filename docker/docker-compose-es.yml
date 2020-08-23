@@ -10,13 +10,14 @@ services:
       - discovery.seed_hosts=elasticsearch-slave
       - cluster.initial_master_nodes=master,slave
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
+      - "ES_JAVA_OPTS=-Xss512k -XX:NewRatio=1 -Xms1024m -Xmx1024m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - ./elastaticsearch/master-data:/usr/share/elasticsearch/data
+      - ./elastaticsearch/master/data:/usr/share/elasticsearch/data
+      - ./elastaticsearch/master/logs:/usr/share/elasticsearch/logs
     ports:
       - 9200:9200
       - 9300:9300
@@ -32,13 +33,14 @@ services:
       - discovery.seed_hosts=elasticsearch-master
       - cluster.initial_master_nodes=master,slave
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
+      - "ES_JAVA_OPTS=-Xss512k -XX:NewRatio=1 -Xms1024m -Xmx1024m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - ./elastaticsearch/slave-data:/usr/share/elasticsearch/data
+      - ./elastaticsearch/slave/data:/usr/share/elasticsearch/data
+      - ./elastaticsearch/slave/logs:/usr/share/elasticsearch/logs
     networks:
       - net-es
     depends_on:

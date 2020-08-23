@@ -10,6 +10,8 @@ logs/
 *.iml
 
 # Temp file
-/docker/elastaticsearch/master-data/nodes/
-/docker/elastaticsearch/slave-data/nodes/
+/docker/elastaticsearch/master/data/
+/docker/elastaticsearch/master/logs/
+/docker/elastaticsearch/slave/data/
+/docker/elastaticsearch/slave/logs/
 /docker/rocketmq/broker/store/
