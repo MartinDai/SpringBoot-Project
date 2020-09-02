@@ -4,3 +4,4 @@ MAINTAINER martindai xiaomingys@gmail.com
 
 ADD spring_project_1.sql /docker-entrypoint-initdb.d/
 ADD spring_project_2.sql /docker-entrypoint-initdb.d/
+ADD leaf.sql /docker-entrypoint-initdb.d/
