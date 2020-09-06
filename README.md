@@ -29,3 +29,4 @@
 - 基于Nacos的动态配置
 - 基于Hystrix实现的服务熔断和降级
 - 获取内存监控数据
+- 通过Dubbo Filter记录RPC请求耗时日志
