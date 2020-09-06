@@ -1,5 +1,6 @@
 package com.doodl6.springboot.web.aspect;
 
+import com.doodl6.springboot.web.context.RequestParamContext;
 import com.doodl6.springboot.web.service.leaf.common.Result;
 import com.doodl6.springboot.web.service.leaf.common.Status;
 import com.doodl6.springboot.web.service.leaf.segment.SegmentService;
@@ -44,7 +45,7 @@ public class RtAspect {
             TraceIdHolder.setTraceId(getTraceId());
             obj = pjp.proceed();
         } finally {
-            log.info("{} | {} | {}ms", pjp.getSignature().getDeclaringType().getSimpleName(), pjp.getSignature().getName(), System.currentTimeMillis() - start);
+            log.info("{} | {} | {} | {}ms", pjp.getSignature().getDeclaringType().getSimpleName(), pjp.getSignature().getName(), RequestParamContext.get(), System.currentTimeMillis() - start);
             TraceIdHolder.removeTraceId();
         }
 
