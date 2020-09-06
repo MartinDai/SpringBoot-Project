@@ -14,10 +14,7 @@ import com.doodl6.springboot.web.response.base.ResponseCode;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 首页控制类
@@ -80,7 +77,7 @@ public class IndexController extends BaseController {
      * 参数校验
      */
     @PostMapping("/parameterCheck")
-    public BaseResponse<CheckParameterResult> parameterCheck(CheckParameterRequest request) {
+    public BaseResponse<CheckParameterResult> parameterCheck(@RequestBody CheckParameterRequest request) {
 
         CheckUtil.check(request);
 
