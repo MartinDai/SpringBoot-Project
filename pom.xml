@@ -53,6 +53,7 @@
         <perf4j.version>0.9.16</perf4j.version>
         <poi.version>3.17</poi.version>
         <rocketmq.version>2.0.3</rocketmq.version>
+        <sentinel.version>1.8.0</sentinel.version>
         <servlet.version>3.1.0</servlet.version>
         <sharding-sphere.version>4.0.0-RC2</sharding-sphere.version>
         <xmemcached.version>2.4.3</xmemcached.version>
@@ -284,6 +285,17 @@
                 <groupId>com.alibaba.spring</groupId>
                 <artifactId>spring-context-support</artifactId>
                 <version>1.0.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-core</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-annotation-aspectj</artifactId>
+                <version>${sentinel.version}</version>
             </dependency>
 
         </dependencies>

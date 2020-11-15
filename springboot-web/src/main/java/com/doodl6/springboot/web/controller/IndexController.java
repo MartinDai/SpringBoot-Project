@@ -1,20 +1,17 @@
 package com.doodl6.springboot.web.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.doodl6.springboot.client.api.FirstDubboService;
-import com.doodl6.springboot.client.request.GetDubboInfoRequest;
-import com.doodl6.springboot.client.response.GetDubboInfoResponse;
+import com.doodl6.springboot.client.domain.DubboDomain;
 import com.doodl6.springboot.common.check.CheckUtil;
-import com.doodl6.springboot.web.aspect.TraceIdHolder;
 import com.doodl6.springboot.web.request.CheckParameterRequest;
 import com.doodl6.springboot.web.response.CheckParameterResult;
 import com.doodl6.springboot.web.response.base.BaseResponse;
 import com.doodl6.springboot.web.response.base.MapResponse;
-import com.doodl6.springboot.web.response.base.ResponseCode;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import com.doodl6.springboot.web.service.IndexService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * 首页控制类
@@ -24,8 +21,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/index")
 public class IndexController extends BaseController {
 
-    @Reference(version = "${dubbo.reference.firstDubbo.version}", check = false)
-    private FirstDubboService firstDubboService;
+    @Resource
+    private IndexService indexService;
 
     /**
      * 普通接口
@@ -42,33 +39,27 @@ public class IndexController extends BaseController {
     /**
      * 获取dubbo信息
      */
-    @GetMapping("/getDubboInfo")
-    @HystrixCommand(
-            fallbackMethod = "getDubboInfoFallback",
-            threadPoolKey = "index",
-            threadPoolProperties = {
-                    @HystrixProperty(name = "coreSize", value = "1"),
-                    @HystrixProperty(name = "maxQueueSize", value = "10")
-            },
-            commandProperties = {
-                    //超时时间
-                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "100")
-            }
-    )
-    public MapResponse getDubboInfo(Long id) {
+    @GetMapping("/getDubboInfoWithSentinel")
+    public MapResponse getDubboInfoWithSentinel(Long id) {
+        Assert.notNull(id, "id不能为空");
         MapResponse mapResponse = new MapResponse();
 
-        GetDubboInfoRequest getDubboInfoRequest = new GetDubboInfoRequest();
-        getDubboInfoRequest.setTraceId(TraceIdHolder.getTraceId());
-        getDubboInfoRequest.setId(id);
-        GetDubboInfoResponse getDubboInfoResponse = firstDubboService.getDubboInfo(getDubboInfoRequest);
-        if (getDubboInfoResponse.isSuccess()) {
-            mapResponse.appendData("dubboInfo", getDubboInfoResponse.getDubboDomain());
-        } else {
-            mapResponse.setResult(ResponseCode.BIZ_ERROR);
-            mapResponse.setMessage(getDubboInfoResponse.getErrorMsg());
-        }
+        DubboDomain dubboDomain = indexService.getDubboInfoWithSentinel(id);
+        mapResponse.appendData("dubboInfo", dubboDomain);
 
+        return mapResponse;
+    }
+
+    /**
+     * 获取dubbo信息
+     */
+    @GetMapping("/getDubboInfoWithHystrix")
+    public MapResponse getDubboInfoWithHystrix(Long id) {
+        Assert.notNull(id, "id不能为空");
+        MapResponse mapResponse = new MapResponse();
+
+        DubboDomain dubboDomain = indexService.getDubboInfoWithHystrix(id);
+        mapResponse.appendData("dubboInfo", dubboDomain);
 
         return mapResponse;
     }
@@ -105,14 +96,6 @@ public class IndexController extends BaseController {
         log.error("test error log");
 
         return response;
-    }
-
-    public MapResponse getDubboInfoFallback(Long id, Throwable e) {
-        log.error("getDubboInfo方法出现异常", e);
-        MapResponse mapResponse = new MapResponse();
-        mapResponse.setResult(ResponseCode.BIZ_ERROR);
-        mapResponse.setMessage("当前服务不可用");
-        return mapResponse;
     }
 
 }
