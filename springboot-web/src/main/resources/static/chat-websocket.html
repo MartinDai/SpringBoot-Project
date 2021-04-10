@@ -70,7 +70,7 @@
         }
 
         if (window.WebSocket) {
-            webSocket = new WebSocket("ws://127.0.0.1:2018/chatWebSocket/" + userName);
+            webSocket = new WebSocket("ws://127.0.0.1:2019/chatWebSocket/" + userName);
 
             webSocket.onmessage = function (event) {
                 appendScreenContent(event.data);
