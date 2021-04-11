@@ -16,6 +16,7 @@ public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel
 
     @Override
     public void initChannel(SocketChannel ch) {
+        //为channel注册handler，统一调用addLast方法，入站处理顺序为从上到下，出站则相反
         ChannelPipeline pipeline = ch.pipeline();
         //添加闲置处理,60秒没有数据传输，触发事件
         pipeline.addLast(new IdleStateHandler(0, 0, 60, TimeUnit.SECONDS));

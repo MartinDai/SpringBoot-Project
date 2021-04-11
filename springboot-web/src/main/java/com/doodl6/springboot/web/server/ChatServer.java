@@ -15,10 +15,11 @@ import java.net.InetSocketAddress;
 public class ChatServer {
 
     public static void start() throws InterruptedException {
-        EventLoopGroup group = new NioEventLoopGroup(1);
+        EventLoopGroup bossGroup = new NioEventLoopGroup();
+        EventLoopGroup workerGroup = new NioEventLoopGroup(2);
         try {
             ServerBootstrap b = new ServerBootstrap();
-            b.group(group)
+            b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .localAddress(new InetSocketAddress(8888))
                     .childHandler(new WebSocketServerInitializer())
@@ -30,7 +31,7 @@ public class ChatServer {
             System.out.println("聊天socket服务启动完成");
             f.channel().closeFuture().sync();
         } finally {
-            group.shutdownGracefully().syncUninterruptibly();
+            bossGroup.shutdownGracefully().syncUninterruptibly();
         }
     }
 }
