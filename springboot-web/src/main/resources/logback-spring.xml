@@ -33,6 +33,7 @@
     <logger name="com.google.code" level="INFO"/>
     <logger name="net.rubyeye.xmemcached" level="INFO"/>
     <logger name="org.apache.zookeeper" level="INFO"/>
+    <logger name="org.redisson" level="ERROR"/>
 
     <root level="DEBUG">
         <appender-ref ref="ConsoleAppender"/>

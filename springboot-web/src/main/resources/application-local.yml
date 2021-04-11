@@ -15,6 +15,9 @@ spring:
     elasticsearch:
       cluster-name: springboot-elasticsearch
       cluster-nodes: 127.0.0.1:9300
+  redis:
+    host: 127.0.0.1
+    port: 6379
 dubbo:
   application:
     name: springboot-web-local
@@ -27,9 +30,6 @@ rocketmq:
   name-server: 127.0.0.1:9876
 memcached:
   address: 127.0.0.1:11211
-redis:
-  host: 127.0.0.1
-  port: 6379
 zookeeper:
   address: 127.0.0.1:2181
 nacos:

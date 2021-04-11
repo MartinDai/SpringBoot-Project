@@ -25,12 +25,6 @@ spring:
             inline:
               sharding-column: user_id
               algorithm-expression: user_login_log_$->{user_id % 2}
-  redis:
-    lettuce:
-      pool:
-        max-idle: 10000
-        min-idle: 1000
-        max-active: 2
 mybatis:
   type-aliases-package: com.doodl6.springboot.dao.entity
   mapper-locations: classpath*:mapper/*.xml
