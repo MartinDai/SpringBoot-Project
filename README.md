@@ -5,6 +5,7 @@
 ## 涉及框架
 
 - SpringBoot
+- SpringCloud(Feign)
 - MyBatis
 - Logback(日志框架)
 - Guava

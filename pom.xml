@@ -18,6 +18,7 @@
         <module>springboot-common</module>
         <module>springboot-dao</module>
         <module>springboot-dubbo-service</module>
+        <module>springboot-feign-service</module>
         <module>springboot-web</module>
     </modules>
 
@@ -57,6 +58,7 @@
         <sentinel.version>1.8.0</sentinel.version>
         <servlet.version>3.1.0</servlet.version>
         <sharding-sphere.version>4.1.1</sharding-sphere.version>
+        <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
         <xmemcached.version>2.4.3</xmemcached.version>
         <zk.version>3.4.14</zk.version>
     </properties>
@@ -103,6 +105,24 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
                 <version>${hystrix.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>2.2.5.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>2.2.5.RELEASE</version>
             </dependency>
 
             <!-- servlet -->
@@ -297,12 +317,6 @@
                 <groupId>com.alibaba.csp</groupId>
                 <artifactId>sentinel-annotation-aspectj</artifactId>
                 <version>${sentinel.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.redisson</groupId>
-                <artifactId>redisson-spring-boot-starter</artifactId>
-                <version>${redisson.version}</version>
             </dependency>
 
         </dependencies>
