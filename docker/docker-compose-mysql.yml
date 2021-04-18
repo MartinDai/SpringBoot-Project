@@ -6,8 +6,8 @@ services:
       context: mysql
       dockerfile: mysql/mysql-dockerfile
     environment:
-          - "MYSQL_ROOT_PASSWORD=martin-local"
-          - "MYSQL_ROOT_HOST=%"
+      - "MYSQL_ROOT_PASSWORD=martin-local"
+      - "MYSQL_ROOT_HOST=%"
     command: [
       'mysqld',
       '--innodb-buffer-pool-size=20M',

@@ -6,7 +6,7 @@ services:
     command: redis-server /etc/redis/redis.conf
     restart: always
     volumes:
-          - ./redis/:/etc/redis/
+      - ./redis/:/etc/redis/
     ports:
       - 6379:6379
     networks:
