@@ -34,7 +34,7 @@ docker目录里面包含了本项目部分模块需要依赖的的组件环境�
 ## springboot-dao
 数据访问模块，基于MyBatis封装了包含User和UserLogin两个表的基本操作
 
-SQL部分是基于sharding-jdbc做分表写的，数据库表初始化文件为spring_project_1.sql和spring_project_1.sql
+SQL部分是基于sharding-jdbc分库分表写的，数据库表初始化文件为spring_project_1.sql和spring_project_2.sql
 
 部分需要操作数据库的模块会依赖此模块
 
