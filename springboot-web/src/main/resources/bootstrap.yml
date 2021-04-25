@@ -1,0 +1,10 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      config:
+        # nacos config 的开关
+        #        enabled: false
+        file-extension: json
+        group: springboot

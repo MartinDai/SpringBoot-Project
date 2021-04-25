@@ -1,33 +1,96 @@
 # SpringBoot-Project
 
-一个整合了一些常用功能的SpringBoot项目。
+一个整合了一些常用功能开箱即用的SpringBoot项目
 
-## 涉及框架
+# 项目亮点
 
-- SpringBoot
-- SpringCloud(Feign)
-- MyBatis
-- Logback(日志框架)
-- Guava
-- Fastjson
-- Dubbo(RPC微服务)
-- Sharding-Sphere(分库分表)
-- RocketMQ(消息队列)
-- Lombok
+- 包含常用框架功能基本使用示例，可参考或基于本项目快速集成需要的框架功能
+- 持续对支持的功能进行更新迭代
+- 模块划分清晰易懂，可按需自由组合各个模块
+- 提供完整的容器环境配置，方便一键启动 
+- 代码规范
+- 依赖包无冲突
 
-## 支持的功能
 
-- 文件上传下载
-- Excel导入导出
-- Memcached服务(Memcached-Java-Client和xmemcached两种client实现)
-- Redis服务（Redisson客户端，含常规操作、分布式锁和布隆过滤器整合）
-- 在线聊天室DEMO（包括基于Netty、WebSocket和长轮训三种实现方案）
-- ElasticSearch调用实现
-- AOP实现记录API耗时日志
-- 基于Zookeeper实现的分布式锁
-- 分布式ID（基于Leaf的Segment模式）
-- 分布式事务（使用RocketMQ实现最终一致性）
-- 基于Nacos的动态配置
-- 支持服务熔断、降级和限流配置（包含基于Hystrix和sentinel）
-- 获取内存监控数据
-- 通过Dubbo Filter记录RPC请求耗时日志
+注意：本项目使用了lombok来简化Getter/Setter，所以需要安装lombok插件才能保证编译不报错
+
+# 模块介绍
+
+## docker
+docker目录里面包含了本项目部分模块需要依赖的的组件环境，可通过脚本一键启动，README.md有详细使用介绍
+
+## springboot-cache
+包含缓存相关的操作案例
+
+- Memcached，整合Memcached-Java-Client和xmemcached两种客户端实现基本操作
+- Redis，使用Redisson客户端，包含常规操作、分布式锁和布隆过滤器使用示例
+
+## springboot-common
+包含一些通用的工具类等
+
+## springboot-common-web
+通用web模块，封装服务于HTTP接口通用的一些类，所有需要对外提供HTTP服务的模块都会依赖此模块
+
+## springboot-dao
+数据访问模块，基于MyBatis封装了包含User和UserLogin两个表的基本操作
+
+SQL部分是基于sharding-jdbc做分表写的，数据库表初始化文件为spring_project_1.sql和spring_project_1.sql
+
+部分需要操作数据库的模块会依赖此模块
+
+## springboot-dubbo-api
+dubbo服务的api模块，dubbo-provider和dubbo-consumer会依赖此模块
+
+## springboot-dubbo-consumer
+dubbo服务消费者，内容包含
+
+- 简单的dubbo服务调用示例
+- 整合Hystrix熔断
+- 整合Sentinel限流
+- 自定义Filter统计服务调用耗时日志
+
+## springboot-dubbo-consumer
+dubbo服务提供者，包含基于dubbo-api模块实现的dubbo服务，可单独启动，入口为DubboApplication
+
+## springboot-elasticsearch
+包含elasticsearch服务基本crud操作
+
+## springboot-feign-consumer
+feign服务消费者，包含简单的feign服务调用示例，使用nacos做服务发现
+
+## springboot-feign-provider
+feign服务提供者，包含简单的基于feign实现的服务，使用nacos做服务注册，可单独启动，入口为FeignApplication
+
+## springboot-leaf
+整合美团开源的分布式ID生成服务leaf，包含记录HTTP接口耗时日志切面，数据库表初始化文件为leaf.sql
+
+## springboot-nacos
+包含基于nacos做配置服务的简单示例，
+
+## springboot-netty
+包含基于netty+websocket实现的简易聊天室功能，入口页面为chat-netty.html
+
+## springboot-rocketmq-consumer
+包含RocketMQ的消费者使用示例，消息来自于rocketmq-producer模块
+
+- 普通消息并发消费示例
+- 事务消息使用示例（可实现最终一致性分布式事务）
+
+## springboot-rocketmq-producer
+RocketMQ的消息生产者模块，内容包含
+
+- 使用tomcat提供的ServerEndpoint注解基于websocket实现的简单聊天室功能，聊天消息会发送RocketMQ普通消息，入口页面为chat-websocket.html
+- 提供了简单的用户操作HTTP接口，其中删除用户会发送RocketMQ事务消息
+
+## springboot-web
+Web模块，默认整合依赖了其他所有不支持单独启动的功能模块，可根据实际需要进行增删调整，启动入口为WebApplication，里面包含了所有其他模块需要的注解配置
+
+本模块内容包括
+
+- 基于长轮训实现的简单聊天室功能，入口页面为chat-long-polling.html
+- 基于xhttp实现页面动态内容回传
+- 简单的Excel上传下载功能
+- 堆和直接内存使用情况监控接口
+
+## springboot-zookeeper
+包含基于zookeeper实现的分布式锁示例

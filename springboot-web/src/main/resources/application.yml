@@ -30,7 +30,7 @@ mybatis:
   mapper-locations: classpath*:mapper/*.xml
 dubbo:
   scan:
-      base-packages: com.doodl6.springboot
+      base-packages: com.doodl6.springboot.dubbo
   protocol:
     name: dubbo
     port: 20880

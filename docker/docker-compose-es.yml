@@ -3,7 +3,6 @@ services:
   elasticsearch-master:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     container_name: elasticsearch-master
-    restart: always
     environment:
       - node.name=master
       - cluster.name=springboot-elasticsearch
@@ -26,7 +25,6 @@ services:
   elasticsearch-slave:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     container_name: elasticsearch-slave
-    restart: always
     environment:
       - node.name=slave
       - cluster.name=springboot-elasticsearch
@@ -50,7 +48,6 @@ services:
   kibana:
     image: docker.elastic.co/kibana/kibana:7.9.0
     container_name: kibana
-    restart: always
     environment:
       - SERVER_NAME=kibana-server
       - ELASTICSEARCH_HOSTS=http://elasticsearch-master:9200

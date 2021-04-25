@@ -1,12 +1,14 @@
 package com.doodl6.springboot.web.controller;
 
-import com.doodl6.springboot.web.response.base.BaseResponse;
+import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.web.vo.MessageVo;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Queues;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
@@ -25,7 +27,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @RestController
 @RequestMapping("/chat")
-public class ChatController extends BaseController {
+public class ChatController {
 
     /**
      * 用户ID生成器
@@ -42,7 +44,7 @@ public class ChatController extends BaseController {
     /**
      * 拉取数据，如果没有数据，会hold一段时间
      */
-    @RequestMapping("/pullData")
+    @GetMapping("/pullData")
     public DeferredResult<BaseResponse<List<MessageVo>>> pullData(Integer userId) {
 
         Preconditions.checkArgument(userId != null, "用户ID不能为空");
@@ -61,7 +63,7 @@ public class ChatController extends BaseController {
     /**
      * 进入聊天室
      */
-    @RequestMapping("/intoChatRoom")
+    @PostMapping("/intoChatRoom")
     public BaseResponse<Integer> intoChatRoom(String userName) {
 
         Preconditions.checkArgument(StringUtils.isNotEmpty(userName), "用户名不能为空");
@@ -80,7 +82,7 @@ public class ChatController extends BaseController {
     /**
      * 发送聊天信息
      */
-    @RequestMapping("/sendMessage")
+    @PostMapping("/sendMessage")
     public BaseResponse<Void> sendMessage(Integer userId, String content) {
         Preconditions.checkArgument(userId != null, "用户ID不能为空");
         Preconditions.checkArgument(StringUtils.isNotBlank(content), "消息内容不能为空");

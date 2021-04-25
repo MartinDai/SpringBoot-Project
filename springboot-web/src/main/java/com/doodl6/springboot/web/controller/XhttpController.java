@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * 可以支持实时输出内容
+ * 可以支持实时输出内容，供xhttp.html页面使用
  * Created by daixiaoming on 2018/12/20.
  */
 @RestController
@@ -17,10 +17,10 @@ import java.io.PrintWriter;
 public class XhttpController {
 
     /**
-     * 发送内容息
+     * 获取响应内容
      */
-    @RequestMapping("/sendContent")
-    public void sendMessage(HttpServletResponse response, String content) throws IOException, InterruptedException {
+    @RequestMapping("/getResponseContent")
+    public void getResponseContent(HttpServletResponse response, String content) throws IOException, InterruptedException {
         if (StringUtils.isEmpty(content)) {
             return;
         }

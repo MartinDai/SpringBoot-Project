@@ -13,7 +13,6 @@ spring:
         password: martin-local
   data:
     elasticsearch:
-      cluster-name: springboot-elasticsearch
       cluster-nodes: 127.0.0.1:9300
   redis:
     host: 127.0.0.1
@@ -39,8 +38,3 @@ zookeeper:
 nacos:
   config:
     server-addr: 127.0.0.1:8848
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"

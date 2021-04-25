@@ -3,13 +3,11 @@ package com.doodl6.springboot.web.controller;
 import com.alibaba.excel.EasyExcel;
 import com.doodl6.springboot.common.excel.ExcelProcessResult;
 import com.doodl6.springboot.common.excel.ExcelVersion;
+import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.web.dto.ExcelData;
 import com.doodl6.springboot.web.listener.ExcelDataListener;
-import com.doodl6.springboot.web.response.base.BaseResponse;
 import com.google.common.collect.Lists;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +25,7 @@ public class ExcelController {
     /**
      * 下载接口
      */
-    @RequestMapping("download")
+    @GetMapping("download")
     public void down(HttpServletResponse response) {
         try {
             List<ExcelData> dataList = Lists.newArrayList();
@@ -57,7 +55,7 @@ public class ExcelController {
     /**
      * 上传接口
      */
-    @RequestMapping("upload")
+    @PostMapping("upload")
     public BaseResponse<String> upload(@RequestParam MultipartFile file) throws IOException {
         ExcelProcessResult processResult = new ExcelProcessResult();
         EasyExcel.read(file.getInputStream(), ExcelData.class, new ExcelDataListener(processResult)).sheet().doRead();

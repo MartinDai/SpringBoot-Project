@@ -1,7 +1,6 @@
 package com.doodl6.springboot.web.listener;
 
 import com.doodl6.springboot.web.constant.WebConstants;
-import com.doodl6.springboot.web.server.ChatServer;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -20,15 +19,6 @@ public class InitDataListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext servletContext = sce.getServletContext();
         WebConstants.ROOT_PATH = servletContext.getRealPath(File.separator);
-
-        //启动聊天socket服务
-        new Thread(() -> {
-            try {
-                ChatServer.start();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
     }
 
     @Override

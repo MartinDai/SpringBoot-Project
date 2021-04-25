@@ -14,12 +14,23 @@
     </parent>
 
     <modules>
-        <module>springboot-client</module>
+        <module>springboot-cache</module>
         <module>springboot-common</module>
+        <module>springboot-common-web</module>
         <module>springboot-dao</module>
-        <module>springboot-dubbo-service</module>
-        <module>springboot-feign-service</module>
+        <module>springboot-dubbo-api</module>
+        <module>springboot-dubbo-consumer</module>
+        <module>springboot-dubbo-provider</module>
+        <module>springboot-elasticsearch</module>
+        <module>springboot-feign-consumer</module>
+        <module>springboot-feign-provider</module>
+        <module>springboot-leaf</module>
+        <module>springboot-nacos</module>
+        <module>springboot-netty</module>
+        <module>springboot-rocketmq-consumer</module>
+        <module>springboot-rocketmq-producer</module>
         <module>springboot-web</module>
+        <module>springboot-zookeeper</module>
     </modules>
 
     <properties>
@@ -45,11 +56,11 @@
         <es.version>6.5.2</es.version>
         <fastjson.version>1.2.60</fastjson.version>
         <guava.version>30.1.1-jre</guava.version>
-        <hystrix.version>2.2.4.RELEASE</hystrix.version>
         <httpclient.version>4.5.5</httpclient.version>
         <jackson.version>2.10.0</jackson.version>
         <junit.version>4.12</junit.version>
         <memcached.version>3.0.2</memcached.version>
+        <mybatis.version>3.5.6</mybatis.version>
         <nacos.version>0.2.7</nacos.version>
         <perf4j.version>0.9.16</perf4j.version>
         <poi.version>3.17</poi.version>
@@ -58,13 +69,36 @@
         <sentinel.version>1.8.0</sentinel.version>
         <servlet.version>3.1.0</servlet.version>
         <sharding-sphere.version>4.1.1</sharding-sphere.version>
-        <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
+        <springcloud.version>2.2.5.RELEASE</springcloud.version>
         <xmemcached.version>2.4.3</xmemcached.version>
         <zk.version>3.4.14</zk.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+                <version>${springcloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${springcloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${springcloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>${springcloud.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
@@ -96,33 +130,9 @@
             </dependency>
 
             <dependency>
-                <groupId>com.alibaba.boot</groupId>
-                <artifactId>nacos-config-spring-boot-starter</artifactId>
-                <version>${nacos.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-                <version>${hystrix.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-                <version>2.2.5.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-openfeign</artifactId>
-                <version>2.2.5.RELEASE</version>
             </dependency>
 
             <!-- servlet -->
@@ -238,6 +248,12 @@
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
                 <version>${zk.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>log4j</artifactId>
+                        <groupId>log4j</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- zookeeper client-->
@@ -245,18 +261,18 @@
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-framework</artifactId>
                 <version>${curator.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.apache.zookeeper</groupId>
-                        <artifactId>zookeeper</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-recipes</artifactId>
                 <version>${curator.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
             </dependency>
 
             <!-- 数据库连接池 -->
@@ -309,6 +325,24 @@
             </dependency>
 
             <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>3.0.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.netflix.archaius</groupId>
+                <artifactId>archaius-core</artifactId>
+                <version>0.7.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>5.0.4</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.alibaba.csp</groupId>
                 <artifactId>sentinel-core</artifactId>
                 <version>${sentinel.version}</version>
@@ -317,6 +351,23 @@
                 <groupId>com.alibaba.csp</groupId>
                 <artifactId>sentinel-annotation-aspectj</artifactId>
                 <version>${sentinel.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.netflix.hystrix</groupId>
+                <artifactId>hystrix-core</artifactId>
+                <version>1.5.18</version>
+            </dependency>
+            <dependency>
+                <groupId>com.netflix.servo</groupId>
+                <artifactId>servo-core</artifactId>
+                <version>0.10.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hdrhistogram</groupId>
+                <artifactId>HdrHistogram</artifactId>
+                <version>2.1.12</version>
             </dependency>
 
         </dependencies>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>动态页面</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container" style="margin-top: 20px;">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">动态页面（基于XMLHttpRequest）</h4>
+        </div>
+
+        <div class="panel-body">
+
+            <div id="chat-screen" style="height:400px;border:1px solid green;overflow:auto;padding: 5px;"></div>
+
+            <div class="form-group">
+                <input id="message-text" type="text" class="form-control" placeholder="请输入内容">
+            </div>
+
+            <div class="form-group">
+                <input id="send-message" type="button" class="btn btn-success" value="发送(Enter)">
+                <input id="clean-screen" type="button" class="btn btn-info" value="清屏">
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script>
+    var $chatScreen = $('#chat-screen');
+    var $contentText = $('#message-text');
+    var $sendContent = $('#send-message');
+    var $cleanScreen = $('#clean-screen');
+
+    $contentText.keyup(function (event) {
+        if (event.keyCode === 13) {
+            var content = $contentText.val();
+            if (content) {
+                sendContent(content);
+                $contentText.val("");
+            }
+        }
+    });
+
+    $sendContent.click(function () {
+        var message = $contentText.val();
+        if (message) {
+            sendContent(message);
+            $contentText.val("");
+        } else {
+            alert("请输入内容！");
+        }
+    });
+
+    $cleanScreen.click(function () {
+        $chatScreen.html("");
+    });
+
+    function appendScreenContent(message) {
+        $chatScreen.append($("<p>").text(message));
+    }
+
+    var xmlhttp;
+    var responseContent;
+
+    function sendContent(content) {
+        xmlhttp = null;
+        responseContent = "";
+        if (window.XMLHttpRequest) {// code for all new browsers
+            xmlhttp = new XMLHttpRequest();
+        }
+        else if (window.ActiveXObject) {// code for IE5 and IE6
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        if (xmlhttp != null) {
+            xmlhttp.onreadystatechange = contentChange;
+            xmlhttp.open("POST", "/xhttp/getResponseContent?content=" + encodeURI(content), true);
+            xmlhttp.send(null);
+        }
+        else {
+            $.errorMessage("Your browser does not support XMLHTTP.")
+        }
+    }
+
+    function contentChange() {
+        if (xmlhttp.readyState == 3) {
+            var incrementContent = xmlhttp.responseText.substring(responseContent.length);
+            responseContent = xmlhttp.responseText;
+            appendScreenContent(incrementContent);
+        } else if (xmlhttp.readyState == 4) {
+            console.log("end");
+            appendScreenContent("end");
+        }
+    }
+</script>
+</html>

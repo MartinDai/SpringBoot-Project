@@ -1,6 +1,5 @@
 package com.doodl6.springboot.web;
 
-import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,15 +8,16 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
-@SpringBootApplication(scanBasePackages = "com.doodl6")
-@NacosPropertySource(dataId = "doodl6", groupId = "SpringBoot", autoRefreshed = true)
+@SpringBootApplication(scanBasePackages = "com.doodl6.springboot")
 @MapperScan("com.doodl6.springboot.dao.api")
-@ServletComponentScan
+@EnableElasticsearchRepositories(basePackages = "com.doodl6.springboot.elasticsearch.repository")
+@ServletComponentScan(basePackages = "com.doodl6.springboot.common.web.filter")
 @EnableCaching
 @EnableHystrix
 @EnableDiscoveryClient
-@EnableFeignClients
+@EnableFeignClients(basePackages = "com.doodl6.springboot.feign.consumer.service")
 public class WebApplication {
 
     public static void main(String[] args) {
