@@ -14,3 +14,5 @@ target/
 /docker/elastaticsearch/master/logs/
 /docker/elastaticsearch/slave/data/
 /docker/elastaticsearch/slave/logs/
+/docker/rocketmq/broker/store/
+/docker/rocketmq/broker/logs/
