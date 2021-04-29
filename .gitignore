@@ -3,7 +3,7 @@
 target/
 
 # Log files
-logs/
+/logs/
 
 # IntelliJ IDEA files
 .idea/
@@ -14,4 +14,3 @@ logs/
 /docker/elastaticsearch/master/logs/
 /docker/elastaticsearch/slave/data/
 /docker/elastaticsearch/slave/logs/
-/docker/rocketmq/broker/store/

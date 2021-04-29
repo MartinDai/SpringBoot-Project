@@ -7,23 +7,23 @@ services:
     ports:
       - 9876:9876
     volumes:
-      - ./rocketmq/namesrv/:/home/rocketmq/
+      - ./rocketmq/namesrv/logs:/home/rocketmq/logs
     networks:
       - net-rocketmq
   broker:
     image: apacherocketmq/rocketmq-broker:4.5.0-alpine
     container_name: rmqbroker
-    restart: always
     environment:
       NAMESRV_ADDR: "namesrv:9876"
       JAVA_OPTS: "-Duser.home=/opt"
-      JAVA_OPT_EXT: "-server -Xms128m -Xmx128m -Xmn128m"
+      JAVA_OPT_EXT: "-server -Xms256m -Xmx512m"
     command: sh mqbroker -c /root/rocketmq-4.5.0/conf/broker.conf
     ports:
       - 10909:10909
       - 10911:10911
     volumes:
-      - ./rocketmq/broker/:/home/rocketmq/
+      - ./rocketmq/broker/logs:/home/rocketmq/logs
+      - ./rocketmq/broker/store:/home/rocketmq/store
       - ./rocketmq/broker/conf/broker.conf:/root/rocketmq-4.5.0/conf/broker.conf
     networks:
       - net-rocketmq

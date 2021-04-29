@@ -1,1 +1,0 @@
-# 本目录用于保存rocketmq-namesrv的数据

@@ -4,7 +4,7 @@ services:
     container_name: mysql
     build:
       context: mysql
-      dockerfile: mysql/mysql-dockerfile
+      dockerfile: ./mysql-dockerfile
     environment:
       - "MYSQL_ROOT_PASSWORD=martin-local"
       - "MYSQL_ROOT_HOST=%"
