@@ -16,3 +16,4 @@ target/
 /docker/elastaticsearch/slave/logs/
 /docker/rocketmq/broker/store/
 /docker/rocketmq/broker/logs/
+/docker/rocketmq/namesrv/logs/
