@@ -5,19 +5,6 @@ create database spring_project_2;
 use spring_project_2;
 
 -- ----------------------------
---  Table structure for `user`
--- ----------------------------
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(48) NOT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_NAME` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
 --  Table structure for `user_login_log_0`
 -- ----------------------------
 DROP TABLE IF EXISTS `user_login_log_0`;
