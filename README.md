@@ -38,6 +38,11 @@ SQL部分是基于sharding-jdbc分库分表写的，数据库表初始化文件�
 
 部分需要操作数据库的模块会依赖此模块
 
+## springboot-db-controller
+依赖于springboot-dao，对外提供访问数据库相关操作的接口，主要是为了方便把dao做成可选的灵活组合，一般整合在web模块的
+
+部分需要操作数据库的模块会依赖此模块
+
 ## springboot-dubbo-api
 dubbo服务的api模块，dubbo-provider和dubbo-consumer会依赖此模块
 

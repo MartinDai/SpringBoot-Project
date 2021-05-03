@@ -20,12 +20,15 @@
 	      #{name},
 	      NOW(),
 	      NOW()
-	    ) ON DUPLICATE KEY UPDATE
-	      modified = NOW()
+	    )
 	</insert>
 
 	<select id="getById" parameterType="long" resultMap="UserResultMap">
 	    SELECT * FROM user WHERE id = #{id}
+	</select>
+
+	<select id="queryByName" parameterType="string" resultMap="UserResultMap">
+	    SELECT * FROM user WHERE name = #{name}
 	</select>
 
 	<delete id="deleteById" parameterType="long">

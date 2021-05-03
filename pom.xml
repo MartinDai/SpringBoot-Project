@@ -18,6 +18,7 @@
         <module>springboot-common</module>
         <module>springboot-common-web</module>
         <module>springboot-dao</module>
+        <module>springboot-db-controller</module>
         <module>springboot-dubbo-api</module>
         <module>springboot-dubbo-consumer</module>
         <module>springboot-dubbo-provider</module>

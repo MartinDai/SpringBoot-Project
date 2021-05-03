@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
+    User queryByName(String name);
+
     void deleteById(long userId);
 
 }
