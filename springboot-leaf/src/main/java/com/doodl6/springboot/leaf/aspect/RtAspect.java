@@ -1,5 +1,6 @@
 package com.doodl6.springboot.leaf.aspect;
 
+import cn.hutool.core.date.TimeInterval;
 import com.doodl6.springboot.common.web.context.RequestParamContext;
 import com.doodl6.springboot.common.web.context.TraceIdHolder;
 import com.doodl6.springboot.leaf.common.Result;
@@ -40,7 +41,7 @@ public class RtAspect {
      */
     @Around("api()")
     public Object recordRt(ProceedingJoinPoint pjp) throws Throwable {
-        long start = System.currentTimeMillis();
+        TimeInterval ti = new TimeInterval();
         Object obj;
         String traceId = null;
         try {
@@ -48,7 +49,7 @@ public class RtAspect {
             TraceIdHolder.setTraceId(traceId);
             obj = pjp.proceed();
         } finally {
-            log.info("traceId:{} | {} | {} | {} | {}ms", traceId, pjp.getSignature().getDeclaringType().getSimpleName(), pjp.getSignature().getName(), RequestParamContext.get(), System.currentTimeMillis() - start);
+            log.info("traceId:{} | {} | {} | {} | {}ms", traceId, pjp.getSignature().getDeclaringType().getSimpleName(), pjp.getSignature().getName(), RequestParamContext.get(), ti.interval());
             TraceIdHolder.removeTraceId();
         }
 
