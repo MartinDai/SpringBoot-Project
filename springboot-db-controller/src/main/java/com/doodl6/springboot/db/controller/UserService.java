@@ -66,4 +66,11 @@ public class UserService {
 
         return user;
     }
+
+    public int deleteUser(long userId) {
+        User user = userMapper.getById(userId);
+        Assert.notNull(user, "用户不存在");
+
+        return userMapper.deleteById(userId);
+    }
 }

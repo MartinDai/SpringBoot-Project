@@ -8,6 +8,6 @@ public interface UserMapper extends BaseMapper<User> {
 
     User queryByName(String name);
 
-    void deleteById(long userId);
+    int deleteById(long userId);
 
 }

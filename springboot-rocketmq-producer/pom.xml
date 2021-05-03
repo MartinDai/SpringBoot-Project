@@ -13,13 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>com.doodl6</groupId>
-            <artifactId>springboot-common-web</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.doodl6</groupId>
-            <artifactId>springboot-dao</artifactId>
+            <artifactId>springboot-db-controller</artifactId>
             <version>${project.version}</version>
         </dependency>
 
