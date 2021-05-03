@@ -1,8 +1,8 @@
 package com.doodl6.springboot.common.check;
 
+import cn.hutool.core.lang.Assert;
 import com.doodl6.springboot.common.check.annotation.FieldNotEmpty;
 import com.doodl6.springboot.common.check.annotation.FieldNotNull;
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -24,7 +24,7 @@ public class CheckUtil {
      * 校验对象
      */
     public static void check(Object object) {
-        Preconditions.checkArgument(object != null, "对象不能为空");
+        Assert.notNull(object, "对象不能为空");
 
         Class clazz = object.getClass();
         List<Field> fieldList = Lists.newArrayList();
@@ -71,7 +71,7 @@ public class CheckUtil {
         FieldNotNull fieldNotNull = field.getAnnotation(FieldNotNull.class);
         String fieldName = StringUtils.defaultIfEmpty(fieldNotNull.name(), field.getName());
         Object value = getFieldValue(object, field);
-        Preconditions.checkArgument(value != null, "字段【" + fieldName + "】不允许为空");
+        Assert.notNull(value, "字段【" + fieldName + "】不允许为空");
     }
 
     /**
@@ -81,7 +81,7 @@ public class CheckUtil {
         FieldNotEmpty fieldNotEmpty = field.getAnnotation(FieldNotEmpty.class);
         String fieldName = StringUtils.defaultIfEmpty(fieldNotEmpty.name(), field.getName());
         Object value = getFieldValue(object, field);
-        Preconditions.checkArgument(value != null, "字段【" + fieldName + "】不允许为空");
+        Assert.notNull(value, "字段【" + fieldName + "】不允许为空");
 
         int length;
         if (object instanceof String) {
@@ -95,14 +95,14 @@ public class CheckUtil {
         }
 
         int minLength = fieldNotEmpty.minLength();
-        Preconditions.checkArgument(length > 0, "字段【" + fieldName + "】不允许为空");
+        Assert.isTrue(length > 0, "字段【" + fieldName + "】不允许为空");
         if (minLength > 0) {
-            Preconditions.checkArgument(length >= minLength, "字段【" + fieldName + "】长度不能少于" + minLength);
+            Assert.isTrue(length >= minLength, "字段【" + fieldName + "】长度不能少于" + minLength);
         }
 
         int maxLength = fieldNotEmpty.maxLength();
         if (maxLength > 0) {
-            Preconditions.checkArgument(length <= maxLength, "字段【" + fieldName + "】长度不能大于" + maxLength);
+            Assert.isTrue(length <= maxLength, "字段【" + fieldName + "】长度不能大于" + maxLength);
         }
     }
 

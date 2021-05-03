@@ -1,8 +1,8 @@
 package com.doodl6.springboot.web.controller;
 
+import cn.hutool.core.lang.Assert;
 import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.web.vo.MessageVo;
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Queues;
@@ -47,9 +47,9 @@ public class ChatController {
     @GetMapping("/pullData")
     public DeferredResult<BaseResponse<List<MessageVo>>> pullData(Integer userId) {
 
-        Preconditions.checkArgument(userId != null, "用户ID不能为空");
+        Assert.notNull(userId, "用户ID不能为空");
 
-        Preconditions.checkArgument(USER_MAP.containsKey(userId), "用户不在聊天室内");
+        Assert.isTrue(USER_MAP.containsKey(userId), "用户不在聊天室内");
 
         //超时5秒钟
         DeferredResult<BaseResponse<List<MessageVo>>> deferredResult = new DeferredResult<>(5000L, new BaseResponse<>());
@@ -66,7 +66,7 @@ public class ChatController {
     @PostMapping("/intoChatRoom")
     public BaseResponse<Integer> intoChatRoom(String userName) {
 
-        Preconditions.checkArgument(StringUtils.isNotEmpty(userName), "用户名不能为空");
+        Assert.isTrue(StringUtils.isNotEmpty(userName), "用户名不能为空");
 
         int userId = USER_ID_GENERATOR.incrementAndGet();
 
@@ -84,9 +84,9 @@ public class ChatController {
      */
     @PostMapping("/sendMessage")
     public BaseResponse<Void> sendMessage(Integer userId, String content) {
-        Preconditions.checkArgument(userId != null, "用户ID不能为空");
-        Preconditions.checkArgument(StringUtils.isNotBlank(content), "消息内容不能为空");
-        Preconditions.checkArgument(USER_MAP.containsKey(userId), "用户不存在");
+        Assert.notNull(userId, "用户ID不能为空");
+        Assert.isTrue(StringUtils.isNotBlank(content), "消息内容不能为空");
+        Assert.isTrue(USER_MAP.containsKey(userId), "用户不存在");
 
         String userName = USER_MAP.get(userId);
 

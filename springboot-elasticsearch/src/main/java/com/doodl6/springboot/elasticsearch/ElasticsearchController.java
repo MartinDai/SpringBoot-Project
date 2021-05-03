@@ -1,9 +1,9 @@
 package com.doodl6.springboot.elasticsearch;
 
+import cn.hutool.core.lang.Assert;
 import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.elasticsearch.repository.ArticleRepository;
 import com.doodl6.springboot.elasticsearch.vo.Article;
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,10 +30,10 @@ public class ElasticsearchController {
      */
     @PostMapping("/addData")
     public BaseResponse<Void> addData(Long id, String title, String category, String content) {
-        Preconditions.checkArgument(id != null, "ID不能为空");
-        Preconditions.checkArgument(StringUtils.isNotBlank(title), "标题不能为空");
-        Preconditions.checkArgument(StringUtils.isNotBlank(category), "类目不能为空");
-        Preconditions.checkArgument(StringUtils.isNotBlank(content), "内容不能为空");
+        Assert.notNull(id, "ID不能为空");
+        Assert.isTrue(StringUtils.isNotBlank(title), "标题不能为空");
+        Assert.isTrue(StringUtils.isNotBlank(category), "类目不能为空");
+        Assert.isTrue(StringUtils.isNotBlank(content), "内容不能为空");
 
         Article article = new Article();
         article.setId(id);
@@ -52,10 +52,10 @@ public class ElasticsearchController {
      */
     @PostMapping("/updateData")
     public BaseResponse<Void> updateData(Long id, String title, String category, String content) {
-        Preconditions.checkArgument(id != null, "ID不能为空");
-        Preconditions.checkArgument(StringUtils.isNotBlank(title), "标题不能为空");
-        Preconditions.checkArgument(StringUtils.isNotBlank(category), "类目不能为空");
-        Preconditions.checkArgument(StringUtils.isNotBlank(content), "内容不能为空");
+        Assert.notNull(id, "ID不能为空");
+        Assert.isTrue(StringUtils.isNotBlank(title), "标题不能为空");
+        Assert.isTrue(StringUtils.isNotBlank(category), "类目不能为空");
+        Assert.isTrue(StringUtils.isNotBlank(content), "内容不能为空");
 
         Article article = new Article();
         article.setId(id);
@@ -74,7 +74,7 @@ public class ElasticsearchController {
      */
     @PostMapping("/deleteData")
     public BaseResponse<Void> deleteData(Long id) {
-        Preconditions.checkArgument(id != null, "ID不能为空");
+        Assert.notNull(id, "ID不能为空");
 
         articleRepository.deleteById(id);
 
@@ -86,7 +86,7 @@ public class ElasticsearchController {
      */
     @GetMapping("/queryData")
     public BaseResponse<List<Article>> queryData(String title) {
-        Preconditions.checkArgument(StringUtils.isNotBlank(title), "标题不能为空");
+        Assert.isTrue(StringUtils.isNotBlank(title), "标题不能为空");
 
         Iterable<Article> iterable = articleRepository.findByTitle(title);
 

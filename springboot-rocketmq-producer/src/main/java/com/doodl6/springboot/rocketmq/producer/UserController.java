@@ -1,10 +1,10 @@
 package com.doodl6.springboot.rocketmq.producer;
 
+import cn.hutool.core.lang.Assert;
 import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.dao.api.UserMapper;
 import com.doodl6.springboot.dao.entity.User;
 import com.doodl6.springboot.rocketmq.producer.service.RocketMQService;
-import com.google.common.base.Preconditions;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,10 +26,10 @@ public class UserController {
      */
     @RequestMapping(value = "/deleteUser", method = RequestMethod.DELETE)
     public BaseResponse<Void> deleteUser(Long userId) {
-        Preconditions.checkArgument(userId != null, "用户ID不能为空");
+        Assert.notNull(userId, "用户ID不能为空");
 
         User user = userMapper.getById(userId);
-        Preconditions.checkArgument(user != null, "用户不存在");
+        Assert.notNull(user, "用户不存在");
 
         rocketMQService.sendClearUserMsg(userId);
 
