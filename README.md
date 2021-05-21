@@ -25,6 +25,9 @@ docker目录里面包含了本项目部分模块需要依赖的的组件环境�
 - Memcached，整合Memcached-Java-Client和xmemcached两种客户端实现基本操作
 - Redis，使用Redisson客户端，包含常规操作、分布式锁和布隆过滤器使用示例
 
+## springboot-cloud-stream
+整合了spring cloud stream的简单使用示例
+
 ## springboot-common
 包含一些通用的工具类等
 

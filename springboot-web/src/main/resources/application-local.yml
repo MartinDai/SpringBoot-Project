@@ -21,6 +21,10 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    stream:
+      rocketmq:
+        binder:
+          name-server: 127.0.0.1:9876
 dubbo:
   application:
     name: springboot-web-local

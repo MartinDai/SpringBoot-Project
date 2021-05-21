@@ -27,6 +27,12 @@
 
         <dependency>
             <groupId>com.doodl6</groupId>
+            <artifactId>springboot-cloud-stream</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.doodl6</groupId>
             <artifactId>springboot-db-controller</artifactId>
             <version>${project.version}</version>
         </dependency>

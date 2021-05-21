@@ -15,6 +15,7 @@
 
     <modules>
         <module>springboot-cache</module>
+        <module>springboot-cloud-stream</module>
         <module>springboot-common</module>
         <module>springboot-common-web</module>
         <module>springboot-dao</module>
@@ -78,7 +79,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
@@ -99,6 +99,12 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>${springcloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
                 <version>${springcloud.version}</version>
             </dependency>
 
