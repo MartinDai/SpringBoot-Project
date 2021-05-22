@@ -32,7 +32,7 @@ public class UserController {
             rocketMQService.sendClearUserMsg(userId);
         }
 
-        return BaseResponse.success(null);
+        return BaseResponse.success();
     }
 
 }
