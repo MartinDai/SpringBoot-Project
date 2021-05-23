@@ -1,0 +1,37 @@
+server:
+  port: 9092
+spring:
+  application:
+    name: order-service
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/seata_order?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: martin-local
+    max-wait: 60000
+    max-active: 100
+  cloud:
+    alibaba:
+      nacos:
+        discovery:
+          server-addr: 127.0.0.1:8848
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+
+#====================================Seata Config===============================================
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: ${spring.application.name}-tx-group # 事务群组（可以每个应用独立取名，也可以使用相同的名字）,但是需要与服务端配置中的service.vgroupMapping的后缀相对应
+  enable-auto-data-source-proxy: true
+  data-source-proxy-mode: AT
+  use-jdk-proxy: false
+  service:
+    vgroup-mapping:
+      order-service-tx-group: default
+    grouplist:
+      default: 127.0.0.1:8091
+    disable-global-transaction: false

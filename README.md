@@ -90,6 +90,18 @@ RocketMQ的消息生产者模块，内容包含
 - 使用tomcat提供的ServerEndpoint注解基于websocket实现的简单聊天室功能，聊天消息会发送RocketMQ普通消息，入口页面为chat-websocket.html
 - 提供了简单的用户操作HTTP接口，其中删除用户会发送RocketMQ事务消息
 
+## springboot-seata
+seata示例的TM服务，可单独启动，docker目录下有seata-server的容器配置
+
+## springboot-seata-common
+seata功能的通用模块
+
+## springboot-seata-order
+seata功能的订单RM服务，可单独启动
+
+## springboot-seata-storage
+seata功能的商品库存RM服务，可单独启动
+
 ## springboot-web
 Web模块，默认整合依赖了其他所有不支持单独启动的功能模块，可根据实际需要进行增删调整，启动入口为WebApplication，里面包含了所有其他模块需要的注解配置
 

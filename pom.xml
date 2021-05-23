@@ -31,6 +31,10 @@
         <module>springboot-netty</module>
         <module>springboot-rocketmq-consumer</module>
         <module>springboot-rocketmq-producer</module>
+        <module>springboot-seata</module>
+        <module>springboot-seata-common</module>
+        <module>springboot-seata-order</module>
+        <module>springboot-seata-storage</module>
         <module>springboot-web</module>
         <module>springboot-zookeeper</module>
     </modules>
@@ -69,6 +73,7 @@
         <poi.version>3.17</poi.version>
         <redisson.version>3.15.3</redisson.version>
         <rocketmq.version>2.0.3</rocketmq.version>
+        <seata.version>1.4.0</seata.version>
         <sentinel.version>1.8.0</sentinel.version>
         <servlet.version>3.1.0</servlet.version>
         <sharding-sphere.version>4.1.1</sharding-sphere.version>
@@ -106,6 +111,18 @@
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
                 <version>${springcloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+                <version>${springcloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata.version}</version>
             </dependency>
 
             <dependency>
@@ -382,6 +399,17 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.checkerframework</groupId>
+                <artifactId>checker-qual</artifactId>
+                <version>3.8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.errorprone</groupId>
+                <artifactId>error_prone_annotations</artifactId>
+                <version>2.5.1</version>
             </dependency>
 
         </dependencies>

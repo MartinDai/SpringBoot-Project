@@ -7,3 +7,4 @@
 - docker-compose-nacos.yml包含nacos服务容器，后台运行命令`docker-compose -f docker-compose-nacos.yml up -d`，后台管理页面：http://localhost:8848，账号/密码：nacos
 - docker-compose-rocketmq.yml包含rocketmq的namesrv和broker服务容器组合，后台运行命令`docker-compose -f docker-compose-rocketmq.yml up -d`，注意需要修改基于当前目录下的rocketmq/broker/conf/broker.conf文件内的brokerIP1属性为宿主机内网IP，rocketmq-console页面：http://localhost:8081
 - docker-compose-zk.yml包含两个节点的zk集群容器组合，后台运行命令`docker-compose -f docker-compose-zk.yml up -d`
+- docker-compose-seata.yml包含seata-server服务容器，后台运行命令`docker-compose -f docker-compose-seata.yml up -d`

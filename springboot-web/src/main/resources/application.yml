@@ -1,8 +1,6 @@
 spring:
-  application:
-    name: springboot-web
   profiles:
-    active: local
+    active: @activeProfile@
   shardingsphere:
     datasource:
       names: ds-0,ds-1

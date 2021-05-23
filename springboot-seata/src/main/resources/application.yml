@@ -1,0 +1,40 @@
+server:
+  port: 9091
+spring:
+  application:
+    name: springboot-seata
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    alibaba:
+      nacos:
+        discovery:
+          server-addr: 127.0.0.1:8848
+
+#====================================Feign Config===============================================
+feign:
+  httpclient:
+    enabled: true
+    connection-timeout: 60000
+  client:
+    config:
+      default:
+        connectTimeout: 60000
+        readTimeout: 60000
+        loggerLevel: FULL
+ribbon:
+  ConnectTimeout: 100000
+  ReadTimeout: 1000000
+  OkToRetryOnAllOperations: false
+
+#====================================Seata Config===============================================
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: ${spring.application.name}-tx-group # 事务群组（可以每个应用独立取名，也可以使用相同的名字）,但是需要与服务端配置中的service.vgroupMapping的后缀相对应
+  service:
+    vgroup-mapping:
+      springboot-seata-tx-group: default
+    grouplist:
+      default: 127.0.0.1:8091
+    disable-global-transaction: false
