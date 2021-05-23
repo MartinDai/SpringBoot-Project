@@ -441,6 +441,17 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <!--该插件主要用途：构建可执行的JAR -->
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>2.3.3.RELEASE</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
 </project>
