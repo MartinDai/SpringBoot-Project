@@ -1,6 +1,7 @@
 package com.doodl6.springboot.rocketmq.producer.service;
 
 import com.alibaba.fastjson.JSON;
+import com.doodl6.springboot.rocketmq.producer.ProducerConstants;
 import com.doodl6.springboot.rocketmq.producer.domain.NewChatRecord;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendCallback;
@@ -19,9 +20,6 @@ public class RocketMQService {
 
     @Resource
     private RocketMQTemplate rocketMQTemplate;
-
-    @Value("${rocketmq.producer.txGroup}")
-    private String txGroup;
 
     @Value("${rocketmq.producer.clearUser.destination}")
     private String clearUserDestination;
@@ -44,12 +42,15 @@ public class RocketMQService {
     }
 
     /**
-     * 发送清除用户消息
+     * 发送清除用户事务消息
+     * 1.先发送一个半消息（不可消费）
+     * 2.执行ClearUserTransactionListener这个类的executeLocalTransaction本地方法
+     * 3.本地方法执行完成后返回RocketMQLocalTransactionState.COMMIT回执，触发半消息可被消费
      */
     public void sendClearUserMsg(long userId) {
         Message<Long> message = new GenericMessage<>(userId);
         try {
-            SendResult sendResult = rocketMQTemplate.sendMessageInTransaction(txGroup, clearUserDestination, message, userId);
+            SendResult sendResult = rocketMQTemplate.sendMessageInTransaction(ProducerConstants.TRANSACTION_CLEAR_USER_GROUP, clearUserDestination, message, userId);
             log.info("发送清除用户消息完成 | {}", JSON.toJSONString(sendResult));
         } catch (Exception e) {
             log.error("发送清除用户消息异常", e);

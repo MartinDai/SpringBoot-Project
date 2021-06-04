@@ -22,8 +22,8 @@ public class ClearUserMessageListener implements RocketMQListener<Long> {
     @Override
     public void onMessage(Long userId) {
         log.info("收到清除用户消息 | {}", userId);
-        userLoginLogMapper.deleteAllByUserId(userId);
-        log.info("删除用户登录记录完成 | {}", userId);
+        int count = userLoginLogMapper.deleteAllByUserId(userId);
+        log.info("删除用户登录记录完成 | userId:{} | count:{}", userId, count);
     }
 
 }
