@@ -10,10 +10,10 @@ target/
 *.iml
 
 # Temp file
-/docker/elastaticsearch/master/data/
-/docker/elastaticsearch/master/logs/
-/docker/elastaticsearch/slave/data/
-/docker/elastaticsearch/slave/logs/
+/docker/elasticsearch/master/data/
+/docker/elasticsearch/master/logs/
+/docker/elasticsearch/slave/data/
+/docker/elasticsearch/slave/logs/
 /docker/rocketmq/broker/store/
 /docker/rocketmq/broker/logs/
 /docker/rocketmq/namesrv/logs/

@@ -1,0 +1,11 @@
+cluster.name: "springboot-elasticsearch"
+cluster.initial_master_nodes: "192.168.31.218:9300,192.168.31.218:9301"
+node.name: "slave"
+network.bind_host: 0.0.0.0
+network.publish_host: 192.168.31.218
+http.port: 9201
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+transport.tcp.port: 9301
+discovery.seed_hosts: "192.168.31.218:9300"
+bootstrap.memory_lock: true
