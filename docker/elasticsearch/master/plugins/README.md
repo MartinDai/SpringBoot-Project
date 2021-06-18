@@ -1,1 +1,0 @@
-# 本目录用于保存elasticsearch安装的插件
