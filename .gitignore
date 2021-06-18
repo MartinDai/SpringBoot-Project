@@ -12,6 +12,7 @@ target/
 # Temp file
 /docker/elasticsearch/master/data/
 /docker/elasticsearch/master/logs/
+/docker/elasticsearch/master/plugins/
 /docker/elasticsearch/slave/data/
 /docker/elasticsearch/slave/logs/
 /docker/rocketmq/broker/store/
