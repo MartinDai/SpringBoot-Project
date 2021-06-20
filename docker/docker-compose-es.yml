@@ -45,6 +45,7 @@ services:
     environment:
       - SERVER_NAME=kibana-server
       - ELASTICSEARCH_HOSTS=http://elasticsearch-master:9200
+      - I18N_LOCALE=zh-CN
     ports:
       - 5601:5601
     networks:
