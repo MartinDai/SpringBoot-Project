@@ -83,6 +83,7 @@ feign服务提供者，包含简单的基于feign实现的服务，使用nacos�
 
 - 普通消息并发消费示例
 - 事务消息使用示例（可实现最终一致性分布式事务）
+- 顺序消息消费示例
 
 ## springboot-rocketmq-producer
 RocketMQ的消息生产者模块，内容包含

@@ -41,6 +41,8 @@ rocketmq:
       destination: clearUserData:*
     chatRecord:
       destination: ChatRecord:newChatRecord
+    orderlyMessage:
+      destination: OrderlyMessage:*
   consumer:
     clearUser:
       group: clearUserGroup
@@ -48,3 +50,6 @@ rocketmq:
     chatRecord:
       group: chatRecordGroup
       topic: ChatRecord
+    orderlyMessage:
+      group: orderlyMessageGroup
+      topic: OrderlyMessage

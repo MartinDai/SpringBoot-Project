@@ -27,6 +27,9 @@ public class RocketMQService {
     @Value("${rocketmq.producer.chatRecord.destination}")
     private String chatRecordDestination;
 
+    @Value("${rocketmq.producer.orderlyMessage.destination}")
+    private String orderlyMessageDestination;
+
     public void sendNewChatRecord(NewChatRecord newChatRecord) {
         rocketMQTemplate.asyncSend(chatRecordDestination, JSON.toJSONString(newChatRecord), new SendCallback() {
             @Override
@@ -54,6 +57,15 @@ public class RocketMQService {
             log.info("发送清除用户消息完成 | {}", JSON.toJSONString(sendResult));
         } catch (Exception e) {
             log.error("发送清除用户消息异常", e);
+        }
+    }
+
+    /**
+     * 发送顺序消息，使用相同的key作为hashKey，保证发送的多条内容都在同一个队列中
+     */
+    public void sendOrderlyMessage(String key, String content) {
+        for (int i = 0; i < 3; i++) {
+            rocketMQTemplate.syncSendOrderly(orderlyMessageDestination, content + i, key);
         }
     }
 
