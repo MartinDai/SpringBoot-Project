@@ -18,3 +18,5 @@ target/
 /docker/rocketmq/broker/store/
 /docker/rocketmq/broker/logs/
 /docker/rocketmq/namesrv/logs/
+/docker/grafana/
+/docker/prometheus/data/
