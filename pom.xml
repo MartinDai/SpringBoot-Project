@@ -68,6 +68,7 @@
         <junit.version>4.12</junit.version>
         <memcached.version>3.0.2</memcached.version>
         <mybatis.version>3.5.6</mybatis.version>
+        <netty.version>4.1.66.Final</netty.version>
         <nacos.version>0.2.7</nacos.version>
         <perf4j.version>0.9.16</perf4j.version>
         <poi.version>3.17</poi.version>
@@ -310,7 +311,7 @@
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
-                <version>4.1.42.Final</version>
+                <version>${netty.version}</version>
             </dependency>
 
             <dependency>
