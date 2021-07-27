@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  prometheus:
+    image: bitnami/prometheus:2.28.1
+    container_name: prometheus
+    volumes:
+      - ./prometheus/config:/etc/prometheus
+      - ./prometheus/data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    ports:
+      - 9090:9090
+    networks:
+      - net-monitor
+  grafana:
+    image: grafana/grafana:7.5.10
+    container_name: grafana
+    volumes:
+      - ./grafana:/var/lib/grafana
+    ports:
+      - 3000:3000
+    networks:
+      - net-monitor
+    depends_on:
+      - prometheus
+networks:
+  net-monitor:
+    driver: bridge

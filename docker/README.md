@@ -17,6 +17,17 @@ docker-compose -f docker-compose-es.yml up -d
 - 这个组合比较消耗内存，至少保证docker有3.5G的空闲可分配内存再启动
 - kibana管理页面：http://localhost:5601
 - cerebro管理页面：http://localhost:9000
+
+### Prometheus+Grafana服务
+
+```
+docker-compose -f docker-compose-monitor.yml up -d
+```
+- prometheus管理页面：http://localhost:9090/graph
+- grafana管理页面：http://localhost:3000，默认用户名/密码都为：admin  
+- 如果要结合JMX配置监控项目，请参考`monitor/README.md`中的说明启动项目，然后需要修改当前目录下的`prometheus/config/prometheus.yml`最后一行配置中的ip为本地内网IP
+- 启动以后在grafana添加prometheus数据源，然后可以通过链接`https://grafana.com/grafana/dashboards/8563` 导入dashboard，该dashboard包含了常用的JVM监控维度信息
+
   
 ### MySQL服务
 
