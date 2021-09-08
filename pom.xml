@@ -66,6 +66,7 @@
         <hutool.version>5.6.4</hutool.version>
         <jackson.version>2.10.0</jackson.version>
         <junit.version>4.12</junit.version>
+        <lombok.version>1.18.20</lombok.version>
         <memcached.version>3.0.2</memcached.version>
         <mybatis.version>3.5.6</mybatis.version>
         <netty.version>4.1.66.Final</netty.version>
