@@ -10,3 +10,8 @@ services:
       - SEATA_CONFIG_NAME=file:/root/seata-config/registry
     ports:
       - 8091:8091
+    networks:
+      - net-seata
+networks:
+  net-seata:
+    driver: bridge
