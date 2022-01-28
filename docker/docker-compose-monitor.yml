@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   prometheus:
-    image: bitnami/prometheus:2.28.1
+    image: prom/prometheus:v2.31.0
     container_name: prometheus
     volumes:
       - ./prometheus/config:/etc/prometheus

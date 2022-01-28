@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   namesrv:
-    image: apacherocketmq/rocketmq-nameserver:4.5.0-alpine
+    image: martindai/rocketmq:4.9.2
     container_name: rmqnamesrv
     command: sh mqnamesrv
     ports:
@@ -11,7 +11,7 @@ services:
     networks:
       - net-rocketmq
   broker:
-    image: apacherocketmq/rocketmq-broker:4.5.0-alpine
+    image: martindai/rocketmq:4.9.2
     container_name: rmqbroker
     environment:
       NAMESRV_ADDR: "namesrv:9876"
@@ -30,7 +30,7 @@ services:
     depends_on:
       - namesrv
   console:
-    image: apacherocketmq/rocketmq-console:2.0.0
+    image: toyangdon/rocketmq-console:4.5.0
     container_name: rmq-console
     ports:
       - 8081:8080

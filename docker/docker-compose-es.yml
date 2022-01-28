@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   elasticsearch-master:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
+    image: elasticsearch:7.16.1
     container_name: elasticsearch-master
     environment:
       - "ES_JAVA_OPTS=-Xss512k -XX:NewRatio=1 -Xms1024m -Xmx1024m"
@@ -20,7 +20,7 @@ services:
     networks:
       - net-es
   elasticsearch-slave:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
+    image: elasticsearch:7.16.1
     container_name: elasticsearch-slave
     environment:
       - "ES_JAVA_OPTS=-Xss512k -XX:NewRatio=1 -Xms1024m -Xmx1024m"
@@ -40,7 +40,7 @@ services:
     depends_on:
       - elasticsearch-master
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.9.0
+    image: kibana:7.16.1
     container_name: kibana
     environment:
       - SERVER_NAME=kibana-server
