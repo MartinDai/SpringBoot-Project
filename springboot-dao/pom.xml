@@ -13,7 +13,6 @@
         <dependency>
             <groupId>com.doodl6</groupId>
             <artifactId>springboot-common</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
