@@ -321,6 +321,11 @@
               <artifactId>poi</artifactId>
               <version>${poi.version}</version>
             </dependency>
+            <dependency>
+              <groupId>org.apache.xmlbeans</groupId>
+              <artifactId>xmlbeans</artifactId>
+              <version>5.0.3</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.alibaba</groupId>
