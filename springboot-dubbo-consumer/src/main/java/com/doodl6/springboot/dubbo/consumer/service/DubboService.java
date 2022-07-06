@@ -2,7 +2,6 @@ package com.doodl6.springboot.dubbo.consumer.service;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.doodl6.springboot.common.web.context.TraceIdHolder;
 import com.doodl6.springboot.dubbo.api.FirstDubboService;
 import com.doodl6.springboot.dubbo.api.domain.DubboDomain;
@@ -12,13 +11,14 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.netflix.hystrix.exception.HystrixTimeoutException;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 public class DubboService {
 
-    @Reference(version = "${dubbo.reference.firstDubbo.version}", check = false)
+    @DubboReference(version = "${dubbo.reference.firstDubbo.version}", check = false)
     private FirstDubboService firstDubboService;
 
     @SentinelResource(value = "getDubboInfo", blockHandler = "processDubboInfoBlock", fallback = "getDubboInfoFallback")

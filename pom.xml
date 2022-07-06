@@ -55,9 +55,9 @@
         <commons.lang3.version>3.7</commons.lang3.version>
         <commons.math3.version>3.6.1</commons.math3.version>
         <commons-pool2.version>2.6.0</commons-pool2.version>
-        <curator.version>4.0.1</curator.version>
+        <curator.version>4.2.0</curator.version>
         <druid.version>1.1.10</druid.version>
-        <dubbo.version>2.6.12</dubbo.version>
+        <dubbo.version>2.7.15</dubbo.version>
         <easyexcel.version>2.0.1</easyexcel.version>
         <es.version>6.5.2</es.version>
         <fastjson.version>1.2.83</fastjson.version>
@@ -226,14 +226,14 @@
             </dependency>
 
             <dependency>
-                <groupId>com.alibaba</groupId>
+                <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.alibaba.boot</groupId>
+                <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
-                <version>0.2.1.RELEASE</version>
+                <version>${dubbo.version}</version>
             </dependency>
 
             <dependency>
@@ -372,12 +372,6 @@
             <!-- zookeeper client-->
             <dependency>
                 <groupId>org.apache.curator</groupId>
-                <artifactId>curator-framework</artifactId>
-                <version>${curator.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.curator</groupId>
                 <artifactId>curator-recipes</artifactId>
                 <version>${curator.version}</version>
             </dependency>
@@ -429,12 +423,6 @@
                 <groupId>org.perf4j</groupId>
                 <artifactId>perf4j</artifactId>
                 <version>${perf4j.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alibaba.spring</groupId>
-                <artifactId>spring-context-support</artifactId>
-                <version>1.0.5</version>
             </dependency>
 
             <dependency>

@@ -1,17 +1,17 @@
 package com.doodl6.springboot.dubbo.provider.service;
 
 import cn.hutool.core.lang.Assert;
-import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSON;
 import com.doodl6.springboot.dubbo.api.FirstDubboService;
 import com.doodl6.springboot.dubbo.api.domain.DubboDomain;
 import com.doodl6.springboot.dubbo.api.request.GetDubboInfoRequest;
 import com.doodl6.springboot.dubbo.api.response.GetDubboInfoResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboService;
 
 
 @Slf4j
-@Service(version = "${dubbo.service.firstDubbo.version}", timeout = 10000)
+@DubboService(version = "${dubbo.service.firstDubbo.version}", timeout = 10000)
 public class FirstDubboServiceImpl implements FirstDubboService {
 
     @Override
