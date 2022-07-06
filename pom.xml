@@ -9,7 +9,6 @@
 
     <modules>
         <module>springboot-cache</module>
-        <module>springboot-cloud-stream</module>
         <module>springboot-common</module>
         <module>springboot-common-web</module>
         <module>springboot-dao</module>
@@ -83,11 +82,6 @@
             <dependency>
                 <groupId>com.doodl6</groupId>
                 <artifactId>springboot-cache</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.doodl6</groupId>
-                <artifactId>springboot-cloud-stream</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -191,12 +185,6 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-                <version>${alibaba-cloud.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
                 <version>${alibaba-cloud.version}</version>
             </dependency>
 
