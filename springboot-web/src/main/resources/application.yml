@@ -1,6 +1,4 @@
 spring:
-  profiles:
-    active: @activeProfile@
   shardingsphere:
     datasource:
       names: ds-0,ds-1
