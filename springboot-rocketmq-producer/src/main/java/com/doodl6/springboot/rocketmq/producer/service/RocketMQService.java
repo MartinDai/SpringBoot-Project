@@ -3,6 +3,7 @@ package com.doodl6.springboot.rocketmq.producer.service;
 import com.alibaba.fastjson.JSON;
 import com.doodl6.springboot.rocketmq.producer.ProducerConstants;
 import com.doodl6.springboot.rocketmq.producer.domain.NewChatRecord;
+import com.doodl6.springboot.rocketmq.producer.domain.TransactionMessageObj;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
@@ -53,7 +54,8 @@ public class RocketMQService {
     public void sendClearUserMsg(long userId) {
         Message<Long> message = new GenericMessage<>(userId);
         try {
-            SendResult sendResult = rocketMQTemplate.sendMessageInTransaction(ProducerConstants.TRANSACTION_CLEAR_USER_GROUP, clearUserDestination, message, userId);
+            SendResult sendResult = rocketMQTemplate.sendMessageInTransaction(clearUserDestination, message,
+                    new TransactionMessageObj(ProducerConstants.TRANSACTION_DELETE_USER, userId));
             log.info("发送清除用户消息完成 | {}", JSON.toJSONString(sendResult));
         } catch (Exception e) {
             log.error("发送清除用户消息异常", e);
