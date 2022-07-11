@@ -1,12 +1,15 @@
+server:
+  port: 2021
 spring:
   application:
     name: springboot-feign-provider
   cloud:
-    nacos:
+    consul:
+      host: 127.0.0.1
+      port: 8500
       discovery:
-        server-addr: 127.0.0.1:8848
-server:
-  port: 2021
+        instanceId: ${spring.application.name}:${random.value}
+        healthCheckInterval: 15s
 management:
   endpoints:
     web:

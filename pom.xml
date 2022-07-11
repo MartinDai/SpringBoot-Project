@@ -63,7 +63,8 @@
         <seata.version>1.4.0</seata.version>
         <sentinel.version>1.8.0</sentinel.version>
         <sharding-sphere.version>4.1.1</sharding-sphere.version>
-        <spring-cloud.version>3.1.3</spring-cloud.version>
+        <spring-boot.version>2.4.13</spring-boot.version>
+        <spring-cloud.version>2020.0.1</spring-cloud.version>
         <alibaba-cloud.version>2021.1</alibaba-cloud.version>
         <xmemcached.version>2.4.3</xmemcached.version>
         <zk.version>3.4.14</zk.version>
@@ -71,14 +72,39 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Spring Dependencies -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.7.1</version>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Dubbo Dependencies -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-bom</artifactId>
+                <version>${dubbo.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-framework-bom</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- Project module -->
             <dependency>
                 <groupId>com.doodl6</groupId>
                 <artifactId>springboot-cache</artifactId>
@@ -167,22 +193,11 @@
             </dependency>
 
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-openfeign</artifactId>
-                <version>${spring-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter</artifactId>
-                <version>${spring-cloud.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
                 <version>${alibaba-cloud.version}</version>
             </dependency>
-            <dependency>
+             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
                 <version>${alibaba-cloud.version}</version>

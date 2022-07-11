@@ -1,4 +1,11 @@
 spring:
+  application:
+    name: springboot-web
+  cloud:
+    consul:
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
+        register: false
   shardingsphere:
     datasource:
       names: ds-0,ds-1
