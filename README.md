@@ -64,10 +64,10 @@ dubbo服务提供者，包含基于dubbo-api模块实现的dubbo服务，可单�
 包含elasticsearch服务基本crud操作
 
 ## springboot-feign-consumer
-feign服务消费者，包含简单的feign服务调用示例，使用nacos做服务发现
+feign服务消费者，包含简单的feign服务调用示例，使用consul做服务发现
 
 ## springboot-feign-provider
-feign服务提供者，包含简单的基于feign实现的服务，使用nacos做服务注册，可单独启动，入口为FeignApplication
+feign服务提供者，包含简单的基于feign实现的服务，使用consul做服务注册，可单独启动，入口为FeignApplication
 
 ## springboot-leaf
 整合美团开源的分布式ID生成服务leaf，包含记录HTTP接口耗时日志切面，数据库表初始化文件为leaf.sql
