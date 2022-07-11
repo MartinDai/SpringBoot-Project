@@ -45,7 +45,7 @@
         <commons.fileupload.version>1.3.3</commons.fileupload.version>
         <commons.io.version>2.7</commons.io.version>
         <commons.math3.version>3.6.1</commons.math3.version>
-        <curator.version>4.2.0</curator.version>
+        <curator.version>4.3.0</curator.version>
         <druid.version>1.1.10</druid.version>
         <dubbo.version>2.7.15</dubbo.version>
         <easyexcel.version>3.1.1</easyexcel.version>
@@ -55,7 +55,6 @@
         <lombok.version>1.18.20</lombok.version>
         <memcached.version>3.0.2</memcached.version>
         <mybatis.version>3.5.10</mybatis.version>
-        <nacos.version>0.2.7</nacos.version>
         <perf4j.version>0.9.16</perf4j.version>
         <poi.version>5.2.1</poi.version>
         <redisson.version>3.15.3</redisson.version>
@@ -63,11 +62,11 @@
         <seata.version>1.4.0</seata.version>
         <sentinel.version>1.8.0</sentinel.version>
         <sharding-sphere.version>4.1.1</sharding-sphere.version>
-        <spring-boot.version>2.4.13</spring-boot.version>
-        <spring-cloud.version>2020.0.1</spring-cloud.version>
-        <alibaba-cloud.version>2021.1</alibaba-cloud.version>
+        <spring-boot.version>2.6.9</spring-boot.version>
+        <spring-cloud.version>2021.0.1</spring-cloud.version>
+        <alibaba-cloud.version>2021.0.1.0</alibaba-cloud.version>
         <xmemcached.version>2.4.3</xmemcached.version>
-        <zk.version>3.4.14</zk.version>
+        <zookeeper.version>3.4.14</zookeeper.version>
     </properties>
 
     <dependencyManagement>
@@ -89,19 +88,12 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- Dubbo Dependencies -->
             <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo-dependencies-bom</artifactId>
-                <version>${dubbo.version}</version>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${alibaba-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-framework-bom</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
 
             <!-- Project module -->
@@ -335,24 +327,27 @@
                 <version>${xmemcached.version}</version>
             </dependency>
 
-            <!-- zookeeper -->
+            <!-- zookeeper client-->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
-                <version>${zk.version}</version>
+                <version>${zookeeper.version}</version>
                 <exclusions>
                     <exclusion>
                         <artifactId>log4j</artifactId>
                         <groupId>log4j</groupId>
                     </exclusion>
                 </exclusions>
-            </dependency>
-
-            <!-- zookeeper client-->
-            <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-recipes</artifactId>
-                <version>${curator.version}</version>
             </dependency>
 
             <dependency>
