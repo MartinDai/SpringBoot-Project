@@ -53,7 +53,7 @@ services:
     depends_on:
       - elasticsearch-master
   cerebro:
-    image: lmenezes/cerebro:0.9.4
+    image: martindai/cerebro:0.9.4
     container_name: cerebro
     ports:
       - 9000:9000
