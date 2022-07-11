@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  consul:
+    image: consul:1.12.2
+    container_name: consul
+    restart: always
+    command: agent -bootstrap-expect=1
+    volumes:
+      - ./consul/config/:/consul/config/
+      - ./consul/data/:/consul/data/
+    ports:
+      - "8500:8500"
+      - "8600:8600/tcp"
+      - "8600:8600/udp"
+    networks:
+      - consul
+networks:
+  consul:
+    driver: bridge

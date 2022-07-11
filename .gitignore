@@ -10,6 +10,7 @@ target/
 *.iml
 
 # Temp file
+/docker/consul/data/
 /docker/elasticsearch/master/data/
 /docker/elasticsearch/master/logs/
 /docker/elasticsearch/master/plugins/

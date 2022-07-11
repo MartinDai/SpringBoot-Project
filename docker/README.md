@@ -8,6 +8,13 @@
 docker-compose -f docker-compose-cache.yml up -d
 ```
 
+### consul服务
+
+```
+docker-compose -f docker-compose-consul.yml up -d
+```
+- 后台管理页面：http://localhost:8500
+
 ### Elasticsearch主从集群+Kibana服务+Cerebro服务
 
 ```
