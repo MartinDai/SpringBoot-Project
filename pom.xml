@@ -39,19 +39,19 @@
         <maven.test.skip>true</maven.test.skip>
 
         <!-- 第三方jar包版本 -->
-        <commons.collections4.version>4.3</commons.collections4.version>
+        <commons.collections4.version>4.4</commons.collections4.version>
         <commons.email.version>1.5</commons.email.version>
         <commons.fileupload.version>1.4</commons.fileupload.version>
-        <commons.io.version>2.7</commons.io.version>
+        <commons.io.version>2.11.0</commons.io.version>
         <commons.math3.version>3.6.1</commons.math3.version>
         <curator.version>4.3.0</curator.version>
         <druid.version>1.1.10</druid.version>
         <dubbo.version>2.7.15</dubbo.version>
         <easyexcel.version>3.1.1</easyexcel.version>
         <fastjson.version>1.2.83</fastjson.version>
-        <guava.version>30.1.1-jre</guava.version>
+        <guava.version>31.1-jre</guava.version>
         <hutool.version>5.6.4</hutool.version>
-        <lombok.version>1.18.20</lombok.version>
+        <lombok.version>1.18.24</lombok.version>
         <memcached.version>3.0.2</memcached.version>
         <mybatis.version>3.5.10</mybatis.version>
         <perf4j.version>0.9.16</perf4j.version>
