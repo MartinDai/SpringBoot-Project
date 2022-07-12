@@ -10,8 +10,3 @@ spring:
       discovery:
         instanceId: ${spring.application.name}:${random.value}
         healthCheckInterval: 15s
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
