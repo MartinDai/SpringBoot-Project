@@ -35,19 +35,11 @@ docker-compose -f docker-compose-monitor.yml up -d
 - 如果要结合JMX配置监控项目，请参考`monitor/README.md`中的说明启动项目，然后需要修改当前目录下的`prometheus/config/prometheus.yml`最后一行配置中的ip为本地内网IP
 - 启动以后在grafana添加prometheus数据源，然后可以通过链接`https://grafana.com/grafana/dashboards/8563` 导入dashboard，该dashboard包含了常用的JVM监控维度信息
 
-  
 ### MySQL服务
 
 ```
 docker-compose -f docker-compose-mysql.yml up -d
 ```
-
-### Nacos服务
-
-```
-docker-compose -f docker-compose-nacos.yml up -d
-```
-- 后台管理页面：http://localhost:8848，账号/密码：nacos
 
 ### RocketMQ的NameServer和Broker服务
 

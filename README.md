@@ -72,9 +72,6 @@ feign服务提供者，包含简单的基于feign实现的服务，使用consul�
 ## springboot-leaf
 整合美团开源的分布式ID生成服务leaf，包含记录HTTP接口耗时日志切面，数据库表初始化文件为leaf.sql
 
-## springboot-nacos
-包含基于nacos做配置服务的简单示例，
-
 ## springboot-netty
 包含基于netty+websocket实现的简易聊天室功能，入口页面为chat-netty.html
 
