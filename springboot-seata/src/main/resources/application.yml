@@ -6,10 +6,12 @@ spring:
   main:
     allow-bean-definition-overriding: true
   cloud:
-    alibaba:
-      nacos:
-        discovery:
-          server-addr: 127.0.0.1:8848
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
+        healthCheckInterval: 15s
 
 #====================================Feign Config===============================================
 feign:

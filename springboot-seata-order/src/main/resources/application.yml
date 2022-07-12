@@ -14,10 +14,12 @@ spring:
     max-wait: 60000
     max-active: 100
   cloud:
-    alibaba:
-      nacos:
-        discovery:
-          server-addr: 127.0.0.1:8848
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
+        healthCheckInterval: 15s
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
 
