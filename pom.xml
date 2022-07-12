@@ -20,7 +20,6 @@
         <module>springboot-feign-consumer</module>
         <module>springboot-feign-provider</module>
         <module>springboot-leaf</module>
-        <module>springboot-nacos</module>
         <module>springboot-netty</module>
         <module>springboot-rocketmq-consumer</module>
         <module>springboot-rocketmq-producer</module>
@@ -149,11 +148,6 @@
             </dependency>
             <dependency>
                 <groupId>com.doodl6</groupId>
-                <artifactId>springboot-nacos</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.doodl6</groupId>
                 <artifactId>springboot-netty</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -187,11 +181,6 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-                <version>${alibaba-cloud.version}</version>
-            </dependency>
-             <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
                 <version>${alibaba-cloud.version}</version>
             </dependency>
 

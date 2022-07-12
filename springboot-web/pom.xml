@@ -50,11 +50,6 @@
 
         <dependency>
             <groupId>com.doodl6</groupId>
-            <artifactId>springboot-nacos</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.doodl6</groupId>
             <artifactId>springboot-netty</artifactId>
         </dependency>
 

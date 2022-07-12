@@ -1,6 +1,8 @@
 spring:
   application:
     name: springboot-web
+  main:
+    allow-bean-definition-overriding: true
   cloud:
     consul:
       discovery:
