@@ -199,6 +199,24 @@
                 <groupId>org.apache.shardingsphere</groupId>
                 <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
                 <version>${sharding-sphere.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-sql-parser-postgresql</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-sql-parser-oracle</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-sql-parser-sqlserver</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-sql-parser-sql92</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
