@@ -13,6 +13,6 @@ public class ExcelData {
     private String name;
 
     @ExcelProperty("年龄")
-    private int age;
+    private String age;
 
 }
