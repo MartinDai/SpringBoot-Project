@@ -174,7 +174,7 @@ public class CacheController {
      *
      * @param expireTime 过期时间，单位：秒
      */
-    @RequestMapping("/testRedisLock")
+    @PostMapping("/testRedisLock")
     public MapResponse testRedisLock(String key, Integer expireTime) throws InterruptedException {
         Assert.isTrue(StringUtils.isNotBlank(key), "key不能为空");
         Assert.notNull(expireTime, "过期时间不能为空");

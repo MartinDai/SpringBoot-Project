@@ -52,6 +52,8 @@
         <fastjson.version>1.2.83</fastjson.version>
         <guava.version>31.1-jre</guava.version>
         <hutool.version>5.8.4</hutool.version>
+        <javassist.version>3.25.0-GA</javassist.version>
+        <knife4j.version>3.0.3</knife4j.version>
         <lombok.version>1.18.24</lombok.version>
         <memcached.version>3.0.2</memcached.version>
         <mybatis.version>3.5.10</mybatis.version>
@@ -63,6 +65,8 @@
         <sharding-sphere.version>4.1.1</sharding-sphere.version>
         <spring-boot.version>2.6.9</spring-boot.version>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
+        <springfox.version>3.0.0</springfox.version>
+        <swagger2.version>1.5.22</swagger2.version>
         <alibaba-cloud.version>2021.0.1.0</alibaba-cloud.version>
         <xmemcached.version>2.4.7</xmemcached.version>
         <zookeeper.version>3.4.14</zookeeper.version>
@@ -403,6 +407,34 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>${javassist.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${springfox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
             </dependency>
 
         </dependencies>

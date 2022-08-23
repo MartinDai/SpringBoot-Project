@@ -3,6 +3,7 @@ package com.doodl6.springboot.zookeeper;
 import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.zookeeper.service.ZookeeperService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +23,7 @@ public class ZookeeperController {
     /**
      * 获取独占锁，然后执行业务
      */
-    @RequestMapping("/doXLockBiz")
+    @PostMapping("/doXLockBiz")
     public BaseResponse<String> doLockBiz() {
         String result;
         boolean lockSuccess = false;
@@ -52,7 +53,7 @@ public class ZookeeperController {
     /**
      * 获取写锁，然后执行业务
      */
-    @RequestMapping("/doWriteLockBiz")
+    @PostMapping("/doWriteLockBiz")
     public BaseResponse<String> doWriteLockBiz() {
         String result;
         boolean lockSuccess = false;
@@ -82,7 +83,7 @@ public class ZookeeperController {
     /**
      * 获取读锁，然后执行业务
      */
-    @RequestMapping("/doReadLockBiz")
+    @PostMapping("/doReadLockBiz")
     public BaseResponse<String> doReadLockBiz() {
         String result;
         boolean lockSuccess = false;

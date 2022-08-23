@@ -4,7 +4,7 @@ import cn.hutool.core.lang.Assert;
 import com.doodl6.springboot.common.web.response.MapResponse;
 import com.doodl6.springboot.dao.entity.User;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +22,7 @@ public class UserController {
     /**
      * 新增用户
      */
-    @RequestMapping("/addUser")
+    @PostMapping("/addUser")
     public MapResponse addUser(String name) {
         Assert.isTrue(StringUtils.isNotBlank(name), "用户名称不能为空");
 
@@ -36,7 +36,7 @@ public class UserController {
     /**
      * 批量新增用户
      */
-    @RequestMapping("/batchAddUser")
+    @PostMapping("/batchAddUser")
     public MapResponse batchAddUser(String names) {
         Assert.isTrue(StringUtils.isNotBlank(names), "用户名称不能为空");
 
@@ -51,8 +51,8 @@ public class UserController {
     /**
      * 用户登录
      */
-    @RequestMapping("/login/{userId}")
-    public MapResponse addUser(@PathVariable Long userId) {
+    @PostMapping("/login")
+    public MapResponse addUser(Long userId) {
         Assert.notNull(userId, "用户ID不能为空");
 
         User user = userService.userLogin(userId);

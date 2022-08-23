@@ -14,6 +14,8 @@
 
 注意：本项目使用了lombok来简化Getter/Setter，所以需要安装lombok插件才能保证编译不报错
 
+本项目整合了Swagger，可以通过[http://127.0.0.1:2019/doc.html](http://127.0.0.1:2019/doc.html)查看
+
 # 模块介绍
 
 ## docker

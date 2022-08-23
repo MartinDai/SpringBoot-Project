@@ -5,11 +5,12 @@ import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.common.web.response.MapResponse;
 import com.doodl6.springboot.web.request.CheckParameterRequest;
 import com.doodl6.springboot.web.response.CheckParameterResult;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -22,7 +23,8 @@ public class StandardController {
     /**
      * 普通接口
      */
-    @RequestMapping("/hello")
+    @ApiOperation("普通接口")
+    @GetMapping("/hello")
     public MapResponse hello(String name) {
         MapResponse mapResponse = new MapResponse();
         Assert.notNull(name, "name不能为空");
@@ -35,6 +37,7 @@ public class StandardController {
     /**
      * 参数校验
      */
+    @ApiOperation("参数校验")
     @PostMapping("/parameterCheck")
     public BaseResponse<CheckParameterResult> parameterCheck(@RequestBody CheckParameterRequest request) {
 
@@ -53,7 +56,8 @@ public class StandardController {
     /**
      * 测试打印日志
      */
-    @RequestMapping("/testLog")
+    @ApiOperation("测试打印日志")
+    @GetMapping("/testLog")
     public BaseResponse<Void> testLog() {
         BaseResponse<Void> response = new BaseResponse<>();
 

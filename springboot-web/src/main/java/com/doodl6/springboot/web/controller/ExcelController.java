@@ -9,6 +9,8 @@ import com.doodl6.springboot.common.excel.ExcelVersion;
 import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.web.dto.ExcelData;
 import com.google.common.collect.Lists;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +29,7 @@ import java.util.stream.Collectors;
 /**
  * excel控制类
  */
+@Api(tags = "Excel相关")
 @RestController
 @RequestMapping("/excel")
 public class ExcelController {
@@ -34,6 +37,7 @@ public class ExcelController {
     /**
      * 下载接口
      */
+    @ApiOperation("下载文件")
     @GetMapping("download")
     public void down(HttpServletResponse response) {
         try {
@@ -64,6 +68,7 @@ public class ExcelController {
     /**
      * 上传接口
      */
+    @ApiOperation("上传文件")
     @PostMapping("upload")
     public BaseResponse<List<ExcelData>> upload(@RequestParam MultipartFile file) throws IOException {
         ExcelReader excelReader = EasyExcel.read(file.getInputStream()).head(ExcelData.class).build();

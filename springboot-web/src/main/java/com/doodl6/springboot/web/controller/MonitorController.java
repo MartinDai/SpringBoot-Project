@@ -3,6 +3,8 @@ package com.doodl6.springboot.web.controller;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.doodl6.springboot.common.web.response.BaseResponse;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +17,7 @@ import java.util.List;
 /**
  * 监控控制类
  */
+@Api(tags = "监控相关")
 @RestController
 @RequestMapping("/monitor")
 public class MonitorController {
@@ -22,6 +25,7 @@ public class MonitorController {
     /**
      * 获取堆内存使用情况
      */
+    @ApiOperation("获取堆内存使用情况")
     @GetMapping(value = "/getHeapMemoryUsage")
     public BaseResponse<JSONArray> getHeapMemoryUsage() {
         List<MemoryPoolMXBean> memoryMXBeanList = ManagementFactory.getMemoryPoolMXBeans();
