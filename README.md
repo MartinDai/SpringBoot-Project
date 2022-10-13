@@ -2,19 +2,40 @@
 
 一个整合了一些常用功能开箱即用的SpringBoot项目
 
-# 项目亮点
-
-- 包含常用框架功能基本使用示例，可参考或基于本项目快速集成需要的框架功能
-- 持续对支持的功能进行更新迭代
-- 模块划分清晰易懂，可按需自由组合各个模块
-- 提供完整的容器环境配置，方便一键启动 
-- 代码规范
-- 依赖包无冲突
-
-
 注意：本项目使用了lombok来简化Getter/Setter，所以需要安装lombok插件才能保证编译不报错
 
 本项目整合了Swagger，可以通过[http://127.0.0.1:2019/doc.html](http://127.0.0.1:2019/doc.html)查看
+
+# 涉及的重要框架和组件清单
+
+- [SpringBoot](https://github.com/spring-projects/spring-boot)
+- [Redis](https://github.com/redis/redis)
+- [Redisson](https://github.com/redisson/redisson)
+- [Memcached](https://github.com/memcached/memcached)
+- [MySQL](https://github.com/mysql/mysql-server)
+- [Leaf](https://github.com/Meituan-Dianping/Leaf)
+- [Druid](https://github.com/alibaba/druid)
+- [MyBatis](https://github.com/mybatis/mybatis-3)
+- [MyBatis-Plus](https://github.com/baomidou/mybatis-plus)
+- [Sharding-Jdbc](https://github.com/apache/shardingsphere)
+- [Seata](https://github.com/seata/seata)
+- [RocketMQ](https://github.com/apache/rocketmq)
+- [Dubbo](https://github.com/apache/dubbo)
+- [Hystrix](https://github.com/Netflix/Hystrix)
+- [Sentinel](https://github.com/alibaba/Sentinel)
+- [Feign](https://github.com/OpenFeign/feign)
+- [Netty](https://github.com/netty/netty)
+- [ZooKeeper](https://github.com/apache/zookeeper)
+- [ElasticSearch](https://github.com/elastic/elasticsearch)
+- [Consul](https://github.com/hashicorp/consul)
+- [Prometheus](https://github.com/prometheus/prometheus)
+- [Grafana](https://github.com/grafana/grafana)
+- [Swagger-ui](https://github.com/swagger-api/swagger-ui)
+- [SpringFox](https://github.com/springfox/springfox)
+- [Knife4j](https://github.com/xiaoymin/swagger-bootstrap-ui)
+- [Guava](https://github.com/google/guava)
+- [Hutool](https://github.com/dromara/hutool)
+- [EasyExcel](https://github.com/alibaba/easyexcel)
 
 # 模块介绍
 
@@ -26,9 +47,6 @@ docker目录里面包含了本项目部分模块需要依赖的的组件环境�
 
 - Memcached，整合Memcached-Java-Client和xmemcached两种客户端实现基本操作
 - Redis，使用Redisson客户端，包含常规操作、分布式锁和布隆过滤器使用示例
-
-## springboot-cloud-stream
-整合了spring cloud stream的简单使用示例
 
 ## springboot-common
 包含一些通用的工具类等

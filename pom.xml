@@ -63,7 +63,7 @@
         <redisson.version>3.17.4</redisson.version>
         <rocketmq.version>2.2.2</rocketmq.version>
         <sentinel.version>1.8.4</sentinel.version>
-        <sharding-sphere.version>4.1.1</sharding-sphere.version>
+        <sharding-jdbc.version>4.1.1</sharding-jdbc.version>
         <spring-boot.version>2.6.9</spring-boot.version>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
         <springfox.version>3.0.0</springfox.version>
@@ -184,12 +184,6 @@
             </dependency>
 
             <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-                <version>${alibaba-cloud.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>2.2.2</version>
@@ -213,7 +207,7 @@
             <dependency>
                 <groupId>org.apache.shardingsphere</groupId>
                 <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
-                <version>${sharding-sphere.version}</version>
+                <version>${sharding-jdbc.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
