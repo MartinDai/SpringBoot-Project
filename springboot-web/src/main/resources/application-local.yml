@@ -42,3 +42,6 @@ zookeeper:
 nacos:
   config:
     server-addr: 127.0.0.1:8848
+logging:
+  level:
+    com.doodl6.springboot.dao.api: DEBUG

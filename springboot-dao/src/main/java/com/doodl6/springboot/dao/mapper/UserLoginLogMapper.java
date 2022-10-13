@@ -1,15 +1,11 @@
-package com.doodl6.springboot.dao.api;
+package com.doodl6.springboot.dao.mapper;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.doodl6.springboot.dao.entity.UserLoginLog;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
-
 @Mapper
+@TableName("user_login_log")
 public interface UserLoginLogMapper extends BaseMapper<UserLoginLog> {
-
-    List<UserLoginLog> queryLastLoginLog(long userId);
-
-    int deleteAllByUserId(long userId);
-
 }

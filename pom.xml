@@ -57,6 +57,7 @@
         <lombok.version>1.18.24</lombok.version>
         <memcached.version>3.0.2</memcached.version>
         <mybatis.version>3.5.10</mybatis.version>
+        <mybatis-plus.version>3.5.2</mybatis-plus.version>
         <perf4j.version>0.9.16</perf4j.version>
         <poi.version>5.2.1</poi.version>
         <redisson.version>3.17.4</redisson.version>
@@ -197,6 +198,16 @@
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
                 <version>${mybatis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
 
             <dependency>

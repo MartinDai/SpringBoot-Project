@@ -1,8 +1,10 @@
 package com.doodl6.springboot.db.controller;
 
 import cn.hutool.core.lang.Assert;
-import com.doodl6.springboot.dao.api.UserLoginLogMapper;
-import com.doodl6.springboot.dao.api.UserMapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.doodl6.springboot.dao.mapper.UserLoginLogMapper;
+import com.doodl6.springboot.dao.mapper.UserMapper;
 import com.doodl6.springboot.dao.entity.User;
 import com.doodl6.springboot.dao.entity.UserLoginLog;
 import com.google.common.collect.Lists;
@@ -47,7 +49,9 @@ public class UserService {
                 userMapper.insert(user);
             } catch (DuplicateKeyException ignore) {
                 //忽略重复的用户
-                user = userMapper.queryByName(name);
+                QueryWrapper<User> wrapper = Wrappers.query();
+                wrapper.eq("name", name);
+                user = userMapper.selectOne(wrapper);
             }
             userList.add(user);
         }
@@ -56,7 +60,7 @@ public class UserService {
     }
 
     public User userLogin(long userId) {
-        User user = userMapper.getById(userId);
+        User user = userMapper.selectById(userId);
         Assert.notNull(user, "用户不存在");
 
         UserLoginLog userLoginLog = new UserLoginLog();
@@ -67,10 +71,4 @@ public class UserService {
         return user;
     }
 
-    public int deleteUser(long userId) {
-        User user = userMapper.getById(userId);
-        Assert.notNull(user, "用户不存在");
-
-        return userMapper.deleteById(userId);
-    }
 }

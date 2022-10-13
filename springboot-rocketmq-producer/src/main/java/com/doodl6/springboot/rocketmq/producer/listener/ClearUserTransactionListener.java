@@ -1,7 +1,7 @@
 package com.doodl6.springboot.rocketmq.producer.listener;
 
 import com.alibaba.fastjson.JSON;
-import com.doodl6.springboot.dao.api.UserMapper;
+import com.doodl6.springboot.dao.mapper.UserMapper;
 import com.doodl6.springboot.dao.entity.User;
 import com.doodl6.springboot.rocketmq.producer.ProducerConstants;
 import com.doodl6.springboot.rocketmq.producer.domain.TransactionMessageObj;
@@ -56,7 +56,7 @@ public class ClearUserTransactionListener implements RocketMQLocalTransactionLis
         long userId = Long.parseLong(msgStr);
         log.info("收到检查清除用户本地事务状态消息 | {}", userId);
 
-        User user = userMapper.getById(userId);
+        User user = userMapper.selectById(userId);
         return user == null ? RocketMQLocalTransactionState.COMMIT : RocketMQLocalTransactionState.ROLLBACK;
     }
 }

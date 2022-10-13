@@ -30,9 +30,6 @@ spring:
             inline:
               sharding-column: user_id
               algorithm-expression: user_login_log_$->{user_id % 2}
-mybatis:
-  type-aliases-package: com.doodl6.springboot.dao.entity
-  mapper-locations: classpath*:mapper/*.xml
 dubbo:
   scan:
       base-packages: com.doodl6.springboot.dubbo
