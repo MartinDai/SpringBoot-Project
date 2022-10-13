@@ -1,10 +1,10 @@
 # SpringBoot-Project
 
-一个整合了一些常用功能开箱即用的SpringBoot项目
+一个整合了一些常用功能开箱即用的SpringBoot项目，模块划分清晰易懂，可按需自由组合各个模块运行。
 
 注意：本项目使用了lombok来简化Getter/Setter，所以需要安装lombok插件才能保证编译不报错
 
-本项目整合了Swagger，可以通过[http://127.0.0.1:2019/doc.html](http://127.0.0.1:2019/doc.html)查看
+本项目整合了Swagger，启动web模块后可以通过[http://127.0.0.1:2019/doc.html](http://127.0.0.1:2019/doc.html)查看
 
 # 涉及的重要框架和组件清单
 
