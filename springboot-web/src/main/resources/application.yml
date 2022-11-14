@@ -31,11 +31,9 @@ spring:
               sharding-column: user_id
               algorithm-expression: user_login_log_$->{user_id % 2}
 dubbo:
-  scan:
-      base-packages: com.doodl6.springboot.dubbo
   protocol:
     name: dubbo
-    port: 20880
+    port: 20881
   consumer:
     filter: dubboTraceFilter
 rocketmq:
