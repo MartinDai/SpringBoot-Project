@@ -32,7 +32,7 @@
 
         <dependency>
             <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
+            <artifactId>curator-x-discovery</artifactId>
         </dependency>
 
         <dependency>

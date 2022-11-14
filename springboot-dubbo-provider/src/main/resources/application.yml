@@ -4,8 +4,6 @@ spring:
   profiles:
     active: local
 dubbo:
-  scan:
-    base-packages: com.doodl6.springboot.dubbo.provider.service
   protocol:
     name: dubbo
     port: 20880
