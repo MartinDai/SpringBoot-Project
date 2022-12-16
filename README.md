@@ -37,6 +37,12 @@
 - [Hutool](https://github.com/dromara/hutool)
 - [EasyExcel](https://github.com/alibaba/easyexcel)
 
+# 打包编译
+
+```shell
+./mvnw clean install
+```
+
 # 模块介绍
 
 ## docker
