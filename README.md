@@ -20,6 +20,7 @@
 - [Sharding-Jdbc](https://github.com/apache/shardingsphere)
 - [Seata](https://github.com/seata/seata)
 - [RocketMQ](https://github.com/apache/rocketmq)
+- [RocketMQ-Spring](https://github.com/apache/rocketmq-spring)
 - [Dubbo](https://github.com/apache/dubbo)
 - [Hystrix](https://github.com/Netflix/Hystrix)
 - [Sentinel](https://github.com/alibaba/Sentinel)
