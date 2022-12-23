@@ -84,7 +84,7 @@ dubbo服务消费者，内容包含
 - 整合Sentinel限流
 - 自定义Filter统计服务调用耗时日志
 
-## springboot-dubbo-consumer
+## springboot-dubbo-provider
 dubbo服务提供者，包含基于dubbo-api模块实现的dubbo服务，可单独启动，入口为DubboApplication
 
 ## springboot-elasticsearch
