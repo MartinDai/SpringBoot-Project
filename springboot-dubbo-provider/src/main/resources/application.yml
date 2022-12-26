@@ -5,5 +5,7 @@ spring:
     active: local
 dubbo:
   protocol:
-    name: dubbo
-    port: 20880
+    rest:
+      port: 8080
+    dubbo:
+      port: 20880

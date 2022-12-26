@@ -11,7 +11,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 
 
 @Slf4j
-@DubboService(version = "${dubbo.service.firstDubbo.version}", timeout = 10000)
+@DubboService(version = "${dubbo.service.firstDubbo.version}", timeout = 10000, protocol = {"dubbo", "rest"})
 public class FirstDubboServiceImpl implements FirstDubboService {
 
     @Override

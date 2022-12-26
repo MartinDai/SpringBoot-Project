@@ -85,7 +85,18 @@ dubbo服务消费者，内容包含
 - 自定义Filter统计服务调用耗时日志
 
 ## springboot-dubbo-provider
-dubbo服务提供者，包含基于dubbo-api模块实现的dubbo服务，可单独启动，入口为DubboApplication
+dubbo服务提供者，包含基于dubbo-api模块实现的dubbo服务，提供了两种协议（dubbo和rest）
+
+可单独启动，入口为DubboApplication
+
+rest协议调用
+```shell
+curl --location --request POST 'http://127.0.0.1:8080/dubbo-rest/getDubboInfo' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": 1
+}'
+```
 
 ## springboot-elasticsearch
 包含elasticsearch服务基本crud操作

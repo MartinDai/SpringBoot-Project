@@ -61,6 +61,7 @@
         <perf4j.version>0.9.16</perf4j.version>
         <poi.version>5.2.1</poi.version>
         <redisson.version>3.17.4</redisson.version>
+        <resteasy.version>3.15.3.Final</resteasy.version>
         <rocketmq.version>5.0.0</rocketmq.version>
         <rocketmq-spring.version>2.2.2</rocketmq-spring.version>
         <sentinel.version>1.8.4</sentinel.version>
@@ -477,6 +478,27 @@
                 <groupId>com.google.errorprone</groupId>
                 <artifactId>error_prone_annotations</artifactId>
                 <version>2.11.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jaxrs</artifactId>
+                <version>${resteasy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-client</artifactId>
+                <version>${resteasy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-netty4</artifactId>
+                <version>${resteasy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jackson-provider</artifactId>
+                <version>${resteasy.version}</version>
             </dependency>
 
         </dependencies>
