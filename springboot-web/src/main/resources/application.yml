@@ -55,3 +55,5 @@ rocketmq:
     orderlyMessage:
       group: orderlyMessageGroup
       topic: OrderlyMessage
+springdoc:
+  packagesToScan: com.doodl6

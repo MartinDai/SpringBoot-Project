@@ -32,7 +32,7 @@
 - [Prometheus](https://github.com/prometheus/prometheus)
 - [Grafana](https://github.com/grafana/grafana)
 - [Swagger-ui](https://github.com/swagger-api/swagger-ui)
-- [SpringFox](https://github.com/springfox/springfox)
+- [Springdoc-openapi](https://github.com/springdoc/springdoc-openapi)
 - [Knife4j](https://github.com/xiaoymin/swagger-bootstrap-ui)
 - [Guava](https://github.com/google/guava)
 - [Hutool](https://github.com/dromara/hutool)

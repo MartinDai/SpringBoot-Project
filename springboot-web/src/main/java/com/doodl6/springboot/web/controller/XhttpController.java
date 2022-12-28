@@ -1,7 +1,7 @@
 package com.doodl6.springboot.web.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +15,7 @@ import java.io.PrintWriter;
  * 可以支持实时输出内容，供xhttp.html页面使用
  * Created by daixiaoming on 2018/12/20.
  */
-@Api(tags = "Xhttp")
+@Tag(name = "Xhttp")
 @RestController
 @RequestMapping("/xhttp")
 public class XhttpController {
@@ -23,7 +23,7 @@ public class XhttpController {
     /**
      * 获取响应内容
      */
-    @ApiOperation("获取响应内容")
+    @Operation(summary = "获取响应内容")
     @GetMapping("/getResponseContent")
     public void getResponseContent(HttpServletResponse response, String content) throws IOException, InterruptedException {
         if (StringUtils.isEmpty(content)) {

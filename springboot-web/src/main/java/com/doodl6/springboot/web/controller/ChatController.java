@@ -6,8 +6,8 @@ import com.doodl6.springboot.web.vo.MessageVo;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Queues;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +27,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 聊天控制类，基于异步请求实现
  * Created by daixiaoming on 2018-12-10.
  */
-@Api(tags = "聊天控制")
+@Tag(name = "聊天控制")
 @RestController
 @RequestMapping("/chat")
 public class ChatController {
@@ -47,7 +47,7 @@ public class ChatController {
     /**
      * 拉取数据，如果没有数据，会hold一段时间
      */
-    @ApiOperation("拉取数据")
+    @Operation(summary = "拉取数据")
     @GetMapping("/pullData")
     public DeferredResult<BaseResponse<List<MessageVo>>> pullData(Integer userId) {
 
@@ -67,7 +67,7 @@ public class ChatController {
     /**
      * 进入聊天室
      */
-    @ApiOperation("进入聊天室")
+    @Operation(summary = "进入聊天室")
     @PostMapping("/intoChatRoom")
     public BaseResponse<Integer> intoChatRoom(String userName) {
 
@@ -87,7 +87,7 @@ public class ChatController {
     /**
      * 发送聊天信息
      */
-    @ApiOperation("发送聊天信息")
+    @Operation(summary = "发送聊天信息")
     @PostMapping("/sendMessage")
     public BaseResponse<Void> sendMessage(Integer userId, String content) {
         Assert.notNull(userId, "用户ID不能为空");
