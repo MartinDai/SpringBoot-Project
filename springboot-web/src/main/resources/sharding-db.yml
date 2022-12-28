@@ -1,0 +1,40 @@
+mode:
+  type: Standalone
+  repository:
+    type: JDBC
+dataSources:
+  ds_0:
+    dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/spring_project_1
+    username: root
+    password: martin-local
+  ds_1:
+    dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/spring_project_2
+    username: root
+    password: martin-local
+rules:
+  - !SHARDING
+    tables:
+      user_login_log:
+        actualDataNodes: ds_${0..1}.user_login_log_${0..1}
+        tableStrategy:
+          standard:
+            shardingColumn: user_id
+            shardingAlgorithmName: user_login_log_inline
+    defaultShardingColumn: user_id
+    defaultDatabaseStrategy:
+      standard:
+        shardingColumn: user_id
+        shardingAlgorithmName: database_inline
+    shardingAlgorithms:
+      database_inline:
+        type: INLINE
+        props:
+          algorithm-expression: ds_${user_id % 2}
+      user_login_log_inline:
+        type: INLINE
+        props:
+          algorithm-expression: user_login_log_${user_id % 2}

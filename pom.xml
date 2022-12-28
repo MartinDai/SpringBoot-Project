@@ -65,7 +65,8 @@
         <rocketmq.version>5.0.0</rocketmq.version>
         <rocketmq-spring.version>2.2.2</rocketmq-spring.version>
         <sentinel.version>1.8.4</sentinel.version>
-        <sharding-jdbc.version>4.1.1</sharding-jdbc.version>
+        <sharding-jdbc.version>5.3.0</sharding-jdbc.version>
+        <snakeyaml.version>1.33</snakeyaml.version>
         <spring-boot.version>2.6.9</spring-boot.version>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
         <springfox.version>3.0.0</springfox.version>
@@ -208,12 +209,20 @@
 
             <dependency>
                 <groupId>org.apache.shardingsphere</groupId>
-                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <artifactId>shardingsphere-jdbc-core</artifactId>
                 <version>${sharding-jdbc.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-sql-parser-sql92</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
                         <artifactId>shardingsphere-sql-parser-postgresql</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-postgresql-dialect-exception</artifactId>
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
@@ -225,7 +234,15 @@
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
-                        <artifactId>shardingsphere-sql-parser-sql92</artifactId>
+                        <artifactId>shardingsphere-sql-parser-opengauss</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-cluster-mode-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-db-discovery-core</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -482,6 +499,11 @@
                 <version>${resteasy.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
