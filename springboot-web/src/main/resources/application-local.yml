@@ -1,16 +1,8 @@
 server:
   port: 2019
 spring:
-  shardingsphere:
-    datasource:
-      ds-0:
-        url: jdbc:mysql://127.0.0.1:3306/spring_project_1
-        username: root
-        password: martin-local
-      ds-1:
-        url: jdbc:mysql://127.0.0.1:3306/spring_project_2
-        username: root
-        password: martin-local
+  datasource:
+    url: jdbc:shardingsphere:classpath:sharding-db.yml
   data:
     elasticsearch:
       cluster-nodes: 127.0.0.1:9300
@@ -44,4 +36,4 @@ nacos:
     server-addr: 127.0.0.1:8848
 logging:
   level:
-    com.doodl6.springboot.dao.api: DEBUG
+    com.doodl6.springboot.dao.mapper: DEBUG
