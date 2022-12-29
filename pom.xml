@@ -40,26 +40,38 @@
         <maven.test.skip>true</maven.test.skip>
 
         <!-- 第三方jar包版本 -->
-        <commons.collections4.version>4.4</commons.collections4.version>
-        <commons.email.version>1.5</commons.email.version>
-        <commons.fileupload.version>1.4</commons.fileupload.version>
-        <commons.io.version>2.11.0</commons.io.version>
-        <commons.math3.version>3.6.1</commons.math3.version>
+        <archaius-core.version>0.7.7</archaius-core.version>
+        <asm.version>9.1</asm.version>
+        <bcprov-jdk15on.version>1.70</bcprov-jdk15on.version>
+        <checker-qual.version>3.19.0</checker-qual.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <commons-email.version>1.5</commons-email.version>
+        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <commons-logging>1.2</commons-logging>
+        <commons-math3.version>3.6.1</commons-math3.version>
         <curator.version>4.3.0</curator.version>
         <druid.version>1.2.11</druid.version>
         <dubbo.version>3.1.1</dubbo.version>
         <easyexcel.version>3.1.1</easyexcel.version>
+        <errorprone.version>2.11.0</errorprone.version>
         <fastjson.version>1.2.83</fastjson.version>
         <guava.version>31.1-jre</guava.version>
+        <hdrhistogram.version>2.1.12</hdrhistogram.version>
         <hutool.version>5.8.4</hutool.version>
+        <hystrix-spring-boot.version>2.2.10.RELEASE</hystrix-spring-boot.version>
         <javassist.version>3.25.0-GA</javassist.version>
+        <jsr305.version>3.0.2</jsr305.version>
         <knife4j.version>4.0.0</knife4j.version>
         <lombok.version>1.18.24</lombok.version>
         <memcached.version>3.0.2</memcached.version>
         <mybatis.version>3.5.10</mybatis.version>
+        <mybatis-spring-boot.version>2.2.2</mybatis-spring-boot.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
         <perf4j.version>0.9.16</perf4j.version>
         <poi.version>5.2.1</poi.version>
+        <protobuf.version>3.20.1</protobuf.version>
         <redisson.version>3.17.4</redisson.version>
         <resteasy.version>3.15.3.Final</resteasy.version>
         <rocketmq.version>5.0.0</rocketmq.version>
@@ -183,13 +195,13 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-                <version>2.2.10.RELEASE</version>
+                <version>${hystrix-spring-boot.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>2.2.2</version>
+                <version>${mybatis-spring-boot.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mybatis</groupId>
@@ -284,31 +296,41 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
-                <version>${commons.collections4.version}</version>
+                <version>${commons-collections4.version}</version>
             </dependency>
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
-                <version>${commons.io.version}</version>
+                <version>${commons-io.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-math3</artifactId>
-                <version>${commons.math3.version}</version>
+                <version>${commons-math3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons-lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons-logging}</version>
             </dependency>
 
             <!-- 支持文件上传 -->
             <dependency>
                 <groupId>commons-fileupload</groupId>
                 <artifactId>commons-fileupload</artifactId>
-                <version>${commons.fileupload.version}</version>
+                <version>${commons-fileupload.version}</version>
             </dependency>
 
             <!-- 邮件支持 -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-email</artifactId>
-                <version>${commons.email.version}</version>
+                <version>${commons-email.version}</version>
             </dependency>
 
             <!-- Microsoft Documents 工具包 -->
@@ -410,13 +432,13 @@
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>
                 <artifactId>jsr305</artifactId>
-                <version>3.0.2</version>
+                <version>${jsr305.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.netflix.archaius</groupId>
                 <artifactId>archaius-core</artifactId>
-                <version>0.7.7</version>
+                <version>${archaius-core.version}</version>
             </dependency>
 
             <dependency>
@@ -431,15 +453,9 @@
             </dependency>
 
             <dependency>
-                <groupId>com.netflix.hystrix</groupId>
-                <artifactId>hystrix-core</artifactId>
-                <version>1.5.18</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.hdrhistogram</groupId>
                 <artifactId>HdrHistogram</artifactId>
-                <version>2.1.12</version>
+                <version>${hdrhistogram.version}</version>
             </dependency>
 
             <dependency>
@@ -470,12 +486,12 @@
             <dependency>
                 <groupId>org.checkerframework</groupId>
                 <artifactId>checker-qual</artifactId>
-                <version>3.19.0</version>
+                <version>${checker-qual.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.errorprone</groupId>
                 <artifactId>error_prone_annotations</artifactId>
-                <version>2.11.0</version>
+                <version>${errorprone.version}</version>
             </dependency>
 
             <dependency>
@@ -503,6 +519,23 @@
                 <groupId>org.yaml</groupId>
                 <artifactId>snakeyaml</artifactId>
                 <version>${snakeyaml.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>${asm.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>${bcprov-jdk15on.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
