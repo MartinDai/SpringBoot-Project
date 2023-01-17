@@ -65,7 +65,6 @@
         <jsr305.version>3.0.2</jsr305.version>
         <knife4j.version>4.0.0</knife4j.version>
         <lombok.version>1.18.24</lombok.version>
-        <memcached.version>3.0.2</memcached.version>
         <mybatis.version>3.5.10</mybatis.version>
         <mybatis-spring-boot.version>2.2.2</mybatis-spring-boot.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
@@ -377,11 +376,6 @@
             </dependency>
 
             <!-- Memcached client -->
-            <dependency>
-                <groupId>com.whalin</groupId>
-                <artifactId>Memcached-Java-Client</artifactId>
-                <version>${memcached.version}</version>
-            </dependency>
             <dependency>
                 <groupId>com.googlecode.xmemcached</groupId>
                 <artifactId>xmemcached</artifactId>

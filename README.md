@@ -12,6 +12,7 @@
 - [Redis](https://github.com/redis/redis)
 - [Redisson](https://github.com/redisson/redisson)
 - [Memcached](https://github.com/memcached/memcached)
+- [xmemcached](https://github.com/killme2008/xmemcached)
 - [MySQL](https://github.com/mysql/mysql-server)
 - [Leaf](https://github.com/Meituan-Dianping/Leaf)
 - [Druid](https://github.com/alibaba/druid)

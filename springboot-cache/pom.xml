@@ -17,10 +17,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.whalin</groupId>
-            <artifactId>Memcached-Java-Client</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.googlecode.xmemcached</groupId>
             <artifactId>xmemcached</artifactId>
         </dependency>

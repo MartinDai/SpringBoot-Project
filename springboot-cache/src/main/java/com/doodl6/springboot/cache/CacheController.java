@@ -1,6 +1,6 @@
 package com.doodl6.springboot.cache;
 
-import com.doodl6.springboot.cache.memcached.base.MemCachedService;
+import com.doodl6.springboot.cache.memcached.MemcachedService;
 import com.doodl6.springboot.cache.redis.RedisService;
 import com.doodl6.springboot.cache.vo.Model;
 import com.doodl6.springboot.common.web.response.BaseResponse;
@@ -24,10 +24,7 @@ import java.util.Map;
 public class CacheController {
 
     @Resource
-    private MemCachedService memCachedImpl;
-
-    @Resource
-    private MemCachedService xmemcachedImpl;
+    private MemcachedService memcachedService;
 
     @Resource
     private RedisService redisService;
@@ -42,8 +39,8 @@ public class CacheController {
         MapResponse mapResponse = new MapResponse();
 
         Model model = new Model(key, value);
-        xmemcachedImpl.set(key, model);
-        model = xmemcachedImpl.get(key, Model.class);
+        memcachedService.set(key, model);
+        model = memcachedService.get(key, Model.class);
         mapResponse.appendData("key", model);
 
         return mapResponse;
@@ -57,7 +54,7 @@ public class CacheController {
         Assert.isTrue(StringUtils.isNotBlank(key), "key不能为空");
         MapResponse mapResponse = new MapResponse();
 
-        Model value = memCachedImpl.get(key, Model.class);
+        Model value = memcachedService.get(key, Model.class);
         mapResponse.appendData("key", value);
 
         return mapResponse;
