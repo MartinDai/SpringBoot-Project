@@ -151,3 +151,7 @@ Web模块，默认整合依赖了其他所有不支持单独启动的功能模�
 
 ## springboot-zookeeper
 包含基于zookeeper实现的分布式锁示例
+
+# 感谢赞助
+
+[<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg" width="140" height="140" alt="jetbrains"/>](https://www.jetbrains.com/community/opensource/#support)
