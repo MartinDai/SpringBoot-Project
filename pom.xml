@@ -46,7 +46,7 @@
         <checker-qual.version>3.19.0</checker-qual.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-email.version>1.5</commons-email.version>
-        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <commons-fileupload.version>1.5</commons-fileupload.version>
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-logging>1.2</commons-logging>
