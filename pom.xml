@@ -52,7 +52,7 @@
         <commons-logging>1.2</commons-logging>
         <commons-math3.version>3.6.1</commons-math3.version>
         <curator.version>4.3.0</curator.version>
-        <druid.version>1.2.11</druid.version>
+        <druid.version>1.2.17</druid.version>
         <dubbo.version>3.1.5</dubbo.version>
         <easyexcel.version>3.1.1</easyexcel.version>
         <errorprone.version>2.11.0</errorprone.version>
