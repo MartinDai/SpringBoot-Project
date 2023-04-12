@@ -79,10 +79,10 @@
         <sharding-jdbc.version>5.3.0</sharding-jdbc.version>
         <snakeyaml.version>1.33</snakeyaml.version>
         <spring-boot.version>2.7.10</spring-boot.version>
-        <spring-cloud.version>2021.0.1</spring-cloud.version>
+        <spring-cloud.version>2021.0.6</spring-cloud.version>
         <springfox.version>3.0.0</springfox.version>
         <swagger2.version>1.5.22</swagger2.version>
-        <alibaba-cloud.version>2021.0.1.0</alibaba-cloud.version>
+        <alibaba-cloud.version>2021.1</alibaba-cloud.version>
         <xmemcached.version>2.4.7</xmemcached.version>
         <zookeeper.version>3.4.14</zookeeper.version>
     </properties>
