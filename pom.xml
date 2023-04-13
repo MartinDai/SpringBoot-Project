@@ -56,7 +56,7 @@
         <dubbo.version>3.1.5</dubbo.version>
         <easyexcel.version>3.1.1</easyexcel.version>
         <errorprone.version>2.11.0</errorprone.version>
-        <fastjson.version>1.2.83</fastjson.version>
+        <fastjson2.version>2.0.27</fastjson2.version>
         <guava.version>31.1-jre</guava.version>
         <hdrhistogram.version>2.1.12</hdrhistogram.version>
         <hutool.version>5.8.4</hutool.version>
@@ -73,7 +73,7 @@
         <protobuf.version>3.20.3</protobuf.version>
         <redisson.version>3.17.4</redisson.version>
         <resteasy.version>3.15.3.Final</resteasy.version>
-        <rocketmq.version>5.0.0</rocketmq.version>
+        <rocketmq.version>5.1.0</rocketmq.version>
         <rocketmq-spring.version>2.2.2</rocketmq-spring.version>
         <sentinel.version>1.8.4</sentinel.version>
         <sharding-jdbc.version>5.3.0</sharding-jdbc.version>
@@ -262,6 +262,12 @@
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.alibaba</groupId>
+                        <artifactId>fastjson</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
@@ -363,9 +369,9 @@
 
             <!-- alibaba开源的JSON库 -->
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
             </dependency>
 
             <!-- Google 开源的集合框架包 -->

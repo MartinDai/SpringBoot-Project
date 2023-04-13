@@ -1,6 +1,6 @@
 package com.doodl6.springboot.common.web.filter;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.doodl6.springboot.common.web.context.RequestParamContext;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.annotation.Order;

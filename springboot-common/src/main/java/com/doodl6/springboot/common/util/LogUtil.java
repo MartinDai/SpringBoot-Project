@@ -1,6 +1,7 @@
 package com.doodl6.springboot.common.util;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
+import com.doodl6.springboot.common.model.Page;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -29,5 +30,10 @@ public class LogUtil {
         }
 
         return logBuilder.toString();
+    }
+
+    public static void main(String[] args) {
+        Page<Object> page = new Page<>();
+        System.out.println(JSON.toJSONString(page));
     }
 }

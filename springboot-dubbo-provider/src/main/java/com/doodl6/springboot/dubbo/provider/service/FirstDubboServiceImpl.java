@@ -1,7 +1,7 @@
 package com.doodl6.springboot.dubbo.provider.service;
 
 import cn.hutool.core.lang.Assert;
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.doodl6.springboot.dubbo.api.FirstDubboService;
 import com.doodl6.springboot.dubbo.api.domain.DubboDomain;
 import com.doodl6.springboot.dubbo.api.request.GetDubboInfoRequest;
