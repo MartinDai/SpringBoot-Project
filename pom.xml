@@ -53,7 +53,7 @@
         <commons-math3.version>3.6.1</commons-math3.version>
         <curator.version>4.3.0</curator.version>
         <druid.version>1.2.17</druid.version>
-        <dubbo.version>3.1.5</dubbo.version>
+        <dubbo.version>3.2.0</dubbo.version>
         <easyexcel.version>3.1.1</easyexcel.version>
         <errorprone.version>2.11.0</errorprone.version>
         <fastjson2.version>2.0.27</fastjson2.version>
@@ -63,6 +63,7 @@
         <hystrix-spring-boot.version>2.2.10.RELEASE</hystrix-spring-boot.version>
         <javassist.version>3.25.0-GA</javassist.version>
         <jsr305.version>3.0.2</jsr305.version>
+        <jrs.version>2.1.1</jrs.version>
         <knife4j.version>4.0.0</knife4j.version>
         <lombok.version>1.18.24</lombok.version>
         <mybatis.version>3.5.10</mybatis.version>
@@ -73,7 +74,7 @@
         <protobuf.version>3.20.3</protobuf.version>
         <redisson.version>3.17.4</redisson.version>
         <resteasy.version>3.15.3.Final</resteasy.version>
-        <rocketmq.version>5.1.0</rocketmq.version>
+        <rocketmq.version>5.0.0</rocketmq.version>
         <rocketmq-spring.version>2.2.2</rocketmq-spring.version>
         <sentinel.version>1.8.4</sentinel.version>
         <sharding-jdbc.version>5.3.0</sharding-jdbc.version>
@@ -86,6 +87,13 @@
         <xmemcached.version>2.4.7</xmemcached.version>
         <zookeeper.version>3.4.14</zookeeper.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+    </repositories>
 
     <dependencyManagement>
         <dependencies>
@@ -536,6 +544,12 @@
                 <groupId>com.google.protobuf</groupId>
                 <artifactId>protobuf-java</artifactId>
                 <version>${protobuf.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>${jrs.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
