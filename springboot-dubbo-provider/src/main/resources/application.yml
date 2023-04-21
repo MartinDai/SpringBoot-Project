@@ -4,6 +4,8 @@ spring:
   profiles:
     active: local
 dubbo:
+  application:
+    qos-port: 20990
   protocol:
     rest:
       port: 8080

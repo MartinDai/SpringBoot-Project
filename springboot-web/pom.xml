@@ -18,55 +18,55 @@
 
         <!-- 功能模块，可按需添加或移除 -->
 
-<!--        <dependency>-->
-<!--            <groupId>com.doodl6</groupId>-->
-<!--            <artifactId>springboot-cache</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.doodl6</groupId>
+            <artifactId>springboot-cache</artifactId>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.doodl6</groupId>-->
-<!--            <artifactId>springboot-db-controller</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.doodl6</groupId>
+            <artifactId>springboot-db-controller</artifactId>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.doodl6</groupId>-->
-<!--            <artifactId>springboot-dubbo-consumer</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.doodl6</groupId>
+            <artifactId>springboot-dubbo-consumer</artifactId>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.doodl6</groupId>-->
-<!--            <artifactId>springboot-elasticsearch</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.doodl6</groupId>
+            <artifactId>springboot-elasticsearch</artifactId>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.doodl6</groupId>-->
-<!--            <artifactId>springboot-feign-consumer</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.doodl6</groupId>
+            <artifactId>springboot-feign-consumer</artifactId>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.doodl6</groupId>-->
-<!--            <artifactId>springboot-leaf</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.doodl6</groupId>
+            <artifactId>springboot-leaf</artifactId>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.doodl6</groupId>-->
-<!--            <artifactId>springboot-netty</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.doodl6</groupId>
+            <artifactId>springboot-netty</artifactId>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.doodl6</groupId>-->
-<!--            <artifactId>springboot-rocketmq-consumer</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.doodl6</groupId>
+            <artifactId>springboot-rocketmq-consumer</artifactId>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.doodl6</groupId>-->
-<!--            <artifactId>springboot-rocketmq-producer</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.doodl6</groupId>
+            <artifactId>springboot-rocketmq-producer</artifactId>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.doodl6</groupId>-->
-<!--            <artifactId>springboot-zookeeper</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.doodl6</groupId>
+            <artifactId>springboot-zookeeper</artifactId>
+        </dependency>
 
         <!-- 功能模块结束 -->
 

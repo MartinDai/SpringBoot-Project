@@ -122,6 +122,14 @@
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-bom</artifactId>
+                <version>3.2.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!-- Project Modules -->
             <dependency>
                 <groupId>com.doodl6</groupId>
