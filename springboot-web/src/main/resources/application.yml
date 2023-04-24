@@ -17,7 +17,7 @@ dubbo:
     name: dubbo
     port: 20881
   consumer:
-    filter: dubboTraceFilter
+    filter: dubboTrace
 rocketmq:
   producer:
     group: chatRecordGroup

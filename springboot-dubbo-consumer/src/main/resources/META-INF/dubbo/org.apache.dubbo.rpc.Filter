@@ -1,0 +1,1 @@
+dubboTrace=com.doodl6.springboot.dubbo.consumer.filter.DubboTraceFilter
