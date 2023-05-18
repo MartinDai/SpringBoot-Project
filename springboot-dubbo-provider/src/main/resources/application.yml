@@ -6,6 +6,8 @@ spring:
 dubbo:
   application:
     qos-port: 20990
+  metrics:
+    protocol: prometheus
   protocol:
     rest:
       port: 8080
