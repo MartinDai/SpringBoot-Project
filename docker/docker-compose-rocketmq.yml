@@ -17,14 +17,14 @@ services:
       NAMESRV_ADDR: "namesrv:9876"
       JAVA_OPTS: "-Duser.home=/opt"
       JAVA_OPT_EXT: "-server -Xms256m -Xmx512m"
-    command: sh mqbroker -c /home/rocketmq/rocketmq-4.9.2/conf/broker.conf
+    command: sh mqbroker -c /home/rocketmq/rocketmq-5.1.0/conf/broker.conf
     ports:
       - 10909:10909
       - 10911:10911
     volumes:
       - ./rocketmq/broker/logs:/home/rocketmq/logs
       - ./rocketmq/broker/store:/home/rocketmq/store
-      - ./rocketmq/broker/conf/broker.conf:/home/rocketmq/rocketmq-4.9.2/conf/broker.conf
+      - ./rocketmq/broker/conf/broker.conf:/home/rocketmq/rocketmq-5.1.0/conf/broker.conf
     networks:
       - net-rocketmq
     depends_on:
