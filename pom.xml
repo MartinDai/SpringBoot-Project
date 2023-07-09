@@ -57,7 +57,7 @@
         <easyexcel.version>3.1.1</easyexcel.version>
         <errorprone.version>2.11.0</errorprone.version>
         <fastjson2.version>2.0.31</fastjson2.version>
-        <guava.version>32.0.0-jre</guava.version>
+        <guava.version>32.1.1-jre</guava.version>
         <hdrhistogram.version>2.1.12</hdrhistogram.version>
         <hutool.version>5.8.4</hutool.version>
         <hystrix-spring-boot.version>2.2.10.RELEASE</hystrix-spring-boot.version>
