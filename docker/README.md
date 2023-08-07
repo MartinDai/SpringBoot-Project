@@ -4,20 +4,20 @@
 
 ### Memcached和Redis服务
 
-```
+```bash
 docker-compose -f docker-compose-cache.yml up -d
 ```
 
 ### consul服务
 
-```
+```bash
 docker-compose -f docker-compose-consul.yml up -d
 ```
 - 后台管理页面：http://localhost:8500
 
 ### Elasticsearch主从集群+Kibana服务+Cerebro服务
 
-```
+```bash
 docker-compose -f docker-compose-es.yml up -d
 ```
 - 注意需要修改当前目录下的`elasticsearch/master/config/elasticsearch.yml`和`elasticsearch/master/config/elasticsearch.yml`两个文件中的ip为本机内网IP
@@ -27,7 +27,7 @@ docker-compose -f docker-compose-es.yml up -d
 
 ### Prometheus+Grafana服务
 
-```
+```bash
 docker-compose -f docker-compose-monitor.yml up -d
 ```
 - prometheus管理页面：http://localhost:9090/graph
@@ -37,13 +37,13 @@ docker-compose -f docker-compose-monitor.yml up -d
 
 ### MySQL服务
 
-```
+```bash
 docker-compose -f docker-compose-mysql.yml up -d
 ```
 
 ### RocketMQ的NameServer和Broker服务
 
-```
+```bash
 docker-compose -f docker-compose-rocketmq.yml up -d
 ```
 - 注意需要修改基于当前目录下的rocketmq/broker/conf/broker.conf文件内的brokerIP1属性为本机内网IP
@@ -51,12 +51,12 @@ docker-compose -f docker-compose-rocketmq.yml up -d
 
 ### Zookeeper集群
 
-```
+```bash
 docker-compose -f docker-compose-zk.yml up -d
 ```
 
 ### Seata-Server服务
 
-```
+```bash
 docker-compose -f docker-compose-seata.yml up -d
 ```
