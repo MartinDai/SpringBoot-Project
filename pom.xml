@@ -85,7 +85,7 @@
         <swagger2.version>1.5.22</swagger2.version>
         <alibaba-cloud.version>2021.1</alibaba-cloud.version>
         <xmemcached.version>2.4.7</xmemcached.version>
-        <zookeeper.version>3.4.14</zookeeper.version>
+        <zookeeper.version>3.7.2</zookeeper.version>
     </properties>
 
     <repositories>
