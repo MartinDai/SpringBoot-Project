@@ -59,7 +59,7 @@
         <fastjson2.version>2.0.31</fastjson2.version>
         <guava.version>32.1.1-jre</guava.version>
         <hdrhistogram.version>2.1.12</hdrhistogram.version>
-        <hutool.version>5.8.4</hutool.version>
+        <hutool.version>5.8.22</hutool.version>
         <hystrix-spring-boot.version>2.2.10.RELEASE</hystrix-spring-boot.version>
         <javassist.version>3.25.0-GA</javassist.version>
         <jsr305.version>3.0.2</jsr305.version>
