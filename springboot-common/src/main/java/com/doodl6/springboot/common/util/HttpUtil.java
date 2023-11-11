@@ -3,6 +3,7 @@ package com.doodl6.springboot.common.util;
 import com.google.common.collect.Lists;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -22,6 +23,7 @@ import java.util.Map;
 /**
  * 基于 httpclient 4.3.1版本的 http工具类
  */
+@Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class HttpUtil {
 
@@ -81,7 +83,7 @@ public class HttpUtil {
             response.close();
             return result;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("do get error, url:" + url, e);
         }
         return null;
     }
@@ -111,7 +113,7 @@ public class HttpUtil {
                 }
             }
             HttpPost httpPost = new HttpPost(url);
-            if (pairs != null && pairs.size() > 0) {
+            if (pairs != null && !pairs.isEmpty()) {
                 httpPost.setEntity(new UrlEncodedFormEntity(pairs, charset));
             }
             CloseableHttpResponse response = httpClient.execute(httpPost);
@@ -129,16 +131,9 @@ public class HttpUtil {
             response.close();
             return result;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("do post error, url:" + url, e);
         }
         return null;
-    }
-
-    public static void main(String[] args) {
-        String getData = doGet("http://www.oschina.net/", null);
-        System.out.println(getData);
-        String postData = doPost("http://www.oschina.net/", null);
-        System.out.println(postData);
     }
 
 }

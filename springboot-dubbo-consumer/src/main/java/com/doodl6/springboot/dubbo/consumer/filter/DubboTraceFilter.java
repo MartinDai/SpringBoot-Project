@@ -1,8 +1,8 @@
 package com.doodl6.springboot.dubbo.consumer.filter;
 
-import com.alibaba.dubbo.common.Constants;
-import com.alibaba.dubbo.common.extension.Activate;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.common.constants.CommonConstants;
+import org.apache.dubbo.common.extension.Activate;
 import org.apache.dubbo.rpc.Filter;
 import org.apache.dubbo.rpc.Invocation;
 import org.apache.dubbo.rpc.Invoker;
@@ -10,7 +10,7 @@ import org.apache.dubbo.rpc.Result;
 import org.apache.dubbo.rpc.RpcException;
 
 @Slf4j
-@Activate(group = Constants.CONSUMER)
+@Activate(group = CommonConstants.CONSUMER)
 public class DubboTraceFilter implements Filter {
 
     @Override

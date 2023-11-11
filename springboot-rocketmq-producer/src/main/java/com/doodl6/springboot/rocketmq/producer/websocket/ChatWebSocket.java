@@ -85,17 +85,15 @@ public class ChatWebSocket {
      * 发送消息给客户端
      */
     public void sendMessage(Session session, String message) {
-        synchronized (session) {
-            for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
+            try {
+                session.getBasicRemote().sendText(message);
+                break;
+            } catch (IOException e) {
+                log.error("发送消息异常", e);
                 try {
-                    session.getBasicRemote().sendText(message);
-                    break;
-                } catch (IOException e) {
-                    log.error("发送消息异常", e);
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException ignored) {
-                    }
+                    Thread.sleep(100);
+                } catch (InterruptedException ignored) {
                 }
             }
         }
