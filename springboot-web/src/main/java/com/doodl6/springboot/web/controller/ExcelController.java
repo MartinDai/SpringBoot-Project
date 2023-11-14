@@ -56,7 +56,7 @@ public class ExcelController {
             // 设定字符集
             response.setCharacterEncoding("UTF-8");
             // 设定Content类型
-            response.setContentType("multipart/form-data");
+            response.setContentType("application/octet-stream");
             // 设定Http头部
             response.setHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(fileName, "UTF-8"));
             EasyExcel.write(response.getOutputStream(), ExcelData.class).sheet("人员数据").doWrite(dataList);
