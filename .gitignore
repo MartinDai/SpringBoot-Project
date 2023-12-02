@@ -9,6 +9,8 @@ target/
 .idea/
 *.iml
 
+.flattened-pom.xml
+
 # Temp file
 /docker/consul/data/
 /docker/elasticsearch/master/data/
