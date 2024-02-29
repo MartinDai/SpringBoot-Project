@@ -26,6 +26,15 @@ services:
       - net-zk
     external_links:
       - zoo1
+  zoo-navigator:
+    image: elkozmon/zoonavigator:1.1.2
+    container_name: zoo-navigator
+    environment:
+      HTTP_PORT: 9000
+    ports:
+      - "9000:9000"
+    networks:
+      - net-zk
 networks:
   net-zk:
     driver: bridge

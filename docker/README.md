@@ -49,11 +49,12 @@ docker-compose -f docker-compose-rocketmq.yml up -d
 - 注意需要修改基于当前目录下的rocketmq/broker/conf/broker.conf文件内的brokerIP1属性为本机内网IP
 - rocketmq-console页面：http://localhost:8081
 
-### Zookeeper集群
+### Zookeeper集群+zoonavigator服务
 
 ```bash
 docker-compose -f docker-compose-zk.yml up -d
 ```
+- zoonavigator管理页面：http://localhost:9000
 
 ### Seata-Server服务
 
