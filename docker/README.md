@@ -41,13 +41,13 @@ docker-compose -f docker-compose-monitor.yml up -d
 docker-compose -f docker-compose-mysql.yml up -d
 ```
 
-### RocketMQ的NameServer和Broker服务
+### RocketMQ服务+Dashboard服务
 
 ```bash
 docker-compose -f docker-compose-rocketmq.yml up -d
 ```
 - 注意需要修改基于当前目录下的rocketmq/broker/conf/broker.conf文件内的brokerIP1属性为本机内网IP
-- rocketmq-console页面：http://localhost:8081
+- rocketmq-dashboard页面：http://localhost:28080
 
 ### Zookeeper集群+zoonavigator服务
 

@@ -5,7 +5,7 @@ services:
     container_name: rmq-namesrv
     command: sh mqnamesrv
     ports:
-      - 9876:9876
+      - "9876:9876"
     volumes:
       - ./rocketmq/namesrv/logs:/home/rocketmq/logs
     networks:
@@ -19,8 +19,8 @@ services:
       JAVA_OPT_EXT: "-server -Xms256m -Xmx512m"
     command: sh mqbroker -c /home/rocketmq/rocketmq-5.1.0/conf/broker.conf
     ports:
-      - 10909:10909
-      - 10911:10911
+      - "10909:10909"
+      - "10911:10911"
     volumes:
       - ./rocketmq/broker/logs:/home/rocketmq/logs
       - ./rocketmq/broker/store:/home/rocketmq/store
@@ -33,7 +33,7 @@ services:
     image: martindai/rocketmq-dashboard:1.0.0
     container_name: rmq-dashboard
     ports:
-      - 8081:8080
+      - "28080:8080"
     environment:
       - NAMESRV_ADDR=namesrv:9876
     networks:
