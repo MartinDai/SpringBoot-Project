@@ -1,11 +1,22 @@
-cluster.name: "springboot-elasticsearch"
-cluster.initial_master_nodes: "172.16.0.152:9300,172.16.0.152:9301"
-node.name: "slave"
-network.bind_host: 0.0.0.0
-network.publish_host: 172.16.0.152
-http.port: 9201
-http.cors.enabled: true
-http.cors.allow-origin: "*"
-transport.tcp.port: 9301
-discovery.seed_hosts: "172.16.0.152:9300"
-bootstrap.memory_lock: true
+cluster:
+  name: "performance-elasticsearch"
+  initial_master_nodes: "172.16.0.85:9300,172.16.0.85:9301"
+node:
+  name: "slave"
+network:
+  bind_host: 0.0.0.0
+  publish_host: 172.16.0.85
+http:
+  port: 9201
+  cors:
+    enabled: true
+    allow-origin: "*"
+transport:
+  port: 9301
+discovery:
+  seed_hosts: "172.16.0.85:9300"
+bootstrap:
+  memory_lock: true
+xpack:
+  security:
+    enabled: false

@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   elasticsearch-master:
-    image: elasticsearch:7.16.1
+    image: elasticsearch:8.5.3
     container_name: elasticsearch-master
     environment:
       - "ES_JAVA_OPTS=-Xss512k -XX:NewRatio=1 -Xms1024m -Xmx1024m"
@@ -15,12 +15,12 @@ services:
       - ./elasticsearch/master/logs:/usr/share/elasticsearch/logs
       - ./elasticsearch/master/plugins:/usr/share/elasticsearch/plugins
     ports:
-      - 9200:9200
-      - 9300:9300
+      - "9200:9200"
+      - "9300:9300"
     networks:
       - net-es
   elasticsearch-slave:
-    image: elasticsearch:7.16.1
+    image: elasticsearch:8.5.3
     container_name: elasticsearch-slave
     environment:
       - "ES_JAVA_OPTS=-Xss512k -XX:NewRatio=1 -Xms1024m -Xmx1024m"
@@ -33,32 +33,30 @@ services:
       - ./elasticsearch/slave/data:/usr/share/elasticsearch/data
       - ./elasticsearch/slave/logs:/usr/share/elasticsearch/logs
     ports:
-      - 9201:9201
-      - 9301:9301
+      - "9201:9201"
+      - "9301:9301"
     networks:
       - net-es
     depends_on:
       - elasticsearch-master
   kibana:
-    image: kibana:7.16.1
+    image: kibana:8.5.3
     container_name: kibana
     environment:
       - SERVER_NAME=kibana-server
       - ELASTICSEARCH_HOSTS=http://elasticsearch-master:9200
       - I18N_LOCALE=zh-CN
     ports:
-      - 5601:5601
+      - "5601:5601"
     networks:
       - net-es
     depends_on:
       - elasticsearch-master
-  cerebro:
-    image: martindai/cerebro:0.9.4
-    container_name: cerebro
+  elasticvue:
+    image: cars10/elasticvue:1.0.4
+    container_name: elasticvue
     ports:
-      - 9000:9000
-    command:
-      - -Dhosts.0.host=http://elasticsearch-master:9200
+      - "18080:8080"
     networks:
       - net-es
     depends_on:
