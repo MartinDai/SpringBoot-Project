@@ -21,6 +21,9 @@ public class DubboService {
     @DubboReference(version = "${dubbo.reference.firstDubbo.version}", check = false)
     private FirstDubboService firstDubboService;
 
+    @DubboReference(version = "${dubbo.reference.firstDubbo.version}", check = false, protocol = "rest")
+    private FirstDubboService firstDubboRestService;
+
     @SentinelResource(value = "getDubboInfo", blockHandler = "processDubboInfoBlock", fallback = "getDubboInfoFallback")
     public DubboDomain getDubboInfoWithSentinel(long id) {
         GetDubboInfoResponse response = getDubboInfoResponse(id);
@@ -45,6 +48,18 @@ public class DubboService {
     )
     public DubboDomain getDubboInfoWithHystrix(long id) {
         GetDubboInfoResponse response = getDubboInfoResponse(id);
+        if (response.isSuccess()) {
+            return response.getDubboDomain();
+        }
+
+        throw new IllegalStateException("dubbo调用失败");
+    }
+
+    public DubboDomain getDubboInfoByRest(long id) {
+        GetDubboInfoRequest getDubboInfoRequest = new GetDubboInfoRequest();
+        getDubboInfoRequest.setTraceId(TraceIdHolder.getTraceId());
+        getDubboInfoRequest.setId(id);
+        GetDubboInfoResponse response =  firstDubboRestService.getDubboInfo(getDubboInfoRequest);
         if (response.isSuccess()) {
             return response.getDubboDomain();
         }

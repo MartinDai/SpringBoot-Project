@@ -50,4 +50,18 @@ public class DubboController {
         return mapResponse;
     }
 
+    /**
+     * 通过rest协议方调用dubbo信息
+     */
+    @GetMapping("/getDubboInfoByRest")
+    public MapResponse getDubboInfoByRest(Long id) {
+        Assert.notNull(id, "id不能为空");
+        MapResponse mapResponse = new MapResponse();
+
+        DubboDomain dubboDomain = dubboService.getDubboInfoByRest(id);
+        mapResponse.appendData("dubboInfo", dubboDomain);
+
+        return mapResponse;
+    }
+
 }
