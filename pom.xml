@@ -79,7 +79,7 @@
         <sentinel.version>1.8.4</sentinel.version>
         <sharding-jdbc.version>5.3.0</sharding-jdbc.version>
         <snakeyaml.version>1.33</snakeyaml.version>
-        <spring-boot.version>2.7.14</spring-boot.version>
+        <spring-boot.version>2.7.18</spring-boot.version>
         <spring-cloud.version>2021.0.6</spring-cloud.version>
         <springfox.version>3.0.0</springfox.version>
         <swagger2.version>1.5.22</swagger2.version>
