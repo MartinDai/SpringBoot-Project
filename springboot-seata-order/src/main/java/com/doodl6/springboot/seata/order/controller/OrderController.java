@@ -4,11 +4,13 @@ import com.doodl6.springboot.seata.common.Constants;
 import com.doodl6.springboot.seata.common.entity.Order;
 import com.doodl6.springboot.seata.order.service.OrderService;
 import io.seata.core.context.RootContext;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/order")
 public class OrderController {
@@ -21,8 +23,8 @@ public class OrderController {
         System.out.println("order-service执行createOrder 当前正在执行的事务xid:" + RootContext.getXID());
         try {
             orderService.createOrder(order);
-        } catch (Exception exx) {
-            exx.printStackTrace();
+        } catch (Exception e) {
+            log.error("createOrder error", e);
             return Constants.FAIL_RESPONSE;
         }
         return Constants.SUCCESS_RESPONSE;
@@ -38,8 +40,8 @@ public class OrderController {
         System.out.println("order-service执行clearOrderByCode 当前正在执行的事务xid:" + RootContext.getXID());
         try {
             orderService.clearOrderByCode(goodsCode);
-        } catch (Exception exx) {
-            exx.printStackTrace();
+        } catch (Exception e) {
+            log.error("clearOrderByCode error", e);
             return Constants.FAIL_RESPONSE;
         }
         return Constants.SUCCESS_RESPONSE;

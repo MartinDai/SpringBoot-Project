@@ -9,7 +9,7 @@ CREATE TABLE `order`
     `money`      int(11)     NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 -- for AT mode you must to init this sql for you business database. the seata server not need it.
 CREATE TABLE IF NOT EXISTS `undo_log`
@@ -24,4 +24,4 @@ CREATE TABLE IF NOT EXISTS `undo_log`
     UNIQUE KEY `ux_undo_log` (`xid`, `branch_id`)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 1
-  DEFAULT CHARSET = utf8 COMMENT ='AT transaction mode undo table';
+  DEFAULT CHARSET = utf8mb4 COMMENT ='AT transaction mode undo table';

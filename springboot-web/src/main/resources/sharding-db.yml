@@ -16,6 +16,9 @@ dataSources:
     username: root
     password: martin-local
 rules:
+  - !SINGLE
+    tables:
+      - ds_0.user
   - !SHARDING
     tables:
       user_login_log:

@@ -1,10 +1,7 @@
 package com.doodl6.springboot.seata.order.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.doodl6.springboot.seata.common.entity.Order;
-import com.doodl6.springboot.seata.order.mapper.OrderMapper;
+import com.doodl6.springboot.seata.order.manager.OrderManager;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,21 +11,17 @@ import java.util.List;
 public class OrderService {
 
     @Resource
-    private OrderMapper orderMapper;
+    private OrderManager orderManager;
 
     public void createOrder(Order order) {
-        orderMapper.insert(order);
+        orderManager.save(order);
     }
 
     public List<Order> selectOrderByCode(String goodsCode) {
-        QueryWrapper<Order> wrapper = Wrappers.query();
-        wrapper.eq("goods_code", goodsCode);
-        return orderMapper.selectList(wrapper);
+        return orderManager.queryByGoodsCode(goodsCode);
     }
 
     public void clearOrderByCode(String goodsCode) {
-        UpdateWrapper<Order> wrapper = Wrappers.update();
-        wrapper.eq("goods_code", goodsCode);
-        orderMapper.delete(wrapper);
+        orderManager.deleteByGoodsCode(goodsCode);
     }
 }

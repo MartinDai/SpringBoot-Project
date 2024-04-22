@@ -15,7 +15,7 @@ CREATE TABLE `user_login_log_0` (
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_USER_ID_LOGIN_TIME` (`user_id`,`login_time`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 --  Table structure for `user_login_log_1`
@@ -28,4 +28,4 @@ CREATE TABLE `user_login_log_1` (
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_USER_ID_LOGIN_TIME` (`user_id`,`login_time`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

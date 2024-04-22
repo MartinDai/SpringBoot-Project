@@ -1,12 +1,10 @@
 package com.doodl6.springboot.db.controller;
 
 import cn.hutool.core.lang.Assert;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.doodl6.springboot.dao.mapper.UserLoginLogMapper;
-import com.doodl6.springboot.dao.mapper.UserMapper;
 import com.doodl6.springboot.dao.entity.User;
 import com.doodl6.springboot.dao.entity.UserLoginLog;
+import com.doodl6.springboot.dao.manager.UserLoginLogManager;
+import com.doodl6.springboot.dao.manager.UserManager;
 import com.google.common.collect.Lists;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
@@ -20,16 +18,16 @@ import java.util.List;
 public class UserService {
 
     @Resource
-    private UserMapper userMapper;
+    private UserManager userManager;
 
     @Resource
-    private UserLoginLogMapper userLoginLogMapper;
+    private UserLoginLogManager userLoginLogManager;
 
     public User insertUser(String name) {
         User user = new User();
         user.setName(name);
         try {
-            userMapper.insert(user);
+            userManager.save(user);
         } catch (DuplicateKeyException e) {
             throw new IllegalArgumentException("该用户已存在");
         }
@@ -46,12 +44,10 @@ public class UserService {
             User user = new User();
             user.setName(name);
             try {
-                userMapper.insert(user);
+                userManager.save(user);
             } catch (DuplicateKeyException ignore) {
                 //忽略重复的用户
-                QueryWrapper<User> wrapper = Wrappers.query();
-                wrapper.eq("name", name);
-                user = userMapper.selectOne(wrapper);
+                user = userManager.queryByName(name);
             }
             userList.add(user);
         }
@@ -60,13 +56,13 @@ public class UserService {
     }
 
     public User userLogin(long userId) {
-        User user = userMapper.selectById(userId);
+        User user = userManager.getById(userId);
         Assert.notNull(user, "用户不存在");
 
         UserLoginLog userLoginLog = new UserLoginLog();
         userLoginLog.setUserId(userId);
         userLoginLog.setLoginTime(new Date());
-        userLoginLogMapper.insert(userLoginLog);
+        userLoginLogManager.save(userLoginLog);
 
         return user;
     }

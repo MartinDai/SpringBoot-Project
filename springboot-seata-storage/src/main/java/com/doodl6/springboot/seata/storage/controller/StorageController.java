@@ -23,7 +23,7 @@ public class StorageController {
     }
 
     @PostMapping("/initStock")
-    public int initStock(@RequestParam(name = "goodsCode") String goodsCode,
+    public boolean initStock(@RequestParam(name = "goodsCode") String goodsCode,
                          @RequestParam(name = "stockNum") Integer stockNum) {
         return storageService.initStock(goodsCode, stockNum);
     }

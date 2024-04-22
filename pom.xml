@@ -77,7 +77,7 @@
         <rocketmq.version>5.1.0</rocketmq.version>
         <rocketmq-spring.version>2.3.0</rocketmq-spring.version>
         <sentinel.version>1.8.4</sentinel.version>
-        <sharding-jdbc.version>5.3.0</sharding-jdbc.version>
+        <sharding-jdbc.version>5.4.1</sharding-jdbc.version>
         <snakeyaml.version>1.33</snakeyaml.version>
         <spring-boot.version>2.7.18</spring-boot.version>
         <spring-cloud.version>2021.0.6</spring-cloud.version>
@@ -233,11 +233,31 @@
                 <exclusions>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
-                        <artifactId>shardingsphere-sql-parser-sql92</artifactId>
+                        <artifactId>shardingsphere-broadcast-core</artifactId>
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
-                        <artifactId>shardingsphere-sql-parser-postgresql</artifactId>
+                        <artifactId>shardingsphere-encrypt-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-mask-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-readwrite-splitting-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-shadow-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-parser-sql-sql92</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-parser-sql-postgresql</artifactId>
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
@@ -245,23 +265,19 @@
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
-                        <artifactId>shardingsphere-sql-parser-oracle</artifactId>
+                        <artifactId>shardingsphere-parser-sql-oracle</artifactId>
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
-                        <artifactId>shardingsphere-sql-parser-sqlserver</artifactId>
+                        <artifactId>shardingsphere-parser-sql-sqlserver</artifactId>
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
-                        <artifactId>shardingsphere-sql-parser-opengauss</artifactId>
+                        <artifactId>shardingsphere-parser-sql-opengauss</artifactId>
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
                         <artifactId>shardingsphere-cluster-mode-core</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.shardingsphere</groupId>
-                        <artifactId>shardingsphere-db-discovery-core</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
