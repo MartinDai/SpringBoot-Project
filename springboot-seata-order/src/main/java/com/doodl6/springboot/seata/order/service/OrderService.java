@@ -2,9 +2,9 @@ package com.doodl6.springboot.seata.order.service;
 
 import com.doodl6.springboot.seata.common.entity.Order;
 import com.doodl6.springboot.seata.order.manager.OrderManager;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service

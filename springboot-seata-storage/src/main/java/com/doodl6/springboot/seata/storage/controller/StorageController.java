@@ -4,9 +4,8 @@ import com.doodl6.springboot.seata.common.Constants;
 import com.doodl6.springboot.seata.common.entity.Storage;
 import com.doodl6.springboot.seata.storage.service.StorageService;
 import io.seata.core.context.RootContext;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/storage")

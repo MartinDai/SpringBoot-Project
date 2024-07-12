@@ -2,12 +2,11 @@ package com.doodl6.springboot.zookeeper;
 
 import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.zookeeper.service.ZookeeperService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 /**
  * 操作zookeeper的相关操作

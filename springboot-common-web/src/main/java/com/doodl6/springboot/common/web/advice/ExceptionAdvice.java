@@ -3,13 +3,12 @@ package com.doodl6.springboot.common.web.advice;
 import com.doodl6.springboot.common.util.LogUtil;
 import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.common.web.response.ResponseCode;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * 统一处理异常

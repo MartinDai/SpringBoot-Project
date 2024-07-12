@@ -1,5 +1,6 @@
 package com.doodl6.springboot.rocketmq.producer.websocket;
 
+import jakarta.websocket.server.ServerEndpointConfig;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -7,8 +8,6 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
-
-import javax.websocket.server.ServerEndpointConfig;
 
 @Configuration
 public class WebSocketConfig extends ServerEndpointConfig.Configurator implements ApplicationContextAware {

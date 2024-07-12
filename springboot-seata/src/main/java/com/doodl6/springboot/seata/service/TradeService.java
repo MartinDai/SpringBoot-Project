@@ -8,9 +8,9 @@ import com.doodl6.springboot.seata.feign.IStorageService;
 import com.doodl6.springboot.seata.response.StorageWithOrderData;
 import io.seata.core.context.RootContext;
 import io.seata.spring.annotation.GlobalTransactional;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 import static com.doodl6.springboot.seata.common.Constants.SUCCESS_RESPONSE;

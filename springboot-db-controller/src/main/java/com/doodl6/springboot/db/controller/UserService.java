@@ -6,11 +6,11 @@ import com.doodl6.springboot.dao.entity.UserLoginLog;
 import com.doodl6.springboot.dao.manager.UserLoginLogManager;
 import com.doodl6.springboot.dao.manager.UserManager;
 import com.google.common.collect.Lists;
+import jakarta.annotation.Resource;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 

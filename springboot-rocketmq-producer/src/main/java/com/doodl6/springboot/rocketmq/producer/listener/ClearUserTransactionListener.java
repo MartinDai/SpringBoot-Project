@@ -5,6 +5,7 @@ import com.doodl6.springboot.dao.entity.User;
 import com.doodl6.springboot.dao.manager.UserManager;
 import com.doodl6.springboot.rocketmq.producer.ProducerConstants;
 import com.doodl6.springboot.rocketmq.producer.domain.TransactionMessageObj;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.RocketMQTransactionListener;
 import org.apache.rocketmq.spring.core.RocketMQLocalTransactionListener;
@@ -12,7 +13,6 @@ import org.apache.rocketmq.spring.core.RocketMQLocalTransactionState;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.nio.charset.Charset;
 
 /**

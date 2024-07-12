@@ -65,6 +65,7 @@
         }
 
         $.ajax({
+            type: "POST",
             url: "/chat/intoChatRoom",
             data: {
                 "userName": userName
@@ -82,6 +83,7 @@
 
     function pullData() {
         $.ajax({
+            type: "GET",
             url: "/chat/pullData",
             data: {
                 "userId": userId
@@ -149,6 +151,7 @@
     function sendMessage(message) {
         if (userId) {
             $.ajax({
+                type: "POST",
                 url: "/chat/sendMessage",
                 data: {
                     "userId": userId,

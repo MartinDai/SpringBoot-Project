@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSON;
 import com.doodl6.springboot.rocketmq.producer.ProducerConstants;
 import com.doodl6.springboot.rocketmq.producer.domain.NewChatRecord;
 import com.doodl6.springboot.rocketmq.producer.domain.TransactionMessageObj;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
@@ -12,8 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 @Slf4j
 @Service

@@ -3,13 +3,12 @@ package com.doodl6.springboot.dubbo.consumer;
 import com.doodl6.springboot.common.web.response.MapResponse;
 import com.doodl6.springboot.dubbo.api.domain.DubboDomain;
 import com.doodl6.springboot.dubbo.consumer.service.DubboService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 /**
  * dubbo控制类

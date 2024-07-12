@@ -1,9 +1,8 @@
 package com.doodl6.springboot.netty.config;
 
 import com.doodl6.springboot.netty.server.ChatServer;
+import jakarta.annotation.PostConstruct;
 import org.springframework.context.annotation.Configuration;
-
-import javax.annotation.PostConstruct;
 
 /**
  * 聊天服务配置类

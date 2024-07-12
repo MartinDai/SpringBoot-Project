@@ -2,21 +2,21 @@ package com.doodl6.springboot.common.web.filter;
 
 import com.alibaba.fastjson2.JSON;
 import com.doodl6.springboot.common.web.context.RequestParamContext;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
 @Order(1)
-@WebFilter
+@WebFilter(asyncSupported = true)
 public class RequestParamFilter extends OncePerRequestFilter {
 
     @Override
@@ -60,4 +60,5 @@ public class RequestParamFilter extends OncePerRequestFilter {
 
         return encoding;
     }
+
 }
