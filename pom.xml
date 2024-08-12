@@ -62,9 +62,11 @@
         <hutool.version>5.8.29</hutool.version>
         <hystrix-spring-boot.version>2.2.10.RELEASE</hystrix-spring-boot.version>
         <javassist.version>3.25.0-GA</javassist.version>
+        <jaxb.version>2.3.0</jaxb.version>
         <jsr305.version>3.0.2</jsr305.version>
         <jrs.version>2.1.1</jrs.version>
         <knife4j.version>4.0.0</knife4j.version>
+        <kryo.version>5.6.0</kryo.version>
         <lombok.version>1.18.24</lombok.version>
         <mybatis.version>3.5.16</mybatis.version>
         <mybatis-spring-boot.version>3.0.3</mybatis-spring-boot.version>
@@ -72,7 +74,7 @@
         <perf4j.version>0.9.16</perf4j.version>
         <poi.version>5.3.0</poi.version>
         <protobuf.version>3.20.3</protobuf.version>
-        <redisson.version>3.17.4</redisson.version>
+        <redisson.version>3.34.1</redisson.version>
         <resteasy.version>3.15.3.Final</resteasy.version>
         <rocketmq.version>5.1.0</rocketmq.version>
         <rocketmq-spring.version>2.3.0</rocketmq-spring.version>
@@ -355,6 +357,11 @@
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>${kryo.version}</version>
+            </dependency>
 
             <!-- Apache Commons依赖 -->
             <dependency>
@@ -417,12 +424,12 @@
             <dependency>
                 <groupId>com.sun.xml.bind</groupId>
                 <artifactId>jaxb-impl</artifactId>
-                <version>2.3.0</version>
+                <version>${jaxb.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.sun.xml.bind</groupId>
                 <artifactId>jaxb-core</artifactId>
-                <version>2.3.0</version>
+                <version>${jaxb.version}</version>
             </dependency>
 
             <dependency>
