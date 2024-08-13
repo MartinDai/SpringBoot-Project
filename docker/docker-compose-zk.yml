@@ -4,41 +4,29 @@ services:
     container_name: zoo1
     environment:
       ZOO_MY_ID: 1
-      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
-    hostname: zoo1
-    ports:
-      - "2181:2181"
-    networks:
-      - net-zk
+    volumes:
+      - "./zk/zoo1/zoo.cfg:/conf/zoo.cfg"
+      - "./zk/zoo1/data:/data"
+    network_mode: "host"
   zoo2:
     image: zookeeper:3.6
     container_name: zoo2
     environment:
       ZOO_MY_ID: 2
-      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
-    hostname: zoo2
-    ports:
-      - "2182:2181"
-    networks:
-      - net-zk
+    volumes:
+      - "./zk/zoo2/zoo.cfg:/conf/zoo.cfg"
+      - "./zk/zoo2/data:/data"
+    network_mode: "host"
   zoo3:
     image: zookeeper:3.6
     container_name: zoo3
     environment:
       ZOO_MY_ID: 3
-      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
-    hostname: zoo3
-    ports:
-      - "2183:2181"
-    networks:
-      - net-zk
+    volumes:
+      - "./zk/zoo3/zoo.cfg:/conf/zoo.cfg"
+      - "./zk/zoo3/data:/data"
+    network_mode: "host"
   zoo-navigator:
     image: elkozmon/zoonavigator:1.1.3
     container_name: zoo-navigator
-    ports:
-      - "9000:9000"
-    networks:
-      - net-zk
-networks:
-  net-zk:
-    driver: bridge
+    network_mode: "host"
