@@ -7,7 +7,7 @@ services:
     volumes:
       - ./redis/:/etc/redis/
     ports:
-      - 6379:6379
+      - "6379:6379"
     networks:
       - net-cache
   memcached:
@@ -15,7 +15,7 @@ services:
     container_name: memcached
     restart: always
     ports:
-      - 11211:11211
+      - "11211:11211"
     networks:
       - net-cache
 networks:
