@@ -33,7 +33,7 @@ services:
     networks:
       - net-zk
   zoo-navigator:
-    image: elkozmon/zoonavigator:1.1.2
+    image: elkozmon/zoonavigator:1.1.3
     container_name: zoo-navigator
     ports:
       - "9000:9000"
