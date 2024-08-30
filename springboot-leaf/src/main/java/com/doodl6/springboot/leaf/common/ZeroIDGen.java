@@ -1,6 +1,5 @@
 package com.doodl6.springboot.leaf.common;
 
-
 import com.doodl6.springboot.leaf.IDGen;
 
 public class ZeroIDGen implements IDGen {
