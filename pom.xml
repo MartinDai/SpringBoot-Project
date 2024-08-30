@@ -65,12 +65,14 @@
         <jaxb.version>2.3.0</jaxb.version>
         <jsr305.version>3.0.2</jsr305.version>
         <jrs.version>2.1.1</jrs.version>
+        <j2objc.version>3.0.0</j2objc.version>
         <knife4j.version>4.0.0</knife4j.version>
         <kryo.version>5.6.0</kryo.version>
         <lombok.version>1.18.24</lombok.version>
         <mybatis.version>3.5.16</mybatis.version>
         <mybatis-spring.version>3.0.3</mybatis-spring.version>
         <mybatis-plus.version>3.5.7</mybatis-plus.version>
+        <okio.version>3.6.0</okio.version>
         <perf4j.version>0.9.16</perf4j.version>
         <poi.version>5.3.0</poi.version>
         <protobuf.version>3.20.3</protobuf.version>
@@ -78,6 +80,7 @@
         <resteasy.version>3.15.3.Final</resteasy.version>
         <rocketmq.version>5.1.0</rocketmq.version>
         <rocketmq-spring.version>2.3.0</rocketmq-spring.version>
+        <rxjava.version>1.2.2</rxjava.version>
         <sentinel.version>1.8.4</sentinel.version>
         <sharding-jdbc.version>5.5.0</sharding-jdbc.version>
         <spring-boot.version>3.3.3</spring-boot.version>
@@ -618,6 +621,24 @@
                 <groupId>javax.ws.rs</groupId>
                 <artifactId>javax.ws.rs-api</artifactId>
                 <version>${jrs.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.j2objc</groupId>
+                <artifactId>j2objc-annotations</artifactId>
+                <version>${j2objc.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.squareup.okio</groupId>
+                <artifactId>okio-jvm</artifactId>
+                <version>${okio.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.reactivex</groupId>
+                <artifactId>rxjava</artifactId>
+                <version>${rxjava.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
