@@ -1,12 +1,12 @@
 package com.doodl6.springboot.cache.memcached;
 
 import com.alibaba.fastjson2.JSON;
+import jakarta.annotation.Resource;
 import net.rubyeye.xmemcached.GetsResponse;
 import net.rubyeye.xmemcached.MemcachedClient;
 import net.rubyeye.xmemcached.exception.MemcachedException;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.concurrent.TimeoutException;
 
 /**

@@ -2,10 +2,9 @@ package com.doodl6.springboot.seata.storage.service;
 
 import com.doodl6.springboot.seata.common.entity.Storage;
 import com.doodl6.springboot.seata.storage.manager.StorageManager;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
 
 @Service
 public class StorageService {

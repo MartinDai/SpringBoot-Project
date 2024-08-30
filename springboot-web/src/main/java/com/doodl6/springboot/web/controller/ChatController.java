@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
 
@@ -49,7 +50,7 @@ public class ChatController {
      */
     @Operation(summary = "拉取数据")
     @GetMapping("/pullData")
-    public DeferredResult<BaseResponse<List<MessageVo>>> pullData(Integer userId) {
+    public DeferredResult<BaseResponse<List<MessageVo>>> pullData(@RequestParam("userId") Integer userId) {
 
         Assert.notNull(userId, "用户ID不能为空");
 
@@ -69,7 +70,7 @@ public class ChatController {
      */
     @Operation(summary = "进入聊天室")
     @PostMapping("/intoChatRoom")
-    public BaseResponse<Integer> intoChatRoom(String userName) {
+    public BaseResponse<Integer> intoChatRoom(@RequestParam("userName") String userName) {
 
         Assert.isTrue(StringUtils.isNotEmpty(userName), "用户名不能为空");
 
@@ -89,7 +90,7 @@ public class ChatController {
      */
     @Operation(summary = "发送聊天信息")
     @PostMapping("/sendMessage")
-    public BaseResponse<Void> sendMessage(Integer userId, String content) {
+    public BaseResponse<Void> sendMessage(@RequestParam("userId") Integer userId, @RequestParam("content") String content) {
         Assert.notNull(userId, "用户ID不能为空");
         Assert.isTrue(StringUtils.isNotBlank(content), "消息内容不能为空");
         Assert.isTrue(USER_MAP.containsKey(userId), "用户不存在");

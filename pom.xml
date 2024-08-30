@@ -32,10 +32,10 @@
     </modules>
 
     <properties>
-        <revision>1.6</revision>
+        <revision>2.0</revision>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <additionalparam>-Xdoclint:none</additionalparam>
         <maven.test.skip>true</maven.test.skip>
 
@@ -47,43 +47,47 @@
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-email.version>1.5</commons-email.version>
         <commons-fileupload.version>1.5</commons-fileupload.version>
-        <commons-io.version>2.11.0</commons-io.version>
+        <commons-io.version>2.16.1</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-logging>1.2</commons-logging>
         <commons-math3.version>3.6.1</commons-math3.version>
         <curator.version>5.5.0</curator.version>
-        <druid.version>1.2.17</druid.version>
-        <dubbo.version>3.2.10</dubbo.version>
-        <easyexcel.version>3.1.1</easyexcel.version>
+        <druid.version>1.2.23</druid.version>
+        <dubbo.version>3.2.15</dubbo.version>
+        <easyexcel.version>4.0.1</easyexcel.version>
         <errorprone.version>2.11.0</errorprone.version>
-        <fastjson2.version>2.0.31</fastjson2.version>
-        <guava.version>32.1.1-jre</guava.version>
+        <fastjson2.version>2.0.51</fastjson2.version>
+        <guava.version>33.2.1-jre</guava.version>
         <hdrhistogram.version>2.1.12</hdrhistogram.version>
-        <hutool.version>5.8.22</hutool.version>
+        <hutool.version>5.8.29</hutool.version>
         <hystrix-spring-boot.version>2.2.10.RELEASE</hystrix-spring-boot.version>
         <javassist.version>3.25.0-GA</javassist.version>
+        <jaxb.version>2.3.0</jaxb.version>
         <jsr305.version>3.0.2</jsr305.version>
         <jrs.version>2.1.1</jrs.version>
+        <j2objc.version>3.0.0</j2objc.version>
         <knife4j.version>4.0.0</knife4j.version>
+        <kryo.version>5.6.0</kryo.version>
         <lombok.version>1.18.24</lombok.version>
-        <mybatis.version>3.5.10</mybatis.version>
-        <mybatis-spring-boot.version>2.2.2</mybatis-spring-boot.version>
-        <mybatis-plus.version>3.5.2</mybatis-plus.version>
+        <mybatis.version>3.5.16</mybatis.version>
+        <mybatis-spring.version>3.0.3</mybatis-spring.version>
+        <mybatis-plus.version>3.5.7</mybatis-plus.version>
+        <okio.version>3.6.0</okio.version>
         <perf4j.version>0.9.16</perf4j.version>
-        <poi.version>5.2.1</poi.version>
+        <poi.version>5.3.0</poi.version>
         <protobuf.version>3.20.3</protobuf.version>
-        <redisson.version>3.17.4</redisson.version>
+        <redisson.version>3.34.1</redisson.version>
         <resteasy.version>3.15.3.Final</resteasy.version>
         <rocketmq.version>5.1.0</rocketmq.version>
         <rocketmq-spring.version>2.3.0</rocketmq-spring.version>
+        <rxjava.version>1.2.2</rxjava.version>
         <sentinel.version>1.8.4</sentinel.version>
-        <sharding-jdbc.version>5.4.1</sharding-jdbc.version>
-        <snakeyaml.version>1.33</snakeyaml.version>
-        <spring-boot.version>2.7.18</spring-boot.version>
-        <spring-cloud.version>2021.0.6</spring-cloud.version>
+        <sharding-jdbc.version>5.5.0</sharding-jdbc.version>
+        <spring-boot.version>3.3.3</spring-boot.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
         <springfox.version>3.0.0</springfox.version>
         <swagger2.version>1.5.22</swagger2.version>
-        <alibaba-cloud.version>2021.1</alibaba-cloud.version>
+        <alibaba-cloud.version>2023.0.1.2</alibaba-cloud.version>
         <xmemcached.version>2.4.7</xmemcached.version>
         <zookeeper.version>3.7.2</zookeeper.version>
     </properties>
@@ -208,7 +212,12 @@
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis-spring-boot.version}</version>
+                <version>${mybatis-spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis-spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mybatis</groupId>
@@ -228,12 +237,16 @@
 
             <dependency>
                 <groupId>org.apache.shardingsphere</groupId>
-                <artifactId>shardingsphere-jdbc-core</artifactId>
+                <artifactId>shardingsphere-jdbc</artifactId>
                 <version>${sharding-jdbc.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
                         <artifactId>shardingsphere-broadcast-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-test-util</artifactId>
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
@@ -257,6 +270,10 @@
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-infra-database-sql92</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
                         <artifactId>shardingsphere-parser-sql-postgresql</artifactId>
                     </exclusion>
                     <exclusion>
@@ -269,11 +286,27 @@
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-infra-database-oracle</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
                         <artifactId>shardingsphere-parser-sql-sqlserver</artifactId>
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-infra-database-sqlserver</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
                         <artifactId>shardingsphere-parser-sql-opengauss</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-infra-database-mariadb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-infra-database-clickhouse</artifactId>
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.shardingsphere</groupId>
@@ -332,6 +365,11 @@
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>${kryo.version}</version>
+            </dependency>
 
             <!-- Apache Commons依赖 -->
             <dependency>
@@ -389,6 +427,17 @@
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi</artifactId>
                 <version>${poi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-impl</artifactId>
+                <version>${jaxb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-core</artifactId>
+                <version>${jaxb.version}</version>
             </dependency>
 
             <dependency>
@@ -455,7 +504,7 @@
             <!-- 数据库连接池 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
+                <artifactId>druid-spring-boot-3-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
 
@@ -552,12 +601,6 @@
             </dependency>
 
             <dependency>
-                <groupId>org.yaml</groupId>
-                <artifactId>snakeyaml</artifactId>
-                <version>${snakeyaml.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.ow2.asm</groupId>
                 <artifactId>asm</artifactId>
                 <version>${asm.version}</version>
@@ -579,6 +622,24 @@
                 <artifactId>javax.ws.rs-api</artifactId>
                 <version>${jrs.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.google.j2objc</groupId>
+                <artifactId>j2objc-annotations</artifactId>
+                <version>${j2objc.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.squareup.okio</groupId>
+                <artifactId>okio-jvm</artifactId>
+                <version>${okio.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.reactivex</groupId>
+                <artifactId>rxjava</artifactId>
+                <version>${rxjava.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -592,21 +653,21 @@
 
     <build>
         <plugins>
-            <!-- 解决IDEA自动重置LanguageLevel和JavaCompiler版本的问题 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>3.13.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <parameters>true</parameters>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-                <version>1.5.0</version>
+                <version>1.6.0</version>
                 <configuration>
                     <updatePomFile>true</updatePomFile>
                     <flattenMode>resolveCiFriendliesOnly</flattenMode>

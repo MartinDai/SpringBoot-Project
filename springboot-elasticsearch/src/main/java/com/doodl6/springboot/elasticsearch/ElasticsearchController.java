@@ -5,13 +5,13 @@ import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.elasticsearch.repository.ArticleRepository;
 import com.doodl6.springboot.elasticsearch.vo.Article;
 import com.google.common.collect.Lists;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 

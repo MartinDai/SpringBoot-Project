@@ -1,4 +1,3 @@
-version: '3.7'
 services:
   elasticsearch-master:
     image: elasticsearch:8.5.3
@@ -53,7 +52,7 @@ services:
     depends_on:
       - elasticsearch-master
   elasticvue:
-    image: cars10/elasticvue:1.0.4
+    image: cars10/elasticvue:1.0.10
     container_name: elasticvue
     ports:
       - "18080:8080"

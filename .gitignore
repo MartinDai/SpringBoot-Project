@@ -23,3 +23,6 @@ target/
 /docker/rocketmq/namesrv/logs/
 /docker/grafana/
 /docker/prometheus/data/
+/docker/zk/zoo1/data
+/docker/zk/zoo2/data
+/docker/zk/zoo3/data

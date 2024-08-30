@@ -8,9 +8,9 @@ import com.doodl6.springboot.seata.feign.IStorageService;
 import com.doodl6.springboot.seata.response.StorageWithOrderData;
 import io.seata.core.context.RootContext;
 import io.seata.spring.annotation.GlobalTransactional;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 import static com.doodl6.springboot.seata.common.Constants.SUCCESS_RESPONSE;
@@ -35,8 +35,8 @@ public class TradeService {
             throw new IllegalStateException("初始化商品数据失败，清理订单失败! xid:" + xid);
         }
 
-        int effect = storageService.initStock(goodsCode, 100);
-        Assert.state(effect > 0, "初始化商品数据失败，更新库存失败! xid:" + xid);
+        boolean success = storageService.initStock(goodsCode, 100);
+        Assert.state(success, "初始化商品数据失败，更新库存失败! xid:" + xid);
     }
 
     /**

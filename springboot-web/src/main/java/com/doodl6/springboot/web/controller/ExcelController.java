@@ -11,6 +11,7 @@ import com.doodl6.springboot.web.dto.ExcelData;
 import com.google.common.collect.Lists;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -58,10 +59,10 @@ public class ExcelController {
             // 设定Content类型
             response.setContentType("application/octet-stream");
             // 设定Http头部
-            response.setHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(fileName, "UTF-8"));
+            response.setHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(fileName, StandardCharsets.UTF_8));
             EasyExcel.write(response.getOutputStream(), ExcelData.class).sheet("人员数据").doWrite(dataList);
         } catch (Exception e) {
-            throw new IllegalStateException("下载出现异常");
+            throw new IllegalStateException("下载出现异常", e);
         }
     }
 

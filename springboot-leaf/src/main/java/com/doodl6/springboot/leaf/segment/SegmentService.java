@@ -56,10 +56,4 @@ public class SegmentService {
         return idGen.get(key);
     }
 
-    public SegmentIDGenImpl getIdGen() {
-        if (idGen instanceof SegmentIDGenImpl) {
-            return (SegmentIDGenImpl) idGen;
-        }
-        return null;
-    }
 }

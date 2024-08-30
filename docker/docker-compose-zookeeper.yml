@@ -1,0 +1,32 @@
+services:
+  zoo1:
+    image: zookeeper:3.6
+    container_name: zoo1
+    environment:
+      ZOO_MY_ID: 1
+    volumes:
+      - "./zk/zoo1/zoo.cfg:/conf/zoo.cfg"
+      - "./zk/zoo1/data:/data"
+    network_mode: "host"
+  zoo2:
+    image: zookeeper:3.6
+    container_name: zoo2
+    environment:
+      ZOO_MY_ID: 2
+    volumes:
+      - "./zk/zoo2/zoo.cfg:/conf/zoo.cfg"
+      - "./zk/zoo2/data:/data"
+    network_mode: "host"
+  zoo3:
+    image: zookeeper:3.6
+    container_name: zoo3
+    environment:
+      ZOO_MY_ID: 3
+    volumes:
+      - "./zk/zoo3/zoo.cfg:/conf/zoo.cfg"
+      - "./zk/zoo3/data:/data"
+    network_mode: "host"
+  zoo-navigator:
+    image: elkozmon/zoonavigator:1.1.3
+    container_name: zoo-navigator
+    network_mode: "host"

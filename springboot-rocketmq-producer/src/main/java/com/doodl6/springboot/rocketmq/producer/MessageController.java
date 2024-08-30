@@ -3,12 +3,11 @@ package com.doodl6.springboot.rocketmq.producer;
 import cn.hutool.core.lang.Assert;
 import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.rocketmq.producer.service.RocketMQService;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/message")

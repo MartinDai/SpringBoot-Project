@@ -6,6 +6,7 @@ import com.doodl6.springboot.common.web.context.TraceIdHolder;
 import com.doodl6.springboot.leaf.common.Result;
 import com.doodl6.springboot.leaf.common.Status;
 import com.doodl6.springboot.leaf.segment.SegmentService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -13,8 +14,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 /**
  * 接口RT切面类

@@ -1,12 +1,10 @@
 package com.doodl6.springboot.web.util;
 
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-
-import javax.servlet.http.HttpServletRequest;
-
 
 /**
  * 请求工具类

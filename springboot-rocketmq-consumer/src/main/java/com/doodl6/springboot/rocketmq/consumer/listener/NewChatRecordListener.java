@@ -3,12 +3,11 @@ package com.doodl6.springboot.rocketmq.consumer.listener;
 import com.alibaba.fastjson2.JSON;
 import com.doodl6.springboot.rocketmq.consumer.domain.NewChatRecord;
 import com.doodl6.springboot.rocketmq.consumer.service.ChatService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 /**
  * 聊天记录消息监听

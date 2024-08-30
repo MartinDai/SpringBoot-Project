@@ -1,4 +1,3 @@
-version: '3.7'
 services:
   namesrv:
     image: martindai/rocketmq:5.1.0

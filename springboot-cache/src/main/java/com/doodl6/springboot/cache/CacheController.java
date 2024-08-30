@@ -5,6 +5,7 @@ import com.doodl6.springboot.cache.redis.RedisService;
 import com.doodl6.springboot.cache.vo.Model;
 import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.common.web.response.MapResponse;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RLock;
 import org.springframework.util.Assert;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 /**

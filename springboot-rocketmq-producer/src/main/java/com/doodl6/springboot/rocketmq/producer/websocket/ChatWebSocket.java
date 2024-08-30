@@ -3,13 +3,17 @@ package com.doodl6.springboot.rocketmq.producer.websocket;
 import com.doodl6.springboot.rocketmq.producer.domain.NewChatRecord;
 import com.doodl6.springboot.rocketmq.producer.service.RocketMQService;
 import com.google.common.collect.Maps;
+import jakarta.annotation.Resource;
+import jakarta.websocket.OnClose;
+import jakarta.websocket.OnError;
+import jakarta.websocket.OnMessage;
+import jakarta.websocket.OnOpen;
+import jakarta.websocket.Session;
+import jakarta.websocket.server.PathParam;
+import jakarta.websocket.server.ServerEndpoint;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
-import javax.websocket.*;
-import javax.websocket.server.PathParam;
-import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.Map;
 

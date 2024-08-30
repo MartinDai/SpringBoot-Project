@@ -25,7 +25,7 @@ public class SegmentIDGenImpl implements IDGen {
     /**
      * IDCache未初始化成功时的异常码
      */
-    private static final long EXCEPTION_ID_IDCACHE_INIT_FALSE = -1;
+    private static final long EXCEPTION_ID_CACHE_INIT_FALSE = -1;
     /**
      * key不存在时的异常码
      */
@@ -120,7 +120,7 @@ public class SegmentIDGenImpl implements IDGen {
     @Override
     public Result get(final String key) {
         if (!initOK) {
-            return new Result(EXCEPTION_ID_IDCACHE_INIT_FALSE, Status.EXCEPTION);
+            return new Result(EXCEPTION_ID_CACHE_INIT_FALSE, Status.EXCEPTION);
         }
         if (cache.containsKey(key)) {
             SegmentBuffer buffer = cache.get(key);

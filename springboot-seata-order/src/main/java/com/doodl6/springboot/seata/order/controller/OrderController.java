@@ -4,10 +4,10 @@ import com.doodl6.springboot.seata.common.Constants;
 import com.doodl6.springboot.seata.common.entity.Order;
 import com.doodl6.springboot.seata.order.service.OrderService;
 import io.seata.core.context.RootContext;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Slf4j

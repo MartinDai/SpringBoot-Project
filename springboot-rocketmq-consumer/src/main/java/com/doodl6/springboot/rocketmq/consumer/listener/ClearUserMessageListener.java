@@ -1,12 +1,11 @@
 package com.doodl6.springboot.rocketmq.consumer.listener;
 
 import com.doodl6.springboot.dao.manager.UserLoginLogManager;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 /**
  * 清除用户消息监听

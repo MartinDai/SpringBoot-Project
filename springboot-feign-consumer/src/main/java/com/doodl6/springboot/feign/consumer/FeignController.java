@@ -1,6 +1,7 @@
 package com.doodl6.springboot.feign.consumer;
 
 import com.doodl6.springboot.feign.consumer.service.FeignService;
+import jakarta.annotation.Resource;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,8 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/feign")

@@ -15,15 +15,15 @@ docker-compose -f docker-compose-consul.yml up -d
 ```
 - 后台管理页面：http://localhost:8500
 
-### Elasticsearch主从集群+Kibana服务+Cerebro服务
+### Elasticsearch主从集群+Kibana服务+Elasticvue服务
 
 ```bash
-docker-compose -f docker-compose-es.yml up -d
+docker-compose -f docker-compose-elasticsearch.yml up -d
 ```
 - 注意需要修改当前目录下的`elasticsearch/master/config/elasticsearch.yml`和`elasticsearch/master/config/elasticsearch.yml`两个文件中的ip为本机内网IP
 - 这个组合比较消耗内存，至少保证docker有3.5G的空闲可分配内存再启动
 - kibana管理页面：http://localhost:5601
-- cerebro管理页面：http://localhost:9000
+- Elasticvue管理页面：http://localhost:18080
 
 ### Prometheus+Grafana服务
 
@@ -52,7 +52,7 @@ docker-compose -f docker-compose-rocketmq.yml up -d
 ### Zookeeper集群+zoonavigator服务
 
 ```bash
-docker-compose -f docker-compose-zk.yml up -d
+docker-compose -f docker-compose-zookeeper.yml up -d
 ```
 - zoonavigator管理页面：http://localhost:9000
 

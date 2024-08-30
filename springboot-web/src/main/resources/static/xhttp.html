@@ -85,7 +85,7 @@
 
         if (xmlhttp != null) {
             xmlhttp.onreadystatechange = contentChange;
-            xmlhttp.open("POST", "/xhttp/getResponseContent?content=" + encodeURI(content), true);
+            xmlhttp.open("GET", "/xhttp/getResponseContent?content=" + encodeURI(content), true);
             xmlhttp.send(null);
         }
         else {

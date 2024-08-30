@@ -1,4 +1,3 @@
-version: '3.7'
 services:
   mysql:
     container_name: mysql
@@ -17,7 +16,7 @@ services:
       '--lower-case-table-names=1'
     ]
     ports:
-      - 3306:3306
+      - "3306:3306"
     networks:
       - net-mysql
 networks:

@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>在线聊天室</title>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container" style="margin-top: 20px;">
@@ -40,10 +39,8 @@
 
 </div>
 </body>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
     var userName;
     var userId;
@@ -65,6 +62,7 @@
         }
 
         $.ajax({
+            type: "POST",
             url: "/chat/intoChatRoom",
             data: {
                 "userName": userName
@@ -82,6 +80,7 @@
 
     function pullData() {
         $.ajax({
+            type: "GET",
             url: "/chat/pullData",
             data: {
                 "userId": userId
@@ -149,6 +148,7 @@
     function sendMessage(message) {
         if (userId) {
             $.ajax({
+                type: "POST",
                 url: "/chat/sendMessage",
                 data: {
                     "userId": userId,
