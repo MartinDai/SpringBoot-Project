@@ -14,7 +14,7 @@ public interface IStorageService {
                        @RequestParam(name = "stockNum") Integer stockNum);
 
     @PostMapping("/storage/initStock")
-    int initStock(@RequestParam(name = "goodsCode") String goodsCode,
+    boolean initStock(@RequestParam(name = "goodsCode") String goodsCode,
                   @RequestParam(name = "stockNum") Integer stockNum);
 
     @GetMapping(value = "/storage/selectByCode")

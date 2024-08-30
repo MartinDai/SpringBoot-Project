@@ -35,8 +35,8 @@ public class TradeService {
             throw new IllegalStateException("初始化商品数据失败，清理订单失败! xid:" + xid);
         }
 
-        int effect = storageService.initStock(goodsCode, 100);
-        Assert.state(effect > 0, "初始化商品数据失败，更新库存失败! xid:" + xid);
+        boolean success = storageService.initStock(goodsCode, 100);
+        Assert.state(success, "初始化商品数据失败，更新库存失败! xid:" + xid);
     }
 
     /**

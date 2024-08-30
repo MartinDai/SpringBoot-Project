@@ -84,7 +84,7 @@
         <spring-cloud.version>2023.0.3</spring-cloud.version>
         <springfox.version>3.0.0</springfox.version>
         <swagger2.version>1.5.22</swagger2.version>
-        <alibaba-cloud.version>2021.1</alibaba-cloud.version>
+        <alibaba-cloud.version>2023.0.1.2</alibaba-cloud.version>
         <xmemcached.version>2.4.7</xmemcached.version>
         <zookeeper.version>3.7.2</zookeeper.version>
     </properties>
