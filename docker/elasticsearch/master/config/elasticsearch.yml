@@ -1,11 +1,17 @@
 cluster:
   name: "springboot-elasticsearch"
-  initial_master_nodes: "172.16.0.85:9300,172.16.0.85:9301"
+  initial_master_nodes: "192.168.8.197:9300,192.168.8.197:9301"
+  routing:
+    allocation:
+      disk:
+        watermark:
+          low: 90%
+          high: 95%
 node:
   name: "master"
 network:
   bind_host: 0.0.0.0
-  publish_host: 172.16.0.85
+  publish_host: 192.168.8.197
 http:
   port: 9200
   cors:
@@ -14,9 +20,10 @@ http:
 transport:
   port: 9300
 discovery:
-  seed_hosts: "172.16.0.85:9301"
+  seed_hosts: "192.168.8.197:9301"
 bootstrap:
   memory_lock: true
 xpack:
   security:
     enabled: false
+
