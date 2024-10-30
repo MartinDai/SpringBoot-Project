@@ -54,7 +54,7 @@ docker-compose -f docker-compose-rocketmq.yml up -d
 ```bash
 docker-compose -f docker-compose-zookeeper.yml up -d
 ```
-- zoonavigator管理页面：http://localhost:9000
+- zoonavigator管理页面：http://localhost:9000，连接地址：127.0.0.1:2181
 
 ### Seata-Server服务
 
