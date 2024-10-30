@@ -50,7 +50,7 @@
         <commons-lang.version>2.6</commons-lang.version>
         <commons-logging>1.2</commons-logging>
         <commons-math3.version>3.6.1</commons-math3.version>
-        <curator.version>5.5.0</curator.version>
+        <curator.version>5.7.1</curator.version>
         <druid.version>1.2.23</druid.version>
         <dubbo.version>3.2.15</dubbo.version>
         <easyexcel.version>4.0.1</easyexcel.version>
@@ -88,7 +88,7 @@
         <swagger2.version>1.5.22</swagger2.version>
         <alibaba-cloud.version>2023.0.1.2</alibaba-cloud.version>
         <xmemcached.version>2.4.7</xmemcached.version>
-        <zookeeper.version>3.7.2</zookeeper.version>
+        <zookeeper.version>3.9.2</zookeeper.version>
     </properties>
 
     <repositories>
