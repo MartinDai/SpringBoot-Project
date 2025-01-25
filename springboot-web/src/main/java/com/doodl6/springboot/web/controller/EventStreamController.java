@@ -17,8 +17,9 @@ public class EventStreamController {
     public Flux<String> eventStream() {
         // 创建一个 Flux，用于每秒推送一条消息
         return Flux.interval(Duration.ofSeconds(1))
-                .map(sequence -> "服务器时间 " + LocalTime.now() + "\n\n")
+                .map(sequence -> "服务器时间 " + LocalTime.now())
                 .take(10)// 限制发送 10 条消息
+                .concatWith(Flux.just("END")) // 添加一个结束信号
                 .doOnCancel(() -> System.out.println("客户端连接已断开")); // 客户端断开时触发
     }
 }

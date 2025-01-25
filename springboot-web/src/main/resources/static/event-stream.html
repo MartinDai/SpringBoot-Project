@@ -3,51 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSE Example</title>
+    <title>EventStream Example</title>
     <script>
         let eventSource = null; // 用于存储 EventSource 实例
+        let messageQueue = []; // 消息队列
+        let isTyping = false; // 当前是否有消息正在输出
+        let scrollTimeout = null; // 用于节流的定时器
+
+        // 节流的 scrollToBottom 函数
+        function scrollToBottom() {
+            if (scrollTimeout) return; // 如果已经有一个定时器在运行，则不重复设置
+            scrollTimeout = setTimeout(() => {
+                const messageBox = document.getElementById("message-box");
+                messageBox.scrollTop = messageBox.scrollHeight; // 滚动到底部
+                scrollTimeout = null; // 清除定时器标记
+            }, 100); // 节流间隔（毫秒）
+        }
+
+        // 打字机效果函数
+        function typeText(container, text, delay = 50) {
+            return new Promise((resolve) => {
+                let index = 0;
+
+                function type() {
+                    if (index < text.length) {
+                        container.textContent += text[index];
+                        index++;
+
+                        // 滚动到底部，使用节流优化
+                        scrollToBottom();
+
+                        setTimeout(type, delay);
+                    } else {
+                        resolve();
+                    }
+                }
+
+                type();
+            });
+        }
+
+        async function processQueue() {
+            if (isTyping || messageQueue.length === 0) return;
+
+            isTyping = true; // 设置正在输出状态
+
+            const { container, text } = messageQueue.shift(); // 取出队列中的第一个任务
+            await typeText(container, text); // 执行打字效果
+
+            isTyping = false; // 结束输出状态
+            await processQueue(); // 继续处理队列中的下一个任务
+        }
 
         function startEventStream() {
-            // 防止重复连接
             if (eventSource) {
-                logMessage("已经连接到事件流，请勿重复点击！");
+                processMessage("已经连接到事件流，请勿重复点击！");
                 return;
             }
 
-            // 创建 EventSource 实例并连接到后端 SSE 接口
             eventSource = new EventSource('/eventStream');
 
-            // 监听消息事件
             eventSource.onmessage = (event) => {
-                logMessage(`收到消息: ${event.data}`);
+                if (event.data === "END") {
+                    processMessage("服务器已发送所有消息，流结束。");
+                    stopEventStream(); // 手动停止事件流
+                } else {
+                    processMessage(`收到消息: ${event.data}`);
+                }
             };
 
-            // 监听连接打开事件
             eventSource.onopen = () => {
-                logMessage("连接已建立，开始接收数据...");
+                processMessage("连接已建立，开始接收数据...");
             };
 
-            // 监听错误事件
             eventSource.onerror = () => {
-                logMessage("发生错误或连接已关闭！");
-                stopEventStream(); // 停止事件流
+                processMessage("发生错误或连接已关闭！");
+                stopEventStream();
             };
         }
 
         function stopEventStream() {
             if (eventSource) {
-                eventSource.close(); // 关闭连接
+                eventSource.close();
                 eventSource = null;
-                logMessage("事件流已停止。");
+                processMessage("事件流已停止。");
             }
         }
 
-        function logMessage(message) {
-            const logBox = document.getElementById("log-box");
+        function processMessage(message) {
+            const messageBox = document.getElementById("message-box");
             const messageElement = document.createElement("div");
-            messageElement.textContent = message;
-            logBox.appendChild(messageElement);
-            logBox.scrollTop = logBox.scrollHeight; // 自动滚动到底部
+            messageBox.appendChild(messageElement);
+
+            // 将任务添加到队列中
+            messageQueue.push({ container: messageElement, text: message });
+            processQueue();
         }
     </script>
     <style>
@@ -56,13 +106,14 @@
             margin: 20px;
         }
 
-        #log-box {
-            width: 100%;
+        #message-box {
+            width: 95%;
             height: 300px;
             border: 1px solid #ccc;
             padding: 10px;
-            overflow-y: scroll;
+            overflow-y: auto;
             background-color: #f9f9f9;
+            margin-top: 10px;
         }
 
         .button-container {
@@ -87,14 +138,12 @@
     </style>
 </head>
 <body>
-<h1>Server-Sent Events (SSE) 示例</h1>
+<h1>EventStream 示例</h1>
 <p>点击“开始”按钮连接到后端事件流接口，并查看接收到的消息：</p>
-
-<div id="log-box"></div>
-
 <div class="button-container">
     <button onclick="startEventStream()">开始接收</button>
     <button onclick="stopEventStream()">停止接收</button>
 </div>
+<div id="message-box"></div>
 </body>
 </html>
