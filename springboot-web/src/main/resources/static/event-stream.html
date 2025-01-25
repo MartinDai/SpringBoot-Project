@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE Example</title>
+    <script>
+        let eventSource = null; // 用于存储 EventSource 实例
+
+        function startEventStream() {
+            // 防止重复连接
+            if (eventSource) {
+                logMessage("已经连接到事件流，请勿重复点击！");
+                return;
+            }
+
+            // 创建 EventSource 实例并连接到后端 SSE 接口
+            eventSource = new EventSource('/eventStream');
+
+            // 监听消息事件
+            eventSource.onmessage = (event) => {
+                logMessage(`收到消息: ${event.data}`);
+            };
+
+            // 监听连接打开事件
+            eventSource.onopen = () => {
+                logMessage("连接已建立，开始接收数据...");
+            };
+
+            // 监听错误事件
+            eventSource.onerror = () => {
+                logMessage("发生错误或连接已关闭！");
+                stopEventStream(); // 停止事件流
+            };
+        }
+
+        function stopEventStream() {
+            if (eventSource) {
+                eventSource.close(); // 关闭连接
+                eventSource = null;
+                logMessage("事件流已停止。");
+            }
+        }
+
+        function logMessage(message) {
+            const logBox = document.getElementById("log-box");
+            const messageElement = document.createElement("div");
+            messageElement.textContent = message;
+            logBox.appendChild(messageElement);
+            logBox.scrollTop = logBox.scrollHeight; // 自动滚动到底部
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #log-box {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: scroll;
+            background-color: #f9f9f9;
+        }
+
+        .button-container {
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 14px;
+            margin-right: 10px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h1>Server-Sent Events (SSE) 示例</h1>
+<p>点击“开始”按钮连接到后端事件流接口，并查看接收到的消息：</p>
+
+<div id="log-box"></div>
+
+<div class="button-container">
+    <button onclick="startEventStream()">开始接收</button>
+    <button onclick="stopEventStream()">停止接收</button>
+</div>
+</body>
+</html>
