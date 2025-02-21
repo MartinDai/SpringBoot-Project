@@ -1,10 +1,10 @@
 package com.doodl6.springboot.web.controller;
 
-import com.alibaba.excel.EasyExcel;
-import com.alibaba.excel.ExcelReader;
-import com.alibaba.excel.metadata.Head;
-import com.alibaba.excel.read.builder.ExcelReaderSheetBuilder;
-import com.alibaba.excel.read.metadata.property.ExcelReadHeadProperty;
+import cn.idev.excel.ExcelReader;
+import cn.idev.excel.FastExcel;
+import cn.idev.excel.metadata.Head;
+import cn.idev.excel.read.builder.ExcelReaderSheetBuilder;
+import cn.idev.excel.read.metadata.property.ExcelReadHeadProperty;
 import com.doodl6.springboot.common.excel.ExcelVersion;
 import com.doodl6.springboot.common.web.response.BaseResponse;
 import com.doodl6.springboot.web.dto.ExcelData;
@@ -60,7 +60,7 @@ public class ExcelController {
             response.setContentType("application/octet-stream");
             // 设定Http头部
             response.setHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(fileName, StandardCharsets.UTF_8));
-            EasyExcel.write(response.getOutputStream(), ExcelData.class).sheet("人员数据").doWrite(dataList);
+            FastExcel.write(response.getOutputStream(), ExcelData.class).sheet("人员数据").doWrite(dataList);
         } catch (Exception e) {
             throw new IllegalStateException("下载出现异常", e);
         }
@@ -72,7 +72,7 @@ public class ExcelController {
     @Operation(summary = "上传文件")
     @PostMapping("upload")
     public BaseResponse<List<ExcelData>> upload(@RequestParam MultipartFile file) throws IOException {
-        ExcelReader excelReader = EasyExcel.read(file.getInputStream()).head(ExcelData.class).build();
+        ExcelReader excelReader = FastExcel.read(file.getInputStream()).head(ExcelData.class).build();
         List<ExcelData> dataList = new ExcelReaderSheetBuilder(excelReader).sheetNo(0).headRowNumber(1).doReadSync();
         ExcelReadHeadProperty headProperty = excelReader.analysisContext().currentReadHolder().excelReadHeadProperty();
         Set<String> headSet = headProperty.getHeadMap().values().stream().map(Head::getHeadNameList).map(strings -> strings.get(0)).collect(Collectors.toSet());
