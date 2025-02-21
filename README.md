@@ -14,7 +14,7 @@
 - [Consul](https://github.com/hashicorp/consul)
 - [Druid](https://github.com/alibaba/druid)
 - [Dubbo](https://github.com/apache/dubbo)
-- [EasyExcel](https://github.com/alibaba/easyexcel)
+- [FastExcel](https://github.com/fast-excel/fastexcel)
 - [ElasticSearch](https://github.com/elastic/elasticsearch)
 - [Feign](https://github.com/OpenFeign/feign)
 - [Grafana](https://github.com/grafana/grafana)
