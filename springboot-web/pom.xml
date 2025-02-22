@@ -50,6 +50,11 @@
 
         <dependency>
             <groupId>com.doodl6</groupId>
+            <artifactId>springboot-opentelemetry</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.doodl6</groupId>
             <artifactId>springboot-netty</artifactId>
         </dependency>
 

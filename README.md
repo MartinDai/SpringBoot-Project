@@ -114,6 +114,11 @@ feign服务提供者，包含简单的基于feign实现的服务，使用consul�
 ## springboot-leaf
 整合美团开源的分布式ID生成服务leaf，包含记录HTTP接口耗时日志切面，数据库表初始化文件为leaf.sql
 
+## springboot-opentelemetry
+集成OpenTelemetry的SDK采集上报可观测相关数据
+
+- 支持Metrics推送至VictoriaMetrics(需在application.yml配置victoriaMetrics.url)
+
 ## springboot-netty
 包含基于netty+websocket实现的简易聊天室功能，入口页面为chat-netty.html
 

@@ -39,3 +39,6 @@ rocketmq:
       topic: OrderlyMessage
 springdoc:
   packagesToScan: com.doodl6
+victoriaMetrics:
+  url: http://localhost:8428
+  interval: 10

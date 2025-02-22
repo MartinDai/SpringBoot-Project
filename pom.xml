@@ -20,6 +20,7 @@
         <module>springboot-feign-consumer</module>
         <module>springboot-feign-provider</module>
         <module>springboot-leaf</module>
+        <module>springboot-opentelemetry</module>
         <module>springboot-netty</module>
         <module>springboot-rocketmq-consumer</module>
         <module>springboot-rocketmq-producer</module>
@@ -89,6 +90,8 @@
         <alibaba-cloud.version>2023.0.1.2</alibaba-cloud.version>
         <xmemcached.version>2.4.7</xmemcached.version>
         <zookeeper.version>3.9.2</zookeeper.version>
+        <opentelemetry.version>1.47.0</opentelemetry.version>
+        <opentelemetry-semconv.version>1.30.0</opentelemetry-semconv.version>
     </properties>
 
     <repositories>
@@ -100,6 +103,15 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- 要放在spring-boot-dependencies之前覆盖里面的版本 -->
+            <dependency>
+                <groupId>io.opentelemetry</groupId>
+                <artifactId>opentelemetry-bom</artifactId>
+                <version>${opentelemetry.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!-- Spring Dependencies -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -174,6 +186,11 @@
             <dependency>
                 <groupId>com.doodl6</groupId>
                 <artifactId>springboot-leaf</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.doodl6</groupId>
+                <artifactId>springboot-opentelemetry</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -347,6 +364,25 @@
                 <groupId>org.apache.rocketmq</groupId>
                 <artifactId>rocketmq-client</artifactId>
                 <version>${rocketmq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-common</artifactId>
+                <version>${rocketmq.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.opentelemetry</groupId>
+                        <artifactId>opentelemetry-exporter-otlp</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>io.opentelemetry</groupId>
+                        <artifactId>opentelemetry-exporter-prometheus</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>io.opentelemetry</groupId>
+                        <artifactId>opentelemetry-sdk</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.rocketmq</groupId>
@@ -627,6 +663,12 @@
                 <groupId>io.reactivex</groupId>
                 <artifactId>rxjava</artifactId>
                 <version>${rxjava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.opentelemetry.semconv</groupId>
+                <artifactId>opentelemetry-semconv</artifactId>
+                <version>${opentelemetry-semconv.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
