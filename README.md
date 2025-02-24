@@ -43,7 +43,7 @@
 
 - 项目使用了lombok来简化Getter/Setter，所以需要安装lombok插件才能保证编译不报错
 - 项目整合了Swagger，启动web模块后可以通过[http://127.0.0.1:2019/doc.html](http://127.0.0.1:2019/doc.html)查看
-- 项目中用到的第三方组件，可通过项目[docker-compose-environment](https://github.com/MartinDai/docker-compose-environment)找到相关配置文件使用`docker-compose`命令一键启动
+- 项目中用到的第三方组件，可以从`docker`目录和项目[docker-compose-environment](https://github.com/MartinDai/docker-compose-environment)找到相关配置文件使用`docker-compose`命令一键启动
 
 ## 打包编译
 
