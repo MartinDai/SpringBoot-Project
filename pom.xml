@@ -89,7 +89,7 @@
         <swagger2.version>1.5.22</swagger2.version>
         <alibaba-cloud.version>2023.0.1.2</alibaba-cloud.version>
         <xmemcached.version>2.4.7</xmemcached.version>
-        <zookeeper.version>3.9.2</zookeeper.version>
+        <zookeeper.version>3.9.3</zookeeper.version>
         <opentelemetry.version>1.47.0</opentelemetry.version>
         <opentelemetry-semconv.version>1.30.0</opentelemetry-semconv.version>
     </properties>
