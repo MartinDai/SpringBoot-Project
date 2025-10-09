@@ -4,6 +4,7 @@
 
 [![Release](https://img.shields.io/github/v/release/martindai/SpringBoot-Project?color=369eff&labelColor=black&logo=github&style=flat-square)](https://github.com/martindai/SpringBoot-Project/releases)
 [![License](https://img.shields.io/github/license/MartinDai/SpringBoot-Project)](LICENSE)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/MartinDai/SpringBoot-Project)
 
 ## 涉及的重要框架和组件清单
 
