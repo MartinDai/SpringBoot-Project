@@ -15,11 +15,19 @@ public class EventStreamController {
 
     @GetMapping(value = "/eventStream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> eventStream() {
-        // 创建一个 Flux，用于每秒推送一条消息
         return Flux.interval(Duration.ofSeconds(1))
-                .map(sequence -> "服务器时间 " + LocalTime.now())
-                .take(10)// 限制发送 10 条消息
-                .concatWith(Flux.just("END")) // 添加一个结束信号
+                .map(sequence -> {
+                    // 构造 OpenAI 风格的 JSON 数据
+                    String jsonData = String.format(
+                            "{\"id\": \"msg-%d\", \"object\": \"text_completion\", \"created\": %d, \"choices\": [{\"text\": \"服务器时间 %s\", \"index\": 0}]}",
+                            sequence,
+                            System.currentTimeMillis() / 1000,
+                            LocalTime.now()
+                    );
+                    return "data: " + jsonData + "\n\n";
+                })
+                .take(10) // 限制发送 10 条消息
+                .concatWith(Flux.just("data: {\"object\": \"stream.end\", \"message\": \"END\"}\n\n")) // OpenAI 风格的结束信号
                 .doOnCancel(() -> System.out.println("客户端连接已断开")); // 客户端断开时触发
     }
 }

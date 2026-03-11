@@ -12,12 +12,12 @@
 
         // 节流的 scrollToBottom 函数
         function scrollToBottom() {
-            if (scrollTimeout) return; // 如果已经有一个定时器在运行，则不重复设置
+            if (scrollTimeout) return;
             scrollTimeout = setTimeout(() => {
                 const messageBox = document.getElementById("message-box");
-                messageBox.scrollTop = messageBox.scrollHeight; // 滚动到底部
-                scrollTimeout = null; // 清除定时器标记
-            }, 100); // 节流间隔（毫秒）
+                messageBox.scrollTop = messageBox.scrollHeight;
+                scrollTimeout = null;
+            }, 100);
         }
 
         // 打字机效果函数
@@ -29,10 +29,7 @@
                     if (index < text.length) {
                         container.textContent += text[index];
                         index++;
-
-                        // 滚动到底部，使用节流优化
                         scrollToBottom();
-
                         setTimeout(type, delay);
                     } else {
                         resolve();
@@ -46,13 +43,11 @@
         async function processQueue() {
             if (isTyping || messageQueue.length === 0) return;
 
-            isTyping = true; // 设置正在输出状态
-
-            const { container, text } = messageQueue.shift(); // 取出队列中的第一个任务
-            await typeText(container, text); // 执行打字效果
-
-            isTyping = false; // 结束输出状态
-            await processQueue(); // 继续处理队列中的下一个任务
+            isTyping = true;
+            const { container, text } = messageQueue.shift();
+            await typeText(container, text);
+            isTyping = false;
+            await processQueue();
         }
 
         function startEventStream() {
@@ -64,11 +59,28 @@
             eventSource = new EventSource('/eventStream');
 
             eventSource.onmessage = (event) => {
-                if (event.data === "END") {
-                    processMessage("服务器已发送所有消息，流结束。");
-                    stopEventStream(); // 手动停止事件流
+                // 移除 "data: " 前缀并解析 JSON
+                const rawData = event.data.trim();
+                if (rawData.startsWith("data: ")) {
+                    const jsonStr = rawData.substring(6); // 去掉 "data: " 前缀
+                    try {
+                        const data = JSON.parse(jsonStr);
+
+                        // 处理结束信号
+                        if (data.object === "stream.end") {
+                            processMessage("服务器已发送所有消息，流结束。");
+                            stopEventStream();
+                            return;
+                        }
+
+                        // 提取 OpenAI 格式中的实际文本内容
+                        const textContent = data.choices && data.choices[0] ? data.choices[0].text : "无内容";
+                        processMessage(textContent);
+                    } catch (e) {
+                        processMessage(`解析错误: ${event.data}`);
+                    }
                 } else {
-                    processMessage(`收到消息: ${event.data}`);
+                    processMessage(`收到未格式化消息: ${event.data}`);
                 }
             };
 
@@ -94,8 +106,6 @@
             const messageBox = document.getElementById("message-box");
             const messageElement = document.createElement("div");
             messageBox.appendChild(messageElement);
-
-            // 将任务添加到队列中
             messageQueue.push({ container: messageElement, text: message });
             processQueue();
         }
